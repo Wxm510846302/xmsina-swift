@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import CommonCrypto
 extension UIColor {
     
     /// 16进制转color
@@ -48,5 +48,23 @@ extension UIColor {
         
         return UIColor(displayP3Red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(1))
 
+    }
+}
+
+extension String {
+    //    如果需要小写，将"%02X"改成"%02x"
+    var MD5:String {
+        let utf8 = cString(using: .utf8)
+        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+//        CC_MD5(utf8, CC_LONG(utf8!.count - 1), &digest)
+        CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
+        return digest.reduce("") { $0 + String(format:"%02X", $1) }
+    }
+    var md5:String {
+        let utf8 = cString(using: .utf8)
+        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+//        CC_MD5(utf8, CC_LONG(utf8!.count - 1), &digest)
+        CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
+        return digest.reduce("") { $0 + String(format:"%02x", $1) }
     }
 }
