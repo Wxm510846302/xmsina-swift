@@ -20,16 +20,16 @@ extension UIColor {
     /// - Parameter hexString: 16进制字符串
     /// - Returns: 颜色
     public func hexStringToColor(hexString: String) -> UIColor{
-
+        
         var cString: String = hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-
+        
         if cString.count < 6 {
             return UIColor.black
         }
         if cString.hasPrefix("0X") || cString.hasPrefix("0x") {
             cString.remove(at: cString.index(cString.startIndex, offsetBy: 2))
-//            cString.removeFirst(2) 6CB8FF
-//            cString.removeLast(6) 0X
+            //            cString.removeFirst(2) 6CB8FF
+            //            cString.removeLast(6) 0X
         }
         if cString.hasPrefix("#") {
             cString.removeFirst()
@@ -53,7 +53,7 @@ extension UIColor {
         Scanner.init(string: bString).scanHexInt64(&b)
         
         return UIColor(displayP3Red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(1))
-
+        
     }
 }
 
@@ -62,16 +62,19 @@ extension String {
     var MD5:String {
         let utf8 = cString(using: .utf8)
         var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-//        CC_MD5(utf8, CC_LONG(utf8!.count - 1), &digest)
+        //        CC_MD5(utf8, CC_LONG(utf8!.count - 1), &digest)
         CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
         return digest.reduce("") { $0 + String(format:"%02X", $1) }
     }
     var md5:String {
         let utf8 = cString(using: .utf8)
         var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-//        CC_MD5(utf8, CC_LONG(utf8!.count - 1), &digest)
+        //        CC_MD5(utf8, CC_LONG(utf8!.count - 1), &digest)
         CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
         return digest.reduce("") { $0 + String(format:"%02x", $1) }
+    }
+}
+
 /// 归档manager
 class XMFileManager :NSObject{
     func saveToArchiver(obj:Any,fileName:String) -> Bool {
