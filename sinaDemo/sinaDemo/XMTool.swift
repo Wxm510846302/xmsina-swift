@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 import CommonCrypto
+func XMLog<T>(msg:T, file :String = #file ,funcName:String = #function ,lineNum:Int = #line )  {
+    #if DEBUG
+    let ext = (file as NSString).lastPathComponent
+    print("XMLOG-file:\(ext) Func:[\(funcName)] Line:\(lineNum) msg:\(msg)")
+    #endif
+}
 extension UIColor {
     
     /// 16进制转color
