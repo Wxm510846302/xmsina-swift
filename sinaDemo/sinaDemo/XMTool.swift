@@ -55,3 +55,10 @@ extension UIColor {
 
     }
 }
+
+/// 归档manager
+class XMFileManager :NSObject{
+    func saveToArchiver(obj:Any,fileName:String) -> Bool {
+        return true
+    }
+}
