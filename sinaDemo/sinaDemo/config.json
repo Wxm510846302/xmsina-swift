@@ -1,0 +1,6 @@
+[
+    {"vcName":"HomeTableCtr","title":"首页","normalImg":"icon_shouye2","selectedImg":"icon_shouye"},
+    {"vcName":"MsgTableCtr","title":"消息","normalImg":"msg2","selectedImg":"msg"},
+    {"vcName":"DiscoverTableCtr","title":"发现","normalImg":"icon_chengzhang2","selectedImg":"icon_chengzhang"},
+    {"vcName":"ProfileTableCtr","title":"我","normalImg":"icon_wode2","selectedImg":"icon_wode"}
+]
