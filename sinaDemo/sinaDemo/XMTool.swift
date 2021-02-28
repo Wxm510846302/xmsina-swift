@@ -301,10 +301,6 @@ class XMFileManager: NSObject {
     func readExistingValue() {
         
     }
-    //    func getKeychainQuery(keyToSearchFor:String) -> NSDictionary {
-    //        <#function body#>
-    //    }
-    
 }
 
 //enum MaskType {
