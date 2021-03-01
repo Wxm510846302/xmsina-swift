@@ -3,6 +3,7 @@
 #### 介绍
 sina demo with swift langue
 
+使用stroyboard 进行模块划分，分配任务更优
 #### 软件架构
 软件架构说明
 

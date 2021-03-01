@@ -19,6 +19,9 @@
 		843704E125EBA8AF0011C53D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843704E025EBA8AF0011C53D /* Home.storyboard */; };
 		843704E425EBA8E30011C53D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843704E325EBA8E30011C53D /* Profile.storyboard */; };
 		843704E725EBA8EC0011C53D /* DISCOVER.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843704E625EBA8EC0011C53D /* DISCOVER.storyboard */; };
+		843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704E925EC88D70011C53D /* XMBaseTableCtr.swift */; };
+		843704F025EC8B7E0011C53D /* XMBaseVistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */; };
+		843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843704F225EC8B930011C53D /* XMBaseVistorView.xib */; };
 		84F5001725E901D50096DA8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5001625E901D50096DA8B /* AppDelegate.swift */; };
 		84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5001825E901D50096DA8B /* SceneDelegate.swift */; };
 		84F5001E25E901D50096DA8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5001C25E901D50096DA8B /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 		843704E025EBA8AF0011C53D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		843704E325EBA8E30011C53D /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		843704E625EBA8EC0011C53D /* DISCOVER.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DISCOVER.storyboard; sourceTree = "<group>"; };
+		843704E925EC88D70011C53D /* XMBaseTableCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMBaseTableCtr.swift; sourceTree = "<group>"; };
+		843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMBaseVistorView.swift; sourceTree = "<group>"; };
+		843704F225EC8B930011C53D /* XMBaseVistorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XMBaseVistorView.xib; sourceTree = "<group>"; };
 		84F5001325E901D50096DA8B /* sinaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F5001625E901D50096DA8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F5001825E901D50096DA8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +79,9 @@
 			children = (
 				8437049925EB50EF0011C53D /* XMTabBarCtr.swift */,
 				843704C925EB94090011C53D /* XMStroyBordTbBar.swift */,
+				843704E925EC88D70011C53D /* XMBaseTableCtr.swift */,
+				843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */,
+				843704F225EC8B930011C53D /* XMBaseVistorView.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 				84F5001E25E901D50096DA8B /* Main.storyboard in Resources */,
 				843704E425EBA8E30011C53D /* Profile.storyboard in Resources */,
 				843704E125EBA8AF0011C53D /* Home.storyboard in Resources */,
+				843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843704F025EC8B7E0011C53D /* XMBaseVistorView.swift in Sources */,
 				84F5001725E901D50096DA8B /* AppDelegate.swift in Sources */,
 				8437049725EB4AC10011C53D /* XMTool.swift in Sources */,
 				843704AA25EB554E0011C53D /* ProfileTableCtr.swift in Sources */,
@@ -231,6 +242,7 @@
 				843704A725EB55330011C53D /* DiscoverTableCtr.swift in Sources */,
 				843704B125EB62900011C53D /* MsgTableCtr.swift in Sources */,
 				8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */,
+				843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */,
 				843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
