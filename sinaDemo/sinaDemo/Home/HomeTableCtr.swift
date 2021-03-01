@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeTableCtr: UITableViewController {
+class HomeTableCtr: XMBaseTableCtr {
 
     override func viewDidLoad() {
         super.viewDidLoad()

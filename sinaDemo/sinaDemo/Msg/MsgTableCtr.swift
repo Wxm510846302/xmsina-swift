@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MsgTableCtr: UITableViewController {
+class MsgTableCtr: XMBaseTableCtr {
 
     override func viewDidLoad() {
         super.viewDidLoad()

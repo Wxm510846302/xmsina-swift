@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTableCtr: UITableViewController {
+class ProfileTableCtr: XMBaseTableCtr {
 
     override func viewDidLoad() {
         super.viewDidLoad()

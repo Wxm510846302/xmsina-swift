@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiscoverTableCtr: UITableViewController {
+class DiscoverTableCtr: XMBaseTableCtr {
 
     override func viewDidLoad() {
         super.viewDidLoad()
