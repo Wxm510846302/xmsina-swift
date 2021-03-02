@@ -11,7 +11,8 @@ class ProfileTableCtr: XMBaseTableCtr {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.visitorView.setupVistorUI(backImg: "tabbar_profile", msg: "我的访客视图")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */; };
+		5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18325EE290B000FB250 /* XMRightImgBtn.swift */; };
+		5B4DF18A25EE3038000FB250 /* PopViewCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18825EE3038000FB250 /* PopViewCtr.swift */; };
+		5B4DF18B25EE3038000FB250 /* PopViewCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B4DF18925EE3038000FB250 /* PopViewCtr.xib */; };
+		5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18D25EE32B5000FB250 /* PopTransitioning.swift */; };
+		5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */; };
 		8437049725EB4AC10011C53D /* XMTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049525EB4AC10011C53D /* XMTool.swift */; };
 		8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049925EB50EF0011C53D /* XMTabBarCtr.swift */; };
 		843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704A225EB551A0011C53D /* HomeTableCtr.swift */; };
@@ -30,6 +36,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarItemExtension.swift; sourceTree = "<group>"; };
+		5B4DF18325EE290B000FB250 /* XMRightImgBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMRightImgBtn.swift; sourceTree = "<group>"; };
+		5B4DF18825EE3038000FB250 /* PopViewCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewCtr.swift; sourceTree = "<group>"; };
+		5B4DF18925EE3038000FB250 /* PopViewCtr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopViewCtr.xib; sourceTree = "<group>"; };
+		5B4DF18D25EE32B5000FB250 /* PopTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTransitioning.swift; sourceTree = "<group>"; };
+		5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPresentationCtr.swift; sourceTree = "<group>"; };
 		8437049525EB4AC10011C53D /* XMTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTool.swift; sourceTree = "<group>"; };
 		8437049925EB50EF0011C53D /* XMTabBarCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMTabBarCtr.swift; sourceTree = "<group>"; };
 		843704A225EB551A0011C53D /* HomeTableCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCtr.swift; sourceTree = "<group>"; };
@@ -65,6 +77,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B4DF17F25EE261F000FB250 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		5B4DF18725EE2FE2000FB250 /* UIpopVc */ = {
+			isa = PBXGroup;
+			children = (
+				5B4DF18825EE3038000FB250 /* PopViewCtr.swift */,
+				5B4DF18925EE3038000FB250 /* PopViewCtr.xib */,
+				5B4DF18D25EE32B5000FB250 /* PopTransitioning.swift */,
+				5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */,
+			);
+			path = UIpopVc;
+			sourceTree = "<group>";
+		};
 		8437048F25EB4AC10011C53D /* Discover */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +129,7 @@
 		8437049225EB4AC10011C53D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5B4DF18725EE2FE2000FB250 /* UIpopVc */,
 				843704E025EBA8AF0011C53D /* Home.storyboard */,
 				843704A225EB551A0011C53D /* HomeTableCtr.swift */,
 			);
@@ -107,7 +139,9 @@
 		8437049425EB4AC10011C53D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				5B4DF17F25EE261F000FB250 /* extensions */,
 				8437049525EB4AC10011C53D /* XMTool.swift */,
+				5B4DF18325EE290B000FB250 /* XMRightImgBtn.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -220,6 +254,7 @@
 				843704AD25EB61920011C53D /* config.json in Resources */,
 				84F5002025E901D50096DA8B /* Assets.xcassets in Resources */,
 				84F5001E25E901D50096DA8B /* Main.storyboard in Resources */,
+				5B4DF18B25EE3038000FB250 /* PopViewCtr.xib in Resources */,
 				843704E425EBA8E30011C53D /* Profile.storyboard in Resources */,
 				843704E125EBA8AF0011C53D /* Home.storyboard in Resources */,
 				843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */,
@@ -239,11 +274,16 @@
 				843704AA25EB554E0011C53D /* ProfileTableCtr.swift in Sources */,
 				843704CA25EB94090011C53D /* XMStroyBordTbBar.swift in Sources */,
 				84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */,
+				5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */,
+				5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */,
+				5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */,
 				843704A725EB55330011C53D /* DiscoverTableCtr.swift in Sources */,
 				843704B125EB62900011C53D /* MsgTableCtr.swift in Sources */,
 				8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */,
+				5B4DF18A25EE3038000FB250 /* PopViewCtr.swift in Sources */,
 				843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */,
 				843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */,
+				5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -375,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -12,6 +12,7 @@ class MsgTableCtr: XMBaseTableCtr {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.visitorView.setupVistorUI(backImg: "tabbar_message_center", msg: "消息访客视图")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

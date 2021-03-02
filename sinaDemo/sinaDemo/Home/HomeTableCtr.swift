@@ -8,11 +8,17 @@
 import UIKit
 
 class HomeTableCtr: XMBaseTableCtr {
-
+    
+    lazy var titleView:XMRightImgBtn = XMRightImgBtn()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tabBarItem.badgeValue = "3"
+        
+        self.visitorView.setupVistorUI(backImg: "tabbar_home", msg: "首页访客视图")
+        
+        setUpNavgationItems()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -87,4 +93,32 @@ class HomeTableCtr: XMBaseTableCtr {
     }
     */
 
+}
+// MARK: - 设置UI
+
+extension HomeTableCtr {
+    func setUpNavgationItems()  {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: "navigationbar_friendsearch")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: "navigationbar_pop")
+        titleView.setTitle("wxm", for: .normal)
+        titleView.addTarget(self, action: #selector(self.titleViewClick), for: .touchUpInside)
+        navigationItem.titleView = titleView
+    }
+   
+}
+// MARK: - 监听点击事件
+
+extension HomeTableCtr{
+    @objc func titleViewClick() {
+        self.titleView.isSelected = !self.titleView.isSelected
+        let poVc = PopViewCtr.init()
+        poVc.transitioningDelegate = self
+        poVc.modalPresentationStyle = .custom
+        self.present(poVc, animated: true, completion: nil)
+    }
+}
+extension HomeTableCtr:UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return PopPresentationCtr(presentedViewController: presented, presenting: presenting)
+    }
 }

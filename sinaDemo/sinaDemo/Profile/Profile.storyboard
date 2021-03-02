@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k0K-rC-sYd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +13,7 @@
             <objects>
                 <tableViewController id="KRf-Dc-XPX" customClass="ProfileTableCtr" customModule="sinaDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="E0b-ak-fkP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -29,7 +31,7 @@
                             <outlet property="delegate" destination="KRf-Dc-XPX" id="27c-j2-wJV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我" prompt="qqq" id="0g7-ES-cRV"/>
+                    <navigationItem key="navigationItem" title="我" prompt="这是上面的👆" id="0g7-ES-cRV"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suy-Pa-QVs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,7 +41,7 @@
         <scene sceneID="7eR-E1-QEf">
             <objects>
                 <navigationController id="k0K-rC-sYd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="4" title="我" image="icon_wode" landscapeImage="icon_wode" largeContentSizeImage="icon_wode" badgeValue="4" selectedImage="icon_wode" springLoaded="YES" id="nqZ-pc-ZlQ">
+                    <tabBarItem key="tabBarItem" tag="4" title="我" image="tabbar_profile" landscapeImage="tabbar_profile" largeContentSizeImage="tabbar_profile" badgeValue="4" selectedImage="tabbar_profile_selected" springLoaded="YES" id="nqZ-pc-ZlQ">
                         <color key="badgeColor" systemColor="systemIndigoColor"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uh0-qZ-4NS">
@@ -56,7 +58,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_wode" width="27" height="18.5"/>
+        <image name="tabbar_profile" width="30" height="30"/>
+        <image name="tabbar_profile_selected" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

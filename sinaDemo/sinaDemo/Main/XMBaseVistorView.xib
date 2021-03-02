@@ -14,21 +14,49 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n6y-Ul-907">
-                    <rect key="frame" x="99" y="417" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6R-Ml-drt">
+                    <rect key="frame" x="132" y="721" width="150" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="U6R-Ml-drt" secondAttribute="height" multiplier="25:6" id="Uet-VI-hSb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".AppleSimplifiedChineseFont" pointSize="18"/>
+                    <size key="titleShadowOffset" width="11" height="19"/>
+                    <state key="normal" title="登录/注册" backgroundImage="loginImage"/>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_home" translatesAutoresizingMaskIntoConstraints="NO" id="6Cp-Lm-PD9">
+                    <rect key="frame" x="192" y="353" width="30" height="30"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdn-im-A4a">
-                    <rect key="frame" x="99" y="249" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-Lz-1DK">
+                    <rect key="frame" x="109.5" y="416" width="195" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="195" id="eUg-3n-fsg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray4Color"/>
-            <point key="canvasLocation" x="38" y="48"/>
+            <constraints>
+                <constraint firstItem="2iH-Lz-1DK" firstAttribute="top" secondItem="6Cp-Lm-PD9" secondAttribute="bottom" constant="33" id="D2n-az-aPJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="U6R-Ml-drt" secondAttribute="bottom" constant="105" id="UdV-CQ-s8h"/>
+                <constraint firstItem="6Cp-Lm-PD9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Uoe-AQ-Fz7"/>
+                <constraint firstItem="2iH-Lz-1DK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="VCo-vk-Gr0"/>
+                <constraint firstItem="U6R-Ml-drt" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="hMu-Lv-8BV"/>
+                <constraint firstItem="U6R-Ml-drt" firstAttribute="top" secondItem="6Cp-Lm-PD9" secondAttribute="bottom" constant="338" id="yYB-nt-KFK"/>
+            </constraints>
+            <connections>
+                <outlet property="backImg" destination="6Cp-Lm-PD9" id="KK0-fb-N0y"/>
+                <outlet property="contentMsgLb" destination="2iH-Lz-1DK" id="8xt-BI-hr0"/>
+                <outlet property="loginBtn" destination="U6R-Ml-drt" id="n1M-rT-GFz"/>
+            </connections>
+            <point key="canvasLocation" x="37.681159420289859" y="47.544642857142854"/>
         </view>
     </objects>
     <resources>
+        <image name="loginImage" width="105" height="36"/>
+        <image name="tabbar_home" width="30" height="30"/>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

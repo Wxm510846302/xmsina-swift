@@ -32,11 +32,15 @@ class XMStroyBordTbBar: UITabBarController {
     
 }
 extension XMStroyBordTbBar {
+//    func chooseVisitorView(<#parameters#>) -> <#return type#> {
+//        <#function body#>
+//    }
+}
+extension XMStroyBordTbBar {
     func setUpComposeBtn() {
         for item in 0..<tabBar.items!.count {
             
             if item == 2 {
-                
                 
                 composeBtn.addTarget(self, action: #selector(self.compose), for: .touchUpInside)
                 composeBtn.center = CGPoint(x: tabBar.center.x, y: tabBar.bounds.size.height * 0.5)

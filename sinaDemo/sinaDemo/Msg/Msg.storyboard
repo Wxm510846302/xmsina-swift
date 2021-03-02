@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pj1-fV-adA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,7 +12,7 @@
             <objects>
                 <tableViewController id="41v-hW-4Rb" customClass="MsgTableCtr" customModule="sinaDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4n2-mK-64P">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -39,7 +40,7 @@
         <scene sceneID="VJr-L8-QvF">
             <objects>
                 <navigationController id="Pj1-fV-adA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="消息" image="msg" landscapeImage="msg" largeContentSizeImage="msg" badgeValue="2" selectedImage="msg" springLoaded="YES" id="3kr-AZ-MaA">
+                    <tabBarItem key="tabBarItem" tag="2" title="消息" image="tabbar_message_center" landscapeImage="tabbar_message_center" largeContentSizeImage="tabbar_message_center" badgeValue="2" selectedImage="tabbar_message_center_selected" springLoaded="YES" id="3kr-AZ-MaA">
                         <color key="badgeColor" systemColor="systemPinkColor"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ike-bj-Qf9">
@@ -56,7 +57,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="msg" width="29" height="29"/>
+        <image name="tabbar_message_center" width="30" height="30"/>
+        <image name="tabbar_message_center_selected" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

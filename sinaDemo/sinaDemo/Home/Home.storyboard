@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hcg-0g-gJr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,7 +12,7 @@
             <objects>
                 <tableViewController id="1HM-8H-vlS" customClass="HomeTableCtr" customModule="sinaDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7qj-He-2no">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -39,7 +40,7 @@
         <scene sceneID="VF5-BD-suz">
             <objects>
                 <navigationController id="hcg-0g-gJr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="首页" image="icon_shouye2" landscapeImage="icon_shouye" largeContentSizeImage="icon_shouye" badgeValue="1" selectedImage="icon_shouye" springLoaded="YES" id="Set-gx-d5h">
+                    <tabBarItem key="tabBarItem" tag="1" title="首页" image="tabbar_home" landscapeImage="tabbar_home" largeContentSizeImage="tabbar_home" badgeValue="1" selectedImage="tabbar_home_selected" springLoaded="YES" id="Set-gx-d5h">
                         <color key="badgeColor" systemColor="systemOrangeColor"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="teE-YW-oaO">
@@ -56,8 +57,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_shouye" width="29" height="26"/>
-        <image name="icon_shouye2" width="29" height="25.5"/>
+        <image name="tabbar_home" width="30" height="30"/>
+        <image name="tabbar_home_selected" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

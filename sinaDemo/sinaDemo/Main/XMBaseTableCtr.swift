@@ -8,7 +8,11 @@
 import UIKit
 
 class XMBaseTableCtr: UITableViewController {
-        
+    //懒加载访客视图
+    lazy var visitorView :XMBaseVistorView = XMBaseVistorView.visitorView()
+    lazy var LoginBtn : UIButton = UIButton.init()
+    
+    var isLogin = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,4 +90,24 @@ class XMBaseTableCtr: UITableViewController {
     }
     */
     
+}
+extension XMBaseTableCtr
+{
+    override func loadView() {
+        isLogin ? super.loadView() : setupVisitorView()
+    }
+    func setupVisitorView()  {
+//        LoginBtn.frame.size = CGSize.init(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        self.view = visitorView
+        visitorView.loginBtn.addTarget(self, action: #selector(self.loginClick), for: .touchUpInside)
+        setNavgationItems()
+    }
+    //设置导航控制器左右按钮item
+    func setNavgationItems()  {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(self.loginClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(self.loginClick))
+    }
+    @objc private func loginClick() {
+        print("loginClick")
+    }
 }

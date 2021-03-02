@@ -40,7 +40,7 @@
         <scene sceneID="HkX-wU-Caz">
             <objects>
                 <navigationController id="Qhh-9e-UAW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="发现" image="icon_chengzhang2" landscapeImage="icon_chengzhang" largeContentSizeImage="icon_chengzhang" badgeValue="3" selectedImage="icon_chengzhang" id="5ID-fN-g2F">
+                    <tabBarItem key="tabBarItem" tag="3" title="发现" image="tabbar_discover" landscapeImage="tabbar_discover" largeContentSizeImage="tabbar_discover" badgeValue="3" selectedImage="tabbar_discover_selected" id="5ID-fN-g2F">
                         <color key="badgeColor" systemColor="systemTealColor"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yy4-KE-gb8">
@@ -57,8 +57,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_chengzhang" width="24.5" height="24"/>
-        <image name="icon_chengzhang2" width="24" height="24"/>
+        <image name="tabbar_discover" width="30" height="30"/>
+        <image name="tabbar_discover_selected" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
