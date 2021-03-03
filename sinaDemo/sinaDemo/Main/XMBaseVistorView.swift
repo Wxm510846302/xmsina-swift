@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import AutoInch
 class XMBaseVistorView: UIView {
 
     @IBOutlet weak var backImg: UIImageView!
@@ -25,5 +25,7 @@ class XMBaseVistorView: UIView {
     func setupVistorUI(backImg:String,msg:String) {
         self.backImg.image = UIImage(named: backImg)
         self.contentMsgLb.text = msg
+        
     }
+    
 }

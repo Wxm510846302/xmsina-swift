@@ -19,17 +19,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popover_background" translatesAutoresizingMaskIntoConstraints="NO" id="je6-up-N4s">
-                    <rect key="frame" x="20" y="10" width="374" height="832"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popover_background" translatesAutoresizingMaskIntoConstraints="NO" id="je6-up-N4s" userLabel="bg">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="je6-up-N4s" secondAttribute="trailing" constant="20" id="4nQ-yp-YXb"/>
-                <constraint firstItem="je6-up-N4s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Hw6-wy-iw6"/>
-                <constraint firstItem="je6-up-N4s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="qws-OW-9vA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="je6-up-N4s" secondAttribute="bottom" constant="20" id="to0-NW-Q0N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="je6-up-N4s" secondAttribute="trailing" id="4nQ-yp-YXb"/>
+                <constraint firstItem="je6-up-N4s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Hw6-wy-iw6"/>
+                <constraint firstItem="je6-up-N4s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qws-OW-9vA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="je6-up-N4s" secondAttribute="bottom" id="to0-NW-Q0N"/>
             </constraints>
             <point key="canvasLocation" x="-54" y="64"/>
         </view>

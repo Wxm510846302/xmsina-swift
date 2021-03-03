@@ -11,11 +11,11 @@ class XMBaseTableCtr: UITableViewController {
     //懒加载访客视图
     lazy var visitorView :XMBaseVistorView = XMBaseVistorView.visitorView()
     lazy var LoginBtn : UIButton = UIButton.init()
-    
+ 
     var isLogin = true
     override func viewDidLoad() {
         super.viewDidLoad()
-
+  
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -104,10 +104,13 @@ extension XMBaseTableCtr
     }
     //设置导航控制器左右按钮item
     func setNavgationItems()  {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(self.loginClick))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(self.registClick))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(self.loginClick))
     }
     @objc private func loginClick() {
         print("loginClick")
+    }
+    @objc private func registClick() {
+        print("registClick")
     }
 }

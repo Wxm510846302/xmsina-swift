@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,10 +23,13 @@
                     <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".AppleSimplifiedChineseFont" pointSize="18"/>
                     <size key="titleShadowOffset" width="11" height="19"/>
                     <state key="normal" title="登录/注册" backgroundImage="loginImage"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="autoCornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoImageInsets" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_home" translatesAutoresizingMaskIntoConstraints="NO" id="6Cp-Lm-PD9">
-                    <rect key="frame" x="192" y="353" width="30" height="30"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-Lz-1DK">
                     <rect key="frame" x="109.5" y="416" width="195" height="20.5"/>
                     <constraints>
@@ -34,17 +38,35 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="autoCornerRadius">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoFont" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoLine" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoShadowOffset" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_home" translatesAutoresizingMaskIntoConstraints="NO" id="6Cp-Lm-PD9">
+                    <rect key="frame" x="135" y="246" width="141" height="138"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="138" id="O4b-EG-wf7"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoImage" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemGray4Color"/>
             <constraints>
-                <constraint firstItem="2iH-Lz-1DK" firstAttribute="top" secondItem="6Cp-Lm-PD9" secondAttribute="bottom" constant="33" id="D2n-az-aPJ"/>
+                <constraint firstItem="6Cp-Lm-PD9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="202" id="51e-yd-cLz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Cp-Lm-PD9" secondAttribute="trailing" constant="138" id="MUb-Vl-ReW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="U6R-Ml-drt" secondAttribute="bottom" constant="105" id="UdV-CQ-s8h"/>
-                <constraint firstItem="6Cp-Lm-PD9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Uoe-AQ-Fz7"/>
                 <constraint firstItem="2iH-Lz-1DK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="VCo-vk-Gr0"/>
                 <constraint firstItem="U6R-Ml-drt" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="hMu-Lv-8BV"/>
-                <constraint firstItem="U6R-Ml-drt" firstAttribute="top" secondItem="6Cp-Lm-PD9" secondAttribute="bottom" constant="338" id="yYB-nt-KFK"/>
+                <constraint firstItem="6Cp-Lm-PD9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="135" id="kS5-Rm-fFv"/>
+                <constraint firstItem="2iH-Lz-1DK" firstAttribute="top" secondItem="6Cp-Lm-PD9" secondAttribute="bottom" constant="32" id="msx-Jh-CN7"/>
             </constraints>
             <connections>
                 <outlet property="backImg" destination="6Cp-Lm-PD9" id="KK0-fb-N0y"/>
