@@ -279,6 +279,7 @@ class XMFileManager: NSObject {
             }
         } catch  {
             print("模型转data失败: \(error)")
+            
         }
         return false
     }

@@ -2,7 +2,7 @@
 //  PopViewCtr.swift
 //  sinaDemo
 //
-//  Created by Ela on 2021/3/2.
+//  Created by Xueming on 2021/3/2.
 //
 
 import UIKit

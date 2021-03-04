@@ -2,7 +2,7 @@
 //  Then.swift
 //  sinaDemo
 //
-//  Created by Ela on 2021/3/2.
+//  Created by Xueming on 2021/3/2.
 //
 
 import Foundation
@@ -25,7 +25,7 @@ extension CGVector: Then {}
   extension UIRectEdge: Then {}
 #endif
 
-/// 给Then协议写 实现方法  冒号 后面是谁来遵循Then协议
+/// 当前的Self是Any类型的，它遵循 Then协议的拓展func with 和 do 并且将其实现：|| *self-实现了Then协议的拓展func with 和 do方法* ||（Then协议在哪拓展呢？在Any类型实例化的“Self"中 ）
 extension Then where Self : Any {
     
     /// Makes it available to set properties with closures just after initializing and copying the value types.

@@ -27,8 +27,18 @@ class HomeTableCtr: XMBaseTableCtr {
         }else{
             setUpNavgationItems()
         }
+        let dic:[String:Any] = [ "access_token": "2.00fvH9IDJIgYKC67eb4c7de6rNk6YC",
+                    "expires_in" : 116087,
+                    "isRealName" : true,
+                    "remind_in" : 116087,
+                    "uid" : 2873312851]
+        let count = UserCount.init(dic: dic)
+        XMFileManager.init().saveToArchiver(obj: count, fileName: "usercount")
+//        let param = ["name":"213"]
+//        XMNetWorkTool.shareNetworkTool.requestWithNetworkTool(methd: .POST, url: "https://httpbin.org/post", params: param, headers: nil) { (error, reponse) in
+//            print(reponse as Any)
+//        }
         
-      
         
 //        print(
 //            "this is " +
@@ -58,7 +68,9 @@ class HomeTableCtr: XMBaseTableCtr {
 extension HomeTableCtr {
     //设置导航条
     func setUpNavgationItems()  {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: "navigationbar_friendsearch")
+        //下面两个有点区别，第一个自定义的是button，可以设置高亮image
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: "navigationbar_friendsearch")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "navigationbar_friendsearch"), style: .done, target: self, action: #selector(self.friendClick))
         navigationItem.rightBarButtonItems = [UIBarButtonItem(image: "navigationbar_pop"),UIBarButtonItem(image: "navigationbar_redbag")]
         titleView.setTitle("wxm", for: .normal)
         titleView.addTarget(self, action: #selector(self.titleViewClick), for: .touchUpInside)
@@ -69,6 +81,7 @@ extension HomeTableCtr {
         pop?.addTarget(self, action: #selector(self.popClick), for: .touchUpInside)
         redbag?.addTarget(self, action: #selector(self.redbagClick), for: .touchUpInside)
         friend?.addTarget(self, action: #selector(self.friendClick), for: .touchUpInside)
+        
     }
    
 }

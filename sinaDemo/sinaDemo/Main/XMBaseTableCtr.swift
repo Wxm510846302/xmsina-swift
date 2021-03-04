@@ -11,8 +11,8 @@ class XMBaseTableCtr: UITableViewController {
     //懒加载访客视图
     lazy var visitorView :XMBaseVistorView = XMBaseVistorView.visitorView()
     lazy var LoginBtn : UIButton = UIButton.init()
- 
-    var isLogin = true
+    //全局登录状态
+    var isLogin = false
     override func viewDidLoad() {
         super.viewDidLoad()
   
@@ -91,6 +91,8 @@ class XMBaseTableCtr: UITableViewController {
     */
     
 }
+// MARK: - 设置UI
+
 extension XMBaseTableCtr
 {
     override func loadView() {
@@ -109,6 +111,9 @@ extension XMBaseTableCtr
     }
     @objc private func loginClick() {
         print("loginClick")
+        let AutoCtr = AutoLoginCtr.init()
+        let nav = UINavigationController.init(rootViewController: AutoCtr)
+        present(nav, animated: true, completion: nil)
     }
     @objc private func registClick() {
         print("registClick")
