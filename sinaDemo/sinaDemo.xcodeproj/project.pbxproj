@@ -12,6 +12,8 @@
 		5B3C068825F0865300D426F9 /* KeysTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C068725F0865300D426F9 /* KeysTool.swift */; };
 		5B3C069025F08AE100D426F9 /* XMNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C068F25F08AE100D426F9 /* XMNetWorkTool.swift */; };
 		5B3C06A325F0EE9600D426F9 /* UserCountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C06A225F0EE9600D426F9 /* UserCountManager.swift */; };
+		5B3C06A825F1D77300D426F9 /* WelcomeCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C06A625F1D77300D426F9 /* WelcomeCtr.swift */; };
+		5B3C06A925F1D77300D426F9 /* WelcomeCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C06A725F1D77300D426F9 /* WelcomeCtr.xib */; };
 		5B4D0CB225EE52F700F516D4 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D0CB125EE52F700F516D4 /* Then.swift */; };
 		5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */; };
 		5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18325EE290B000FB250 /* XMRightImgBtn.swift */; };
@@ -48,6 +50,8 @@
 		5B3C068725F0865300D426F9 /* KeysTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysTool.swift; sourceTree = "<group>"; };
 		5B3C068F25F08AE100D426F9 /* XMNetWorkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMNetWorkTool.swift; sourceTree = "<group>"; };
 		5B3C06A225F0EE9600D426F9 /* UserCountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCountManager.swift; sourceTree = "<group>"; };
+		5B3C06A625F1D77300D426F9 /* WelcomeCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCtr.swift; sourceTree = "<group>"; };
+		5B3C06A725F1D77300D426F9 /* WelcomeCtr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeCtr.xib; sourceTree = "<group>"; };
 		5B4D0CB125EE52F700F516D4 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarItemExtension.swift; sourceTree = "<group>"; };
 		5B4DF18325EE290B000FB250 /* XMRightImgBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMRightImgBtn.swift; sourceTree = "<group>"; };
@@ -130,6 +134,15 @@
 			path = network;
 			sourceTree = "<group>";
 		};
+		5B3C06A525F1D5F300D426F9 /* welcomeCtr */ = {
+			isa = PBXGroup;
+			children = (
+				5B3C06A625F1D77300D426F9 /* WelcomeCtr.swift */,
+				5B3C06A725F1D77300D426F9 /* WelcomeCtr.xib */,
+			);
+			path = welcomeCtr;
+			sourceTree = "<group>";
+		};
 		5B4DF17F25EE261F000FB250 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +174,7 @@
 		8437049025EB4AC10011C53D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5B3C06A525F1D5F300D426F9 /* welcomeCtr */,
 				5B3C067B25F0788C00D426F9 /* AutoLoginCtr */,
 				8437049925EB50EF0011C53D /* XMTabBarCtr.swift */,
 				843704C925EB94090011C53D /* XMStroyBordTbBar.swift */,
@@ -316,6 +330,7 @@
 				84F5002025E901D50096DA8B /* Assets.xcassets in Resources */,
 				84F5001E25E901D50096DA8B /* Main.storyboard in Resources */,
 				5B4DF18B25EE3038000FB250 /* PopViewCtr.xib in Resources */,
+				5B3C06A925F1D77300D426F9 /* WelcomeCtr.xib in Resources */,
 				843704E425EBA8E30011C53D /* Profile.storyboard in Resources */,
 				843704E125EBA8AF0011C53D /* Home.storyboard in Resources */,
 				843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */,
@@ -336,6 +351,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AutoInch/AutoInch.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -343,6 +359,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutoInch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -384,6 +401,7 @@
 				8437049725EB4AC10011C53D /* XMTool.swift in Sources */,
 				843704AA25EB554E0011C53D /* ProfileTableCtr.swift in Sources */,
 				843704CA25EB94090011C53D /* XMStroyBordTbBar.swift in Sources */,
+				5B3C06A825F1D77300D426F9 /* WelcomeCtr.swift in Sources */,
 				84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */,
 				5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */,
 				5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */,

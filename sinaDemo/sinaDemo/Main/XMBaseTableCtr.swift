@@ -12,7 +12,7 @@ class XMBaseTableCtr: UITableViewController {
     lazy var visitorView :XMBaseVistorView = XMBaseVistorView.visitorView()
     lazy var LoginBtn : UIButton = UIButton.init()
     //全局登录状态
-    var isLogin = false
+    var isLogin:Bool = UserCountManager.isLogin
     override func viewDidLoad() {
         super.viewDidLoad()
   

@@ -13,3 +13,7 @@ let sinaAppKey = "1988294129"
 let sinaAppSecret = "263a43f9b7511a222bfbfdfd2bdfdc82"
 let sinaRedirectUrl = "http://www.baidu.com"
 
+//URL api
+let access_tokenUrl = "https://api.weibo.com/oauth2/access_token"
+let usersShowUrl = "https://api.weibo.com/2/users/show.json"
+

@@ -9,7 +9,8 @@ import UIKit
 import WebKit
 
 class AutoLoginCtr: UIViewController {
-    
+    var userModel:UserCount?
+    var getedToken:Bool = false
     @IBOutlet weak var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,24 +57,45 @@ extension AutoLoginCtr{
 
 extension AutoLoginCtr{
     func getAccessToken(code:String)  {
-//        params[@"client_id"] = @"1988294129";
-//        params[@"client_secret"] = @"263a43f9b7511a222bfbfdfd2bdfdc82";
-//        params[@"grant_type"] = @"authorization_code";
-//        params[@"redirect_uri"] = @"http://www.baidu.com";
-//        params[@"code"] = code;
+        self.getedToken = true
         let params = ["client_id":sinaAppKey,"client_secret":sinaAppSecret,"grant_type":"authorization_code","redirect_uri":sinaRedirectUrl,"code":code]
-        XMNetWorkTool.shareNetworkTool.requestWithNetworkTool(methd: .POST, url: "https://api.weibo.com/oauth2/access_token", params: params, headers: nil) { (error, response) in
+        XMNetWorkTool.shareNetworkTool.getAccessToken(params: params) { (error, response) in
             if error == nil{
                 print(response ?? "失败")
                 guard let dic = response as? [String:Any] else {
                     return
                 }
-                let user = UserCount.init(dic: dic)
-                UserCountManager.saveUserCount(user: user)
+                self.userModel = UserCount.yy_model(with: dic)
+                //用token请求个人信息
+                self.getUserMsg()
             }else{
                 print(error!)
             }
         }
+       
+    }
+    func getUserMsg() {
+        let param = ["access_token":self.userModel!.access_token,"uid":self.userModel!.uid]
+        XMNetWorkTool.shareNetworkTool.getUserInfo(params: param as [String : Any]) { (error, response) in
+            if error == nil {
+                //正常
+                print(response)
+                guard let dic = response as? [String:Any] else {
+                    return
+                }
+                let oldDic = self.userModel?.yy_modelToJSONObject()
+                print(type(of: oldDic))
+                let newDic = dic.merging(oldDic as! [String : Any]) { (shopParamaKeyValue, oldDic) -> Any in
+                    return shopParamaKeyValue
+                }
+                print(newDic)
+                UserCountManager.saveUserCount(user: self.userModel!)
+            }
+            else{
+                print(error)
+            }
+        }
+      
     }
 }
 // MARK: - webview代理方法
@@ -106,10 +128,12 @@ extension AutoLoginCtr:WKNavigationDelegate{
         }
         
         if urlstring.components(separatedBy: "code=").count == 2  &&  urlstring.components(separatedBy: sinaRedirectUrl).count == 2{
-            getAccessToken(code: urlstring.components(separatedBy: "code=").last!)
-            print("接口请求accesstoken")
+            if !self.getedToken {
+                getAccessToken(code: urlstring.components(separatedBy: "code=").last!)
+            }
+            
             decisionHandler(WKNavigationActionPolicy.cancel)
-            webView.stopLoading()
+//            webView.load(URLRequest.init(url: URL.init(string: "")!))
             return
            
         }else {

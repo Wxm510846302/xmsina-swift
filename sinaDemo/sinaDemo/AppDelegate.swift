@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.shared.registerUserNotificationSettings(notifySettings)
             
         }
-        //只有授权推送后才能在icon显示角标
-        UIApplication.shared.applicationIconBadgeNumber = 3
+       
         //        UITabBarItem.appearance().setTitleTextAttributes(
         //            [NSAttributedString.Key.foregroundColor: UIColor.gray], for:.normal)
         //        UITabBarItem.appearance().setTitleTextAttributes(

@@ -269,6 +269,7 @@ class XMFileManager: NSObject {
         print("用户信息路径:\(filePath)")
         // 保存
         do {
+            
             let data = try NSKeyedArchiver.archivedData(withRootObject: obj, requiringSecureCoding: true)
             do {
                 _ = try data.write(to: URL(fileURLWithPath: filePath))

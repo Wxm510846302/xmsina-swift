@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeCtr" customModule="sinaDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="iconImg" destination="xTM-bc-6L0" id="va1-5a-zoQ"/>
+                <outlet property="label" destination="6H2-gf-Ikb" id="Of1-du-kac"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-wR-AER">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default_big" translatesAutoresizingMaskIntoConstraints="NO" id="xTM-bc-6L0">
+                    <rect key="frame" x="157" y="475" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="RhF-eG-fwy"/>
+                        <constraint firstAttribute="width" constant="100" id="j1j-OA-6vV"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="autoCornerRadius">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoConstant" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H2-gf-Ikb">
+                    <rect key="frame" x="167" y="583" width="80" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Zm9-I9-ZCC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoFont" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Gwf-wR-AER" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0yl-T1-Q9a"/>
+                <constraint firstItem="6H2-gf-Ikb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OrY-1j-n6m"/>
+                <constraint firstItem="xTM-bc-6L0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RXc-uB-FQA"/>
+                <constraint firstItem="6H2-gf-Ikb" firstAttribute="top" secondItem="xTM-bc-6L0" secondAttribute="bottom" constant="8" id="UZJ-ev-ju2"/>
+                <constraint firstItem="Gwf-wR-AER" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vu2-Of-7OX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gwf-wR-AER" secondAttribute="trailing" id="VxN-Mw-Dce"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xTM-bc-6L0" secondAttribute="bottom" constant="161" id="bF4-6g-D7e"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Gwf-wR-AER" secondAttribute="bottom" id="p4y-vI-pL8"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="68"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="avatar_default_big" width="85" height="85"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

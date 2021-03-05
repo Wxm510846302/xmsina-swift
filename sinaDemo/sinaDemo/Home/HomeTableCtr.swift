@@ -7,6 +7,7 @@
 
 import UIKit
 import AutoInch
+import YYModel
 class HomeTableCtr: XMBaseTableCtr {
     
     lazy var PopPresentDelegate:PopTransitioning = PopTransitioning.init { [weak self](presened) in
@@ -27,13 +28,7 @@ class HomeTableCtr: XMBaseTableCtr {
         }else{
             setUpNavgationItems()
         }
-        let dic:[String:Any] = [ "access_token": "2.00fvH9IDJIgYKC67eb4c7de6rNk6YC",
-                    "expires_in" : 116087,
-                    "isRealName" : true,
-                    "remind_in" : 116087,
-                    "uid" : 2873312851]
-        let count = UserCount.init(dic: dic)
-        XMFileManager.init().saveToArchiver(obj: count, fileName: "usercount")
+       
 //        let param = ["name":"213"]
 //        XMNetWorkTool.shareNetworkTool.requestWithNetworkTool(methd: .POST, url: "https://httpbin.org/post", params: param, headers: nil) { (error, reponse) in
 //            print(reponse as Any)

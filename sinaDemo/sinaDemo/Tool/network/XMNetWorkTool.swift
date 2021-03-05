@@ -7,6 +7,9 @@
 
 import UIKit
 import AFNetworking
+
+typealias callBack = (Error?,Any?)->Void
+
 enum NetworkMethdType {
     case GET
     case POST
@@ -29,8 +32,7 @@ class XMNetWorkTool: AFHTTPSessionManager {
 extension XMNetWorkTool {
     
    public func requestWithNetworkTool(methd:NetworkMethdType,url:String,params:[String:Any]?,headers:[String:String]?,finishBlock:@escaping (Error?,Any?)->Void) {
-        
-        
+    // FIXME: - 这里应该有个判断，token是否过期，如果在使用过程中过期了怎么办？应该重新获取一下token
         let successFinish = { (task:URLSessionDataTask, response:Any?) in
             finishBlock(nil,response)
         }
@@ -91,5 +93,17 @@ extension XMNetWorkTool {
         default:break
             
         }
+    }
+}
+
+extension XMNetWorkTool{
+    // MARK: - 获取token
+    func getAccessToken(params:[String:Any]?,finish:@escaping callBack) {
+        self.requestWithNetworkTool(methd: .POST, url: access_tokenUrl, params: params, headers: nil, finishBlock: finish)
+    }
+    // MARK: - 获取用户信息
+
+    func getUserInfo(params:[String:Any]?,finish:@escaping callBack) {
+        self.requestWithNetworkTool(methd: .GET, url: usersShowUrl, params: params, headers: nil, finishBlock: finish)
     }
 }
