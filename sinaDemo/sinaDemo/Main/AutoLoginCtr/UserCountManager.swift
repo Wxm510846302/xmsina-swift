@@ -60,6 +60,7 @@ class UserCount: NSObject,NSSecureCoding,YYModel {
         super.init()
     }
     override func setValuesForKeys(_ keyedValues: [String : Any]) {
+        
         self.access_token = keyedValues["access_token"] as? String
         self.expires_in = keyedValues["expires_in"] as? String
         self.isRealName = keyedValues["isRealName"] as? String

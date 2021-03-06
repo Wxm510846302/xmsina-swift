@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -20,6 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //用代码创建控制器
 //        window?.rootViewController = XMTabBarCtr.init()
+        if UserCountManager.readUserCount() != nil {
+            UserCountManager.userModel = UserCountManager.readUserCount()
+            guard let remind_date = UserCountManager.userModel!.remind_date as Date? else { return  }
+            let compare = Date().compare(remind_date)
+            if compare == .orderedAscending {
+                UserCountManager.isLogin = true
+                window?.rootViewController = WelcomeCtr.init()
+            }
+        }
+        
         XMLog("willConnectTo")
         guard let _ = (scene as? UIWindowScene) else { return }
     }

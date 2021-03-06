@@ -23,19 +23,18 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-wR-AER">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="autoCornerRadius">
+                            <real key="value" value="42.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default_big" translatesAutoresizingMaskIntoConstraints="NO" id="xTM-bc-6L0">
-                    <rect key="frame" x="157" y="475" width="100" height="100"/>
+                    <rect key="frame" x="149.66666666666666" y="475" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="RhF-eG-fwy"/>
                         <constraint firstAttribute="width" constant="100" id="j1j-OA-6vV"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="autoCornerRadius">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="autoConstant" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H2-gf-Ikb">
                     <rect key="frame" x="167" y="583" width="80" height="18"/>
@@ -49,17 +48,23 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="autoFont" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_grassroot" translatesAutoresizingMaskIntoConstraints="NO" id="WyJ-hk-X00">
+                    <rect key="frame" x="198.66666666666666" y="619" width="16.666666666666657" height="17"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Gwf-wR-AER" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0yl-T1-Q9a"/>
                 <constraint firstItem="6H2-gf-Ikb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OrY-1j-n6m"/>
-                <constraint firstItem="xTM-bc-6L0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RXc-uB-FQA"/>
+                <constraint firstItem="xTM-bc-6L0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-7.5" id="RXc-uB-FQA"/>
+                <constraint firstItem="WyJ-hk-X00" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="198.66666666666666" id="UI3-8b-4BT"/>
                 <constraint firstItem="6H2-gf-Ikb" firstAttribute="top" secondItem="xTM-bc-6L0" secondAttribute="bottom" constant="8" id="UZJ-ev-ju2"/>
                 <constraint firstItem="Gwf-wR-AER" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vu2-Of-7OX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gwf-wR-AER" secondAttribute="trailing" id="VxN-Mw-Dce"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xTM-bc-6L0" secondAttribute="bottom" constant="161" id="bF4-6g-D7e"/>
+                <constraint firstItem="WyJ-hk-X00" firstAttribute="top" secondItem="6H2-gf-Ikb" secondAttribute="bottom" constant="18" id="cam-3V-f2R"/>
+                <constraint firstItem="WyJ-hk-X00" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="m0x-fg-X1v"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Gwf-wR-AER" secondAttribute="bottom" id="p4y-vI-pL8"/>
             </constraints>
             <point key="canvasLocation" x="139" y="68"/>
@@ -67,6 +72,7 @@
     </objects>
     <resources>
         <image name="avatar_default_big" width="85" height="85"/>
+        <image name="avatar_grassroot" width="17" height="17"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

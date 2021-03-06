@@ -72,14 +72,14 @@ extension AutoLoginCtr{
                 print(error!)
             }
         }
-       
+        
     }
     func getUserMsg() {
         let param = ["access_token":self.userModel!.access_token,"uid":self.userModel!.uid]
         XMNetWorkTool.shareNetworkTool.getUserInfo(params: param as [String : Any]) { (error, response) in
             if error == nil {
                 //正常
-                print(response)
+                print(response ?? "default")
                 guard let dic = response as? [String:Any] else {
                     return
                 }
@@ -90,12 +90,17 @@ extension AutoLoginCtr{
                 }
                 print(newDic)
                 UserCountManager.saveUserCount(user: self.userModel!)
+                self.navigationController?.dismiss(animated: false, completion: {
+                    
+                    UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()
+                    
+                })
             }
             else{
-                print(error)
+                print(error!)
             }
         }
-      
+        
     }
 }
 // MARK: - webview代理方法
@@ -114,14 +119,14 @@ extension AutoLoginCtr:WKNavigationDelegate{
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         
     }
-//    @available(iOS 13.0, *)//拿到响应后决定是否允许跳转
-//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-//        print("decidePolicyFor navigationAction preferences")
-//    }
+    //    @available(iOS 13.0, *)//拿到响应后决定是否允许跳转
+    //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
+    //        print("decidePolicyFor navigationAction preferences")
+    //    }
     
     //判断链接是否允许跳转
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//        print("decidePolicyFor navigationAction")
+        //        print("decidePolicyFor navigationAction")
         guard let urlstring = navigationAction.request.url?.absoluteString else {
             decisionHandler(WKNavigationActionPolicy.allow)
             return
@@ -133,26 +138,26 @@ extension AutoLoginCtr:WKNavigationDelegate{
             }
             
             decisionHandler(WKNavigationActionPolicy.cancel)
-//            webView.load(URLRequest.init(url: URL.init(string: "")!))
+            //            webView.load(URLRequest.init(url: URL.init(string: "")!))
             return
-           
+            
         }else {
             decisionHandler(WKNavigationActionPolicy.allow)
         }
-    
+        
     }
     
     //拿到响应后决定是否允许跳转
-//    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-//        print("decidePolicyFor navigationResponse")
-//        decisionHandler(WKNavigationResponsePolicy.allow)
-//    }
+    //    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    //        print("decidePolicyFor navigationResponse")
+    //        decisionHandler(WKNavigationResponsePolicy.allow)
+    //    }
     
     //收到服务器重定向时调用
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         
     }
-   
+    
     //当内容开始到达主帧时被调用（即将完成）
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         
@@ -167,10 +172,10 @@ extension AutoLoginCtr:WKNavigationDelegate{
         
     }
     //当webView需要响应身份验证时调用(如需验证服务器证书)
-//    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//        
-//    }
-//    func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
-//        
-//    }
+    //    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    //
+    //    }
+    //    func webView(_ webView: WKWebView, authenticationChallenge challenge: URLAuthenticationChallenge, shouldAllowDeprecatedTLS decisionHandler: @escaping (Bool) -> Void) {
+    //
+    //    }
 }
