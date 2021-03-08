@@ -36,6 +36,12 @@
 		843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704E925EC88D70011C53D /* XMBaseTableCtr.swift */; };
 		843704F025EC8B7E0011C53D /* XMBaseVistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */; };
 		843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843704F225EC8B930011C53D /* XMBaseVistorView.xib */; };
+		84D8367C25F354BD008F2F38 /* CreatDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8367B25F354BD008F2F38 /* CreatDateTool.swift */; };
+		84D8368025F47CE4008F2F38 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8367E25F47CE4008F2F38 /* HomeCell.swift */; };
+		84D8368125F47CE4008F2F38 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D8367F25F47CE4008F2F38 /* HomeCell.xib */; };
+		84D8368525F48667008F2F38 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8368425F48667008F2F38 /* HomeModel.swift */; };
+		84D8368D25F4E8E4008F2F38 /* HomeModelTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8368C25F4E8E4008F2F38 /* HomeModelTool.swift */; };
+		84D8369325F5F6C9008F2F38 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D8369225F5F6C9008F2F38 /* ItemCell.xib */; };
 		84F5001725E901D50096DA8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5001625E901D50096DA8B /* AppDelegate.swift */; };
 		84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5001825E901D50096DA8B /* SceneDelegate.swift */; };
 		84F5001E25E901D50096DA8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F5001C25E901D50096DA8B /* Main.storyboard */; };
@@ -76,6 +82,12 @@
 		843704E925EC88D70011C53D /* XMBaseTableCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMBaseTableCtr.swift; sourceTree = "<group>"; };
 		843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMBaseVistorView.swift; sourceTree = "<group>"; };
 		843704F225EC8B930011C53D /* XMBaseVistorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XMBaseVistorView.xib; sourceTree = "<group>"; };
+		84D8367B25F354BD008F2F38 /* CreatDateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatDateTool.swift; sourceTree = "<group>"; };
+		84D8367E25F47CE4008F2F38 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		84D8367F25F47CE4008F2F38 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
+		84D8368425F48667008F2F38 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		84D8368C25F4E8E4008F2F38 /* HomeModelTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModelTool.swift; sourceTree = "<group>"; };
+		84D8369225F5F6C9008F2F38 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		84F5001325E901D50096DA8B /* sinaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F5001625E901D50096DA8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F5001825E901D50096DA8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,9 +209,13 @@
 		8437049225EB4AC10011C53D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				84D8368325F48639008F2F38 /* HomeModel */,
 				5B4DF18725EE2FE2000FB250 /* UIpopVc */,
 				843704E025EBA8AF0011C53D /* Home.storyboard */,
 				843704A225EB551A0011C53D /* HomeTableCtr.swift */,
+				84D8367E25F47CE4008F2F38 /* HomeCell.swift */,
+				84D8367F25F47CE4008F2F38 /* HomeCell.xib */,
+				84D8369225F5F6C9008F2F38 /* ItemCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -212,6 +228,7 @@
 				8437049525EB4AC10011C53D /* XMTool.swift */,
 				5B4DF18325EE290B000FB250 /* XMRightImgBtn.swift */,
 				5B4D0CB125EE52F700F516D4 /* Then.swift */,
+				84D8367B25F354BD008F2F38 /* CreatDateTool.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -223,6 +240,15 @@
 				843704B025EB62900011C53D /* MsgTableCtr.swift */,
 			);
 			path = Msg;
+			sourceTree = "<group>";
+		};
+		84D8368325F48639008F2F38 /* HomeModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D8368425F48667008F2F38 /* HomeModel.swift */,
+				84D8368C25F4E8E4008F2F38 /* HomeModelTool.swift */,
+			);
+			path = HomeModel;
 			sourceTree = "<group>";
 		};
 		84F5000A25E901D50096DA8B = {
@@ -326,8 +352,10 @@
 				843704E725EBA8EC0011C53D /* DISCOVER.storyboard in Resources */,
 				843704DE25EBA8980011C53D /* Msg.storyboard in Resources */,
 				5B3C067F25F078AB00D426F9 /* AutoLoginCtr.xib in Resources */,
+				84D8369325F5F6C9008F2F38 /* ItemCell.xib in Resources */,
 				843704AD25EB61920011C53D /* config.json in Resources */,
 				84F5002025E901D50096DA8B /* Assets.xcassets in Resources */,
+				84D8368125F47CE4008F2F38 /* HomeCell.xib in Resources */,
 				84F5001E25E901D50096DA8B /* Main.storyboard in Resources */,
 				5B4DF18B25EE3038000FB250 /* PopViewCtr.xib in Resources */,
 				5B3C06A925F1D77300D426F9 /* WelcomeCtr.xib in Resources */,
@@ -395,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D8367C25F354BD008F2F38 /* CreatDateTool.swift in Sources */,
 				843704F025EC8B7E0011C53D /* XMBaseVistorView.swift in Sources */,
 				84F5001725E901D50096DA8B /* AppDelegate.swift in Sources */,
 				5B4D0CB225EE52F700F516D4 /* Then.swift in Sources */,
@@ -404,7 +433,9 @@
 				5B3C06A825F1D77300D426F9 /* WelcomeCtr.swift in Sources */,
 				84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */,
 				5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */,
+				84D8368025F47CE4008F2F38 /* HomeCell.swift in Sources */,
 				5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */,
+				84D8368D25F4E8E4008F2F38 /* HomeModelTool.swift in Sources */,
 				5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */,
 				843704A725EB55330011C53D /* DiscoverTableCtr.swift in Sources */,
 				843704B125EB62900011C53D /* MsgTableCtr.swift in Sources */,
@@ -416,6 +447,7 @@
 				843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */,
 				5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */,
 				5B3C069025F08AE100D426F9 /* XMNetWorkTool.swift in Sources */,
+				84D8368525F48667008F2F38 /* HomeModel.swift in Sources */,
 				5B3C06A325F0EE9600D426F9 /* UserCountManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

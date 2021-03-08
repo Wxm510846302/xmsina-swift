@@ -21,12 +21,17 @@ class HomeTableCtr: XMBaseTableCtr {
         super.viewDidLoad()
         
         self.tabBarItem.badgeValue = "3"
+       
         
         if !self.isLogin {
             //如果没有登录，那么就创建访客视图
             self.visitorView.setupVistorUI(backImg: "tabbar_home", msg: "首页访客视图")
         }else{
             setUpNavgationItems()
+            //注册cell
+            tableView?.register(UINib.init(nibName: "HomeCell", bundle: Bundle.main), forCellReuseIdentifier: "HomeCellId")
+            self.tableView.rowHeight = UITableView.automaticDimension
+            self.tableView.estimatedRowHeight = 200
         }
        
 //        let param = ["name":"213"]
@@ -77,6 +82,8 @@ extension HomeTableCtr {
         redbag?.addTarget(self, action: #selector(self.redbagClick), for: .touchUpInside)
         friend?.addTarget(self, action: #selector(self.friendClick), for: .touchUpInside)
         
+        //self.separatorInset = UIEdgeInsets.zero
+        //self.view.layoutMargins = UIEdgeInsets.zero
     }
    
 }
@@ -100,5 +107,25 @@ extension HomeTableCtr{
     }
     @objc func friendClick(){
         XMLog("friendClick")
+    }
+    @objc func zhuanfaClick(){
+        XMLog("zhuanfaClick")
+    }
+}
+// MARK: - 代理方法
+
+extension HomeTableCtr{
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "HomeCellId") as? HomeCell
+        if cell == nil {
+            cell = HomeCell.init(style: .default, reuseIdentifier: "HomeCellId")
+        }
+//        cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
+        return cell!
     }
 }

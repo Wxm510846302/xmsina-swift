@@ -10,6 +10,35 @@ import CoreGraphics
 #if os(iOS) || os(tvOS)
    import UIKit.UIGeometry
 #endif
+protocol ValueDelegate {
+    
+    var floatValue:CGFloat { get }
+    
+}
+
+extension Double:ValueDelegate{
+    var intValue: Int {
+        get{
+            return Int(self)
+        }
+    }
+    
+    var floatValue: CGFloat {
+        get {
+           return  CGFloat(self)
+        }
+    }
+}
+
+extension Int:ValueDelegate{
+
+    var floatValue: CGFloat {
+        get {
+           return  CGFloat(self)
+        }
+    }
+}
+
 //声明一个协议叫Then
 public protocol Then{}
 

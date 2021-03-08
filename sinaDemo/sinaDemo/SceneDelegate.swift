@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window?.rootViewController = WelcomeCtr.init()
             }
         }
-        
+//        CreatDateTool.GetDate(crateAtStr: "")
         XMLog("willConnectTo")
         guard let _ = (scene as? UIWindowScene) else { return }
     }
