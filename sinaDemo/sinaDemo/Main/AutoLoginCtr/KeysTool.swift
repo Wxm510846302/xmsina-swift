@@ -16,4 +16,4 @@ let sinaRedirectUrl = "http://www.mathjia.com"
 //URL api
 let access_tokenUrl = "https://api.weibo.com/oauth2/access_token"
 let usersShowUrl = "https://api.weibo.com/2/users/show.json"
-
+let homeDataUrl = "https://api.weibo.com/2/statuses/home_timeline.json"

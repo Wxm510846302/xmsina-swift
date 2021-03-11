@@ -32,6 +32,7 @@ class HomeTableCtr: XMBaseTableCtr {
             tableView?.register(UINib.init(nibName: "HomeCell", bundle: Bundle.main), forCellReuseIdentifier: "HomeCellId")
             self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.estimatedRowHeight = 200
+            self.getDataFromHomeUrl()
         }
        
 //        let param = ["name":"213"]
@@ -125,7 +126,22 @@ extension HomeTableCtr{
         if cell == nil {
             cell = HomeCell.init(style: .default, reuseIdentifier: "HomeCellId")
         }
-//        cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
+        cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
         return cell!
+    }
+}
+
+// MARK: - 网络相关
+
+extension HomeTableCtr {
+    func getDataFromHomeUrl(){
+        let param = ["access_token":UserCountManager.userModel?.access_token]
+        XMNetWorkTool.shareNetworkTool.getHomePageData(params: param as [String : Any]) { (error, response) in
+            if error == nil{
+                XMLog(response)
+            }else{
+                XMLog(error)
+            }
+        }
     }
 }
