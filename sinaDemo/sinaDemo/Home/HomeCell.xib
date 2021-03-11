@@ -63,7 +63,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XMLog - file:AppDelegate.swift Func:[application(_:didFinishLaunchingWithOptions:)] Line:20 msg:授权推送 - 成功" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-j9-Bhl" userLabel="发布内容">
-                        <rect key="frame" x="10" y="60" width="200" height="29"/>
+                        <rect key="frame" x="10" y="60" width="200" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="oTj-eZ-JAn"/>
                         </constraints>
@@ -72,17 +72,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_retweet_background" translatesAutoresizingMaskIntoConstraints="NO" id="Grg-qh-5L0" userLabel="转发背景">
-                        <rect key="frame" x="0.0" y="94" width="375" height="253"/>
+                        <rect key="frame" x="0.0" y="90" width="375" height="257"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-he-is2" userLabel="转发内容">
-                        <rect key="frame" x="10" y="99" width="200" height="0.0"/>
-                        <mutableString key="text">这是转发{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,</mutableString>
+                        <rect key="frame" x="10" y="95" width="200" height="0.0"/>
+                        <string key="text">这是转发{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,</string>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cxr-IP-X6w">
-                        <rect key="frame" x="10" y="109" width="240" height="192"/>
+                        <rect key="frame" x="10" y="105" width="240" height="192"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="192" id="Tin-bn-Ee1"/>
@@ -96,7 +96,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWo-e4-7Sc" userLabel="底部工具">
-                        <rect key="frame" x="0.0" y="311" width="375" height="36"/>
+                        <rect key="frame" x="0.0" y="307" width="375" height="40"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-Ui-A3Y">
                                 <rect key="frame" x="0.0" y="1" width="125" height="32"/>
@@ -135,7 +135,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQT-Ke-NbV" userLabel="line1">
-                                <rect key="frame" x="124" y="8" width="1" height="20"/>
+                                <rect key="frame" x="124" y="10" width="1" height="20"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="CKA-b9-45r"/>
@@ -143,7 +143,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSC-EY-sJW" userLabel="line2">
-                                <rect key="frame" x="250" y="8" width="1" height="20"/>
+                                <rect key="frame" x="250" y="10" width="1" height="20"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="8Qs-sq-HeS"/>
@@ -162,7 +162,7 @@
                             <constraint firstItem="bre-pD-ebt" firstAttribute="height" secondItem="cQz-Ui-A3Y" secondAttribute="height" id="ZXu-EU-UwI"/>
                             <constraint firstItem="YBl-EH-JQe" firstAttribute="leading" secondItem="cQz-Ui-A3Y" secondAttribute="trailing" id="hpl-57-Exv"/>
                             <constraint firstItem="YBl-EH-JQe" firstAttribute="leading" secondItem="QQT-Ke-NbV" secondAttribute="trailing" id="lOf-bR-KH5"/>
-                            <constraint firstAttribute="height" constant="36" id="lvq-jD-1up"/>
+                            <constraint firstAttribute="height" constant="40" id="lvq-jD-1up"/>
                             <constraint firstItem="iSC-EY-sJW" firstAttribute="leading" secondItem="YBl-EH-JQe" secondAttribute="trailing" id="qeO-Fx-8pN"/>
                             <constraint firstItem="bre-pD-ebt" firstAttribute="leading" secondItem="YBl-EH-JQe" secondAttribute="trailing" id="rET-rR-ngs"/>
                             <constraint firstItem="bre-pD-ebt" firstAttribute="top" secondItem="cQz-Ui-A3Y" secondAttribute="top" id="taK-H5-Icb"/>

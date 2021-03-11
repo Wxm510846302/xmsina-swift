@@ -15,24 +15,30 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - AutoInch (2.1.0)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
   - AutoInch
+  - SDWebImage
   - YYModel
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - AutoInch
+    - SDWebImage
     - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AutoInch: f2468bf8e33f7642699296db30240d3b3631ba33
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: e85b43548fcc3209b3d6372d23e5b346aa4ff0ce
+PODFILE CHECKSUM: e5e8a31670216d765c7f4c8ff0fdb25890764082
 
 COCOAPODS: 1.5.3

@@ -79,19 +79,18 @@ extension AutoLoginCtr{
         XMNetWorkTool.shareNetworkTool.getUserInfo(params: param as [String : Any]) { (error, response) in
             if error == nil {
                 //正常
-                print(response ?? "default")
                 guard let dic = response as? [String:Any] else {
                     return
                 }
                 let oldDic = self.userModel?.yy_modelToJSONObject()
-                print(type(of: oldDic))
+     
                 let newDic = dic.merging(oldDic as! [String : Any]) { (shopParamaKeyValue, oldDic) -> Any in
                     return shopParamaKeyValue
                 }
-                print(newDic)
+                self.userModel = UserCount.yy_model(with: newDic)
                 UserCountManager.saveUserCount(user: self.userModel!)
                 self.navigationController?.dismiss(animated: false, completion: {
-                    
+                    //切换跟控制器
                     UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()
                     
                 })

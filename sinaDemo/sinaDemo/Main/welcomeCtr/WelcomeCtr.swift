@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 class emitterLaterAnimation: NSObject {
     
     var emitter = CAEmitterLayer()
@@ -46,12 +47,16 @@ class emitterLaterAnimation: NSObject {
 }
 class WelcomeCtr: UIViewController {
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var iconBottom: NSLayoutConstraint!
+    
     @IBOutlet weak var iconImg: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.iconImg.sd_setImage(with:URL(string:  UserCountManager.userModel?.avatar_large ?? ""), placeholderImage: UIImage(named: "avatar_default_big"), options: [], context: nil)
+//        self.iconImg.sd_setImage(with: URL(string:  UserCountManager.userModel?.avatar_large ?? "")) { (img, error, type, url) in
+//
+//        }
         
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -59,16 +64,20 @@ class WelcomeCtr: UIViewController {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.iconImg.frame.size = CGSize.init(width: 100, height: 100)
+//        self.iconImg.frame.size = CGSize.init(width: 100, height: 100)
         self.iconImg.layer.cornerRadius = 50
         self.iconImg.layer.masksToBounds = true
+          
     }
     func startWelcomeAnimation(){
-        
-        //        iconImg.frame.size = CGSize.init(width: 100.auto(), height: 100.auto())
+        // FIXME: - 登录有点问题
+
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5, options: []) {
+
             self.iconImg.frame.origin.y =  100
-            self.label.frame.origin.y = self.iconImg.frame.origin.y+self.iconImg.frame.size.height+8.auto()
+            self.iconBottom.constant = kScreenHeight - 200
+            self.iconImg.layoutIfNeeded()
+
         } completion: { (success) in
             if success{
                 if #available(iOS 13.0, *) {
@@ -80,15 +89,5 @@ class WelcomeCtr: UIViewController {
             }
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

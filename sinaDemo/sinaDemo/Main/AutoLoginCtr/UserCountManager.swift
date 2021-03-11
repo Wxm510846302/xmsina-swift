@@ -61,11 +61,11 @@ class UserCount: NSObject,NSSecureCoding,YYModel {
     }
     override func setValuesForKeys(_ keyedValues: [String : Any]) {
         
-        self.access_token = keyedValues["access_token"] as? String
-        self.expires_in = keyedValues["expires_in"] as? String
-        self.isRealName = keyedValues["isRealName"] as? String
-        self.remind_in = keyedValues["remind_in"] as? String
-        self.uid = keyedValues["uid"] as? String
+//        self.access_token = keyedValues["access_token"] as? String
+//        self.expires_in = keyedValues["expires_in"] as? String
+//        self.isRealName = keyedValues["isRealName"] as? String
+//        self.remind_in = keyedValues["remind_in"] as? String
+//        self.uid = keyedValues["uid"] as? String
     }
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
@@ -88,6 +88,15 @@ class UserCount: NSObject,NSSecureCoding,YYModel {
         self.remind_in = aDecoder.decodeObject(forKey: "remind_in") as? String
         self.uid = aDecoder.decodeObject(forKey: "uid") as? String
         self.remind_date = aDecoder.decodeObject(forKey: "remind_date") as? NSDate
+        self.screen_name = aDecoder.decodeObject(forKey: "screen_name") as? String
+        self.descriptionK = aDecoder.decodeObject(forKey: "descriptionK") as? String
+        self.avatar_large = aDecoder.decodeObject(forKey: "avatar_large") as? String
+        self.followers_count = aDecoder.decodeObject(forKey: "followers_count") as? String
+        self.friends_count = aDecoder.decodeObject(forKey: "friends_count") as? String
+        self.statuses_count = aDecoder.decodeObject(forKey: "statuses_count") as? String
+        self.favourites_count = aDecoder.decodeObject(forKey: "favourites_count") as? String
+        self.created_at = aDecoder.decodeObject(forKey: "created_at") as? String
+      
     }
     
     func encode(with coder: NSCoder) {
@@ -98,6 +107,14 @@ class UserCount: NSObject,NSSecureCoding,YYModel {
         coder.encode(remind_in,forKey:"remind_in")
         coder.encode(uid,forKey:"uid")
         coder.encode(remind_date,forKey:"remind_date")
+        coder.encode(screen_name,forKey:"screen_name")
+        coder.encode(descriptionK,forKey:"descriptionK")
+        coder.encode(avatar_large,forKey:"avatar_large")
+        coder.encode(followers_count,forKey:"followers_count")
+        coder.encode(friends_count,forKey:"friends_count")
+        coder.encode(statuses_count,forKey:"statuses_count")
+        coder.encode(favourites_count,forKey:"favourites_count")
+        coder.encode(created_at,forKey:"created_at")
     }
     
     
@@ -111,6 +128,7 @@ class UserCountManager: NSObject {
     static func saveUserCount(user:UserCount){
         let islogin = XMFileManager.init().saveToArchiver(obj: user, fileName: "userCount")
         UserCountManager.isLogin = islogin
+        UserCountManager.userModel = user
     }
     //读取用户信息
     static func readUserCount()->UserCount?{
