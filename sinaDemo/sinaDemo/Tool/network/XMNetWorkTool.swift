@@ -106,4 +106,9 @@ extension XMNetWorkTool{
     func getUserInfo(params:[String:Any]?,finish:@escaping callBack) {
         self.requestWithNetworkTool(methd: .GET, url: usersShowUrl, params: params, headers: nil, finishBlock: finish)
     }
+    // MARK: -获取首页数据
+
+    func getHomePageData(params:[String:Any]?,finish:@escaping callBack){
+        self.requestWithNetworkTool(methd: .GET, url: homeDataUrl, params: params, headers: nil, finishBlock: finish)
+    }
 }
