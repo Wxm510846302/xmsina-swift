@@ -65,7 +65,7 @@ extension AutoLoginCtr{
                 guard let dic = response as? [String:Any] else {
                     return
                 }
-                self.userModel = UserCount.yy_model(with: dic)
+                self.userModel = UserCount.deserialize(from: dic)
                 //用token请求个人信息
                 self.getUserMsg()
             }else{
@@ -82,13 +82,15 @@ extension AutoLoginCtr{
                 guard let dic = response as? [String:Any] else {
                     return
                 }
-                let oldDic = self.userModel?.yy_modelToJSONObject()
-     
-                let newDic = dic.merging(oldDic as! [String : Any]) { (shopParamaKeyValue, oldDic) -> Any in
-                    return shopParamaKeyValue
+                
+                if let oldDic = self.userModel?.toJSON() {
+                    let newDic = dic.merging(oldDic) { (shopParamaKeyValue, oldDic) -> Any in
+                        return shopParamaKeyValue
+                    }
+                    self.userModel = UserCount.deserialize(from: newDic)
+                    UserCountManager.saveUserCount(user: self.userModel!)
                 }
-                self.userModel = UserCount.yy_model(with: newDic)
-                UserCountManager.saveUserCount(user: self.userModel!)
+                
                 self.navigationController?.dismiss(animated: false, completion: {
                     //切换跟控制器
                     UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()

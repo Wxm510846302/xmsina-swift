@@ -62,31 +62,28 @@
                         <color key="textColor" systemColor="opaqueSeparatorColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XMLog - file:AppDelegate.swift Func:[application(_:didFinishLaunchingWithOptions:)] Line:20 msg:授权推送 - 成功" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-j9-Bhl" userLabel="发布内容">
-                        <rect key="frame" x="10" y="60" width="200" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="200" id="oTj-eZ-JAn"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-j9-Bhl" userLabel="发布内容">
+                        <rect key="frame" x="10" y="60" width="355" height="72"/>
+                        <string key="text">XMLog - file:AppDelegate.swift Func:[application(_:didFinishLaunchingWithOptions:)] Line:20 msg:授权推送 - 成功XMLog - file:AppDelegate.swift Func:[application(_:didFinishLaunchingWithOptions:)] Line:20 msg:授权推送 - 成功</string>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_retweet_background" translatesAutoresizingMaskIntoConstraints="NO" id="Grg-qh-5L0" userLabel="转发背景">
-                        <rect key="frame" x="0.0" y="90" width="375" height="257"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="timeline_retweet_background" translatesAutoresizingMaskIntoConstraints="NO" id="Grg-qh-5L0" userLabel="转发背景">
+                        <rect key="frame" x="0.0" y="137" width="375" height="210"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-he-is2" userLabel="转发内容">
-                        <rect key="frame" x="10" y="95" width="200" height="0.0"/>
-                        <string key="text">这是转发{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-A90C-10FF5087D8FA/data/Containers/Data/Application/5F3CD1B2-821D-4E22-878E-8564B8325AC9/Documents/userCount.archiver,</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="这是转发{NSFilePath=/Users/admin/Library/Developer/CoreSimulator/Devices/6AA03856-9B5A-4CEF-" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-he-is2" userLabel="转发内容">
+                        <rect key="frame" x="10" y="142" width="355" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cxr-IP-X6w">
-                        <rect key="frame" x="10" y="105" width="240" height="192"/>
+                        <rect key="frame" x="10" y="181" width="187" height="116"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="192" id="Tin-bn-Ee1"/>
-                            <constraint firstAttribute="width" constant="240" id="fcD-CP-ajI"/>
+                            <constraint firstAttribute="height" constant="116" id="UmU-CE-25n"/>
+                            <constraint firstAttribute="width" constant="187" id="dUe-WX-lzH"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tBf-jF-c6s">
                             <size key="itemSize" width="128" height="128"/>
@@ -173,34 +170,35 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Grg-qh-5L0" secondAttribute="bottom" id="0c1-Ke-Aut"/>
+                    <constraint firstItem="xML-he-is2" firstAttribute="trailing" secondItem="mbX-j9-Bhl" secondAttribute="trailing" id="4Fg-Sc-Adg"/>
+                    <constraint firstAttribute="trailing" secondItem="mbX-j9-Bhl" secondAttribute="trailing" constant="10" id="7oc-b2-s56"/>
                     <constraint firstItem="MJN-Ol-hHP" firstAttribute="centerY" secondItem="NyF-nT-V5t" secondAttribute="centerY" id="8Qr-5N-ZuG"/>
+                    <constraint firstAttribute="trailing" secondItem="Grg-qh-5L0" secondAttribute="trailing" id="8hE-J2-LTP"/>
+                    <constraint firstItem="Cxr-IP-X6w" firstAttribute="leading" secondItem="xML-he-is2" secondAttribute="leading" id="9sz-1y-EaT"/>
                     <constraint firstItem="GSK-1x-V2f" firstAttribute="leading" secondItem="YIU-0s-AaM" secondAttribute="trailing" constant="5" id="A3L-LI-jcw"/>
                     <constraint firstItem="0RQ-ad-APW" firstAttribute="trailing" secondItem="ByL-OU-Pda" secondAttribute="trailing" id="Fbq-jG-EpU"/>
                     <constraint firstItem="ByL-OU-Pda" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GDc-LH-F9O"/>
                     <constraint firstItem="xWo-e4-7Sc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HBc-hr-f14"/>
-                    <constraint firstItem="xML-he-is2" firstAttribute="top" secondItem="mbX-j9-Bhl" secondAttribute="bottom" constant="10" id="IAK-Ns-a2g"/>
-                    <constraint firstItem="Grg-qh-5L0" firstAttribute="top" secondItem="mbX-j9-Bhl" secondAttribute="bottom" constant="5" id="O5V-EW-y10"/>
+                    <constraint firstItem="Grg-qh-5L0" firstAttribute="top" secondItem="mbX-j9-Bhl" secondAttribute="bottom" constant="5" id="Le9-tr-z1P"/>
+                    <constraint firstItem="xML-he-is2" firstAttribute="leading" secondItem="mbX-j9-Bhl" secondAttribute="leading" id="O7L-qE-5Fo"/>
                     <constraint firstItem="GSK-1x-V2f" firstAttribute="bottom" secondItem="YIU-0s-AaM" secondAttribute="bottom" id="Oye-lB-aqu"/>
                     <constraint firstItem="YIU-0s-AaM" firstAttribute="leading" secondItem="NyF-nT-V5t" secondAttribute="leading" id="PrS-1M-iUy"/>
                     <constraint firstItem="0RQ-ad-APW" firstAttribute="bottom" secondItem="ByL-OU-Pda" secondAttribute="bottom" id="Qk8-qe-Ohy"/>
                     <constraint firstItem="YIU-0s-AaM" firstAttribute="bottom" secondItem="ByL-OU-Pda" secondAttribute="bottom" id="Vh1-MR-xDL"/>
+                    <constraint firstItem="xWo-e4-7Sc" firstAttribute="top" secondItem="Cxr-IP-X6w" secondAttribute="bottom" priority="998" constant="10" id="WCu-6x-Ex4"/>
                     <constraint firstItem="NyF-nT-V5t" firstAttribute="top" secondItem="ByL-OU-Pda" secondAttribute="top" id="Wxu-t0-Bgy"/>
-                    <constraint firstItem="Grg-qh-5L0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="X03-gA-Ruc"/>
-                    <constraint firstAttribute="trailing" secondItem="Grg-qh-5L0" secondAttribute="trailing" id="ZcX-YV-hvy"/>
                     <constraint firstItem="NyF-nT-V5t" firstAttribute="leading" secondItem="ByL-OU-Pda" secondAttribute="trailing" constant="10" id="aaV-Ao-24M"/>
-                    <constraint firstItem="mbX-j9-Bhl" firstAttribute="top" secondItem="ByL-OU-Pda" secondAttribute="bottom" constant="10" id="aiG-cf-2J0"/>
+                    <constraint firstItem="Grg-qh-5L0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="asf-vb-Z7s"/>
+                    <constraint firstItem="mbX-j9-Bhl" firstAttribute="top" secondItem="ByL-OU-Pda" secondAttribute="bottom" constant="10" id="d2Y-9i-fYh"/>
+                    <constraint firstItem="Cxr-IP-X6w" firstAttribute="top" secondItem="xML-he-is2" secondAttribute="bottom" constant="10" id="eZK-ON-dt7"/>
+                    <constraint firstItem="xML-he-is2" firstAttribute="top" secondItem="mbX-j9-Bhl" secondAttribute="bottom" constant="10" id="i6A-gR-caT"/>
+                    <constraint firstAttribute="bottom" secondItem="Grg-qh-5L0" secondAttribute="bottom" id="lN6-Pj-QdA"/>
                     <constraint firstItem="MJN-Ol-hHP" firstAttribute="leading" secondItem="NyF-nT-V5t" secondAttribute="trailing" constant="10" id="oiS-hI-aBW"/>
-                    <constraint firstItem="mbX-j9-Bhl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qud-s6-YD2"/>
-                    <constraint firstItem="Cxr-IP-X6w" firstAttribute="leading" secondItem="xML-he-is2" secondAttribute="leading" id="r2o-yd-Vtd"/>
-                    <constraint firstItem="xML-he-is2" firstAttribute="leading" secondItem="mbX-j9-Bhl" secondAttribute="leading" id="rVU-zK-dKM"/>
+                    <constraint firstItem="mbX-j9-Bhl" firstAttribute="leading" secondItem="ByL-OU-Pda" secondAttribute="leading" id="sh6-dF-CHM"/>
                     <constraint firstItem="ByL-OU-Pda" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="swq-LP-rth"/>
                     <constraint firstItem="ByL-OU-Pda" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wYC-1B-wsA"/>
                     <constraint firstAttribute="trailing" secondItem="xWo-e4-7Sc" secondAttribute="trailing" id="y3b-wD-zOQ"/>
                     <constraint firstAttribute="bottom" secondItem="xWo-e4-7Sc" secondAttribute="bottom" id="yDe-gI-5Oq"/>
-                    <constraint firstItem="Cxr-IP-X6w" firstAttribute="top" secondItem="xML-he-is2" secondAttribute="bottom" constant="10" id="yeF-ee-pXc"/>
-                    <constraint firstItem="xWo-e4-7Sc" firstAttribute="top" secondItem="Cxr-IP-X6w" secondAttribute="bottom" constant="10" id="yxz-dy-sf8"/>
-                    <constraint firstItem="xML-he-is2" firstAttribute="width" secondItem="mbX-j9-Bhl" secondAttribute="width" id="zRm-if-8y2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -208,17 +206,21 @@
             <accessibility key="accessibilityConfiguration" identifier="HomeCellId"/>
             <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="constraintW" destination="oTj-eZ-JAn" id="zG6-UC-pqc"/>
+                <outlet property="crateAt" destination="YIU-0s-AaM" id="t8S-rJ-V4i"/>
                 <outlet property="dianzan" destination="bre-pD-ebt" id="CTV-r7-Ces"/>
-                <outlet property="picBottom" destination="yxz-dy-sf8" id="w2c-E4-iXS"/>
+                <outlet property="iconImg" destination="ByL-OU-Pda" id="Mc6-Uz-VEW"/>
+                <outlet property="myText" destination="mbX-j9-Bhl" id="Z8u-Bd-T6W"/>
+                <outlet property="picBottom" destination="WCu-6x-Ex4" id="6Y0-4M-DmE"/>
                 <outlet property="picCollectionView" destination="Cxr-IP-X6w" id="kqX-xM-aUZ"/>
-                <outlet property="picConstraintH" destination="Tin-bn-Ee1" id="7JK-hO-bI8"/>
-                <outlet property="picConstraintW" destination="fcD-CP-ajI" id="t6e-8j-oYt"/>
+                <outlet property="picConstraintH" destination="UmU-CE-25n" id="iYB-kb-PIb"/>
+                <outlet property="picConstraintW" destination="dUe-WX-lzH" id="Ax5-20-Rxk"/>
                 <outlet property="pinglun" destination="YBl-EH-JQe" id="ZLf-58-3oh"/>
+                <outlet property="reteewText" destination="xML-he-is2" id="ofu-q1-Rfx"/>
+                <outlet property="screenName" destination="NyF-nT-V5t" id="art-yp-zCf"/>
+                <outlet property="source" destination="GSK-1x-V2f" id="Cc8-iW-Oyg"/>
                 <outlet property="zhuanfa" destination="cQz-Ui-A3Y" id="KMo-Tk-oQb"/>
                 <outlet property="zhuanfaBackImg" destination="Grg-qh-5L0" id="MMh-W0-5gD"/>
-                <outlet property="zhuanfaBottom" destination="yeF-ee-pXc" id="8YE-4N-Tly"/>
-                <outlet property="zhuanfaTop" destination="IAK-Ns-a2g" id="f3L-Iz-W3C"/>
+                <outlet property="zhuanfaTop" destination="i6A-gR-caT" id="KLn-HY-5Kj"/>
             </connections>
             <point key="canvasLocation" x="-112.31884057971016" y="195.87053571428569"/>
         </tableViewCell>

@@ -7,8 +7,11 @@
 
 import UIKit
 import AutoInch
-import YYModel
+import HandyJSON
+import SDWebImage
 class HomeTableCtr: XMBaseTableCtr {
+    
+    var HomePageModels:Array<HomeModelTool> = []
     
     lazy var PopPresentDelegate:PopTransitioning = PopTransitioning.init { [weak self](presened) in
         //hom强引用了 PopPresentDelegate，PopPresentDelegate又强引用了闭包，闭包里面又有PopPresentDelegate，需要打破循环引用
@@ -118,7 +121,8 @@ extension HomeTableCtr{
 extension HomeTableCtr{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        return self.HomePageModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,6 +130,7 @@ extension HomeTableCtr{
         if cell == nil {
             cell = HomeCell.init(style: .default, reuseIdentifier: "HomeCellId")
         }
+        cell!.HomeViewModel = self.HomePageModels[indexPath.row]
         cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
         return cell!
     }
@@ -138,10 +143,34 @@ extension HomeTableCtr {
         let param = ["access_token":UserCountManager.userModel?.access_token]
         XMNetWorkTool.shareNetworkTool.getHomePageData(params: param as [String : Any]) { (error, response) in
             if error == nil{
-                XMLog(response)
+                XMLog(response!)
+                let resp = response as! [String:Any]
+                let tempArr = resp["statuses"] as! Array<Any>
+                for statuses in tempArr {
+                    let homemodel = HomeModel.deserialize(from: statuses as? [String:Any])
+
+                    let homeModelTool = HomeModelTool.init(homeModel: homemodel!)
+                    self.HomePageModels.append(homeModelTool)
+                }
+                //缓存图片
+                self.cacheImages(viewModels: self.HomePageModels)
             }else{
                 XMLog(error)
             }
+        }
+    }
+    private func cacheImages(viewModels:[HomeModelTool]){
+        let group = DispatchGroup.init()
+        for HomeView in viewModels {
+            for imageString in HomeView.picUrls {
+                group.enter()
+                SDWebImageManager.shared.loadImage(with: URL.init(string: imageString), options: [], progress: nil) { (_, _, _, _, _, _) in
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: DispatchQueue.main) {
+            self.tableView.reloadData()
         }
     }
 }

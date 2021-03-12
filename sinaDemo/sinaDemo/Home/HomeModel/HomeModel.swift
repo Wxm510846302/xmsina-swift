@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
-class HomeModel: NSObject {
+import HandyJSON
+@objcMembers
+class HomeModel: HandyJSON{
     //用户信息
     var user:UserCount?
     //字符串型的微博ID
@@ -18,5 +19,10 @@ class HomeModel: NSObject {
     var created_at:String?
     //微博来源
     var source:String?
-
+    //转发
+    var retweeted_status:HomeModel?
+    //图片
+    var pic_urls:Array<[String:String]>?
+    required init() {
+    }
 }

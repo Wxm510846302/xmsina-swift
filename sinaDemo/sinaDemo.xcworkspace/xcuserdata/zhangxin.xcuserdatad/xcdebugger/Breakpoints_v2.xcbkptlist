@@ -30,8 +30,8 @@
             filePath = "sinaDemo/Main/AutoLoginCtr/UserCountManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "UserCount"
             landmarkType = "3">
          </BreakpointContent>

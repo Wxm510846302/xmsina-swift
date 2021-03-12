@@ -6,10 +6,14 @@
 //
 
 import UIKit
-import YYModel
+import HandyJSON
 //加密归档
 @objcMembers
-class UserCount: NSObject,NSSecureCoding,YYModel {
+class UserCount: NSObject,HandyJSON,NSSecureCoding {
+    required override init() {
+        
+    }
+    
     //是否需要加密
     static var supportsSecureCoding: Bool = {return true}()
     
@@ -36,46 +40,25 @@ class UserCount: NSObject,NSSecureCoding,YYModel {
     var favourites_count:String?
     var created_at:String?
     
+    func mapping(mapper: HelpingMapper) {
+        // specify 'cat_id' field in json map to 'id' property in object
+        mapper <<<
+            self.descriptionK <-- "description"
+    }
     
-    // FIXME: - yymodel 归档智能是一般string类型数据
     /*
      required convenience init?(coder aDecoder: NSCoder) {
      self.init()
      self.yy_modelInit(with: aDecoder)
      }
-     
-     func encode(with aCoder: NSCoder) {
-     self.yy_modelEncode(with: aCoder)
-     }
-     override var description: String {
-     return yy_modelDescription()
-     }
+    
      */
     //    init(dic:[String:Any]){
     //        super.init()
     // setValuesForKeys(dic)//swift5 使用此方法需要给类加@objcMembers,但是int等类型还是不能加进去
     
     //    }
-    override init() {
-        super.init()
-    }
-    override func setValuesForKeys(_ keyedValues: [String : Any]) {
-        
-//        self.access_token = keyedValues["access_token"] as? String
-//        self.expires_in = keyedValues["expires_in"] as? String
-//        self.isRealName = keyedValues["isRealName"] as? String
-//        self.remind_in = keyedValues["remind_in"] as? String
-//        self.uid = keyedValues["uid"] as? String
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        
-    }
-    override class func value(forUndefinedKey key: String) -> Any? {
-        return ""
-    }
-    static func modelCustomPropertyMapper() -> [String : Any]? {
-        return ["descriptionK":"description"]
-    }
+
     //    override var description: String{
     //        return dictionaryWithValues(forKeys: ["access_token","uid","expires_in","isRealName","remind_date"]).description
     //    }

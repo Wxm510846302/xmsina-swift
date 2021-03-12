@@ -52,15 +52,15 @@ class WelcomeCtr: UIViewController {
     @IBOutlet weak var iconImg: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.iconImg.sd_setImage(with:URL(string:  UserCountManager.userModel?.avatar_large ?? ""), placeholderImage: UIImage(named: "avatar_default_big"), options: [], context: nil)
-//        self.iconImg.sd_setImage(with: URL(string:  UserCountManager.userModel?.avatar_large ?? "")) { (img, error, type, url) in
-//
-//        }
+//        self.iconImg.sd_setImage(with:URL(string:  UserCountManager.userModel?.avatar_large ?? ""), placeholderImage: UIImage(named: "avatar_default_big"), options: [], context: nil)
+        self.iconImg.sd_setImage(with: URL(string:  UserCountManager.userModel?.avatar_large ?? "")) { (img, error, type, url) in
+            self.startWelcomeAnimation()
+        }
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startWelcomeAnimation()
+       
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

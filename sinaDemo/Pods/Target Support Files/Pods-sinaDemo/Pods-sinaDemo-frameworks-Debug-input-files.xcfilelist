@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-sinaDemo/Pods-sinaDemo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/AutoInch/AutoInch.framework
+${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

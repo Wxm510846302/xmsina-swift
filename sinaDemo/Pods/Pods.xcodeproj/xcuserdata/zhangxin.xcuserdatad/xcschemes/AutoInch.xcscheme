@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3755A970E143BAC1C05C283974BBA9BB"
+               BlueprintIdentifier = "A036CF4CAE1A2201DB75B0FA54A1D4B9"
+               BuildableName = "AutoInch.framework"
                BlueprintName = "AutoInch"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "AutoInch.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
