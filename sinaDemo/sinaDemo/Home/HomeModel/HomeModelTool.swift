@@ -13,15 +13,15 @@ class HomeModelTool: NSObject {
     var homeModel:HomeModel?
     var courceText:String?
     var creatAtText:String?
-    var picUrls:[String]?
+    var picUrls:[String] = []
     
     init(homeModel:HomeModel){
         self.homeModel = homeModel
         //来源
         if let source = homeModel.source, homeModel.source != "" {
             
-            let startIndex = source.range(of: ">")
-            let endIndex = source.range(of: "<")
+            let startIndex = source.range(of: "\">")
+            let endIndex = source.range(of: "</a>")
             if let startIndex = startIndex,let endIndex = endIndex {
                 courceText = String(source[startIndex.upperBound..<endIndex.lowerBound])
             }
@@ -29,6 +29,22 @@ class HomeModelTool: NSObject {
         //创建时间
         if let greatTime = homeModel.created_at,homeModel.created_at != "" {
             creatAtText = CreatDateTool.GetDate(crateAtStr: greatTime)
+        }
+        
+        if let picurls = homeModel.pic_urls,picurls.count > 0 {
+            
+            for picurlDic in picurls {
+                picUrls.append(picurlDic["thumbnail_pic"] ?? "")
+            }
+            
+        }else {
+            if let picurls = homeModel.retweeted_status?.pic_urls {
+                
+                for picurlDic in picurls {
+                    picUrls.append(picurlDic["thumbnail_pic"] ?? "")
+                }
+                
+            }
         }
         
     }

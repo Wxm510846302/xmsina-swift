@@ -2,7 +2,8 @@ use_frameworks!
 
 target 'sinaDemo' do
     pod 'AutoInch'
-    pod 'YYModel'
+    #    pod 'YYModel'
+    pod 'HandyJSON', '~> 5.0.2'
     pod 'AFNetworking', '~> 4.0'
     pod 'SDWebImage'
 end

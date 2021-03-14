@@ -16,7 +16,7 @@ class XMBaseTableCtr: UITableViewController {
     var isLogin:Bool = UserCountManager.isLogin
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        self.tableView.separatorStyle = .none
     }
 
   

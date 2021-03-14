@@ -10,10 +10,8 @@
 #endif
 #endif
 
-#import "NSObject+YYModel.h"
-#import "YYClassInfo.h"
-#import "YYModel.h"
+#import "HandyJSON.h"
 
-FOUNDATION_EXPORT double YYModelVersionNumber;
-FOUNDATION_EXPORT const unsigned char YYModelVersionString[];
+FOUNDATION_EXPORT double HandyJSONVersionNumber;
+FOUNDATION_EXPORT const unsigned char HandyJSONVersionString[];
 
