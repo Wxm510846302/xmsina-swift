@@ -11,7 +11,8 @@ let itemMargin = CGFloat(12).auto()
 let edgeMargin = CGFloat(10).auto()
 
 class HomeCell: UITableViewCell {
-
+    var index:IndexPath?
+    
     @IBOutlet weak var zhuanfaBackImg: UIImageView!
     @IBOutlet weak var dianzan: UIButton!
     @IBOutlet weak var pinglun: UIButton!
@@ -84,7 +85,8 @@ class HomeCell: UITableViewCell {
         self.iconImg.layer.cornerRadius = self.iconImg.frame.width/2
         
 //        constraintW.constant = kScreenWidth - CGFloat( edgeMargin * 2)
-        picCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: "ItemCellId")
+        picCollectionView.register(UINib.init(nibName: "ItemCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCellId")
+//        picCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: "ItemCellId")
         picCollectionView.dataSource = self
     
     }
@@ -102,7 +104,7 @@ extension HomeCell{
         let layout = picCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         //没有配图
         if count == 0 {
-
+            layout.itemSize = CGSize.zero
             picBottom.constant = 0
             return CGSize.zero
         }
@@ -114,14 +116,14 @@ extension HomeCell{
             let size =  CGSize.init(width: (image!.size.width) * 2, height: (image!.size.height) * 2)
             //布局picview
             layout.itemSize = size
-//            layout.minimumLineSpacing = itemMargin.floatValue
+            layout.minimumLineSpacing = itemMargin.floatValue
             return size
         }
         
         //布局picview
         let imageWH = (kScreenWidth - edgeMargin.floatValue * 2 -  itemMargin.floatValue * 2) / 3
         layout.itemSize = CGSize(width: imageWH, height: imageWH)
-//        layout.minimumLineSpacing = itemMargin.floatValue
+        layout.minimumLineSpacing = itemMargin.floatValue
         
         //4个配图
         if count == 4{
@@ -143,8 +145,6 @@ extension HomeCell:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:ItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCellId", for: indexPath) as! ItemCell
-//        cell.backgroundColor = .red
-        
         guard let ImageUrl = self.HomeViewModel?.picUrls[indexPath.row] else {
             return cell
         }
@@ -155,19 +155,11 @@ extension HomeCell:UICollectionViewDataSource{
 }
 class ItemCell: UICollectionViewCell {
     
-    var backImg:UIImageView = UIImageView.init()
+    @IBOutlet weak var backImg: UIImageView!
+
     
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backImg.frame = self.contentView.bounds
-        self.contentView.addSubview(self.backImg)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

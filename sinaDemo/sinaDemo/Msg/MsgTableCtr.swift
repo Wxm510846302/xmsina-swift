@@ -8,11 +8,22 @@
 import UIKit
 
 class MsgTableCtr: XMBaseTableCtr {
-
+    
+    ///弹出视图遵循代理的自定义class
+    lazy var PopPresentDelegate:PopTransitioning = PopTransitioning.init { [weak self](presened) in
+        //hom强引用了 PopPresentDelegate，PopPresentDelegate又强引用了闭包，闭包里面又有PopPresentDelegate，需要打破循环引用
+        self?.titleView.isSelected = presened
+    }
+    
+    lazy var titleView:XMRightImgBtn = XMRightImgBtn()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.visitorView.setupVistorUI(backImg: "tabbar_message_center", msg: "消息访客视图")
+        if self.isLogin {
+            setUpNavgationBar()
+        }else{
+            visitorView.setupVistorUI(backImg: "tabbar_message_center", msg: "消息访客视图")
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -20,71 +31,25 @@ class MsgTableCtr: XMBaseTableCtr {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+}
+extension MsgTableCtr {
+    private func setUpNavgationBar(){
+        titleView.setTitle("wxm", for: .normal)
+        titleView.addTarget(self, action: #selector(self.titleViewClick), for: .touchUpInside)
+        navigationItem.titleView = titleView
     }
+}
+// MARK: - 点击事件
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+extension MsgTableCtr{
+    
+    /// 弹出选择框ctr
+    @objc func titleViewClick() {
+        self.titleView.isSelected = !self.titleView.isSelected
+        let poVc = PopViewCtr.init()
+        //设置选择框的弹出代理为 PopPresentDelegate
+        poVc.transitioningDelegate = PopPresentDelegate
+        poVc.modalPresentationStyle = .custom
+        self.present(poVc, animated: true, completion: nil)
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

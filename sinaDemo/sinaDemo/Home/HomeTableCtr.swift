@@ -12,13 +12,19 @@ import SDWebImage
 class HomeTableCtr: XMBaseTableCtr {
     
     var HomePageModels:Array<HomeModelTool> = []
-    
-    lazy var PopPresentDelegate:PopTransitioning = PopTransitioning.init { [weak self](presened) in
-        //hom强引用了 PopPresentDelegate，PopPresentDelegate又强引用了闭包，闭包里面又有PopPresentDelegate，需要打破循环引用
-        self?.titleView.isSelected = presened
+    lazy var refreshMsgLabel:UILabel = UILabel.init().then {
+        $0.frame = CGRect.init(x: 0, y: navigationController!.navigationBar.height() - 30, width: kScreenWidth, height: 30)
+        $0.backgroundColor = .systemOrange
+        $0.font = UIFont.systemFont(ofSize: 13.auto())
+        $0.textColor = .white
+        $0.text = "有1条新微博"
+        $0.textAlignment = .center
+        $0.isHidden = true
+        navigationController?.navigationBar.insertSubview($0, at: 0)
+        // MARK: - 这个是保证提示框在navigationbar底下的关键  zPosition
+        $0.layer.zPosition = -1
     }
-    
-    lazy var titleView:XMRightImgBtn = XMRightImgBtn()
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,7 @@ class HomeTableCtr: XMBaseTableCtr {
             self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.estimatedRowHeight = 200
             self.getDataFromHomeUrl()
+        
         }
        
 //        let param = ["name":"213"]
@@ -64,7 +71,10 @@ class HomeTableCtr: XMBaseTableCtr {
 //        print("是否为全面屏: \(Screen.isFull)")
         
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
 
 }
 // MARK: - 设置UI
@@ -76,33 +86,38 @@ extension HomeTableCtr {
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: "navigationbar_friendsearch")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "navigationbar_friendsearch"), style: .done, target: self, action: #selector(self.friendClick))
         navigationItem.rightBarButtonItems = [UIBarButtonItem(image: "navigationbar_pop"),UIBarButtonItem(image: "navigationbar_redbag")]
-        titleView.setTitle("wxm", for: .normal)
-        titleView.addTarget(self, action: #selector(self.titleViewClick), for: .touchUpInside)
-        navigationItem.titleView = titleView
         let friend = navigationItem.leftBarButtonItems?.first?.customView as? UIButton
         let pop = navigationItem.rightBarButtonItems?.first?.customView as? UIButton
         let redbag = navigationItem.rightBarButtonItems?.last?.customView as? UIButton
         pop?.addTarget(self, action: #selector(self.popClick), for: .touchUpInside)
         redbag?.addTarget(self, action: #selector(self.redbagClick), for: .touchUpInside)
         friend?.addTarget(self, action: #selector(self.friendClick), for: .touchUpInside)
-        
+       
         //self.separatorInset = UIEdgeInsets.zero
         //self.view.layoutMargins = UIEdgeInsets.zero
+    }
+    private func showNewMessageLb(countNumber:Int){
+        self.refreshMsgLabel.text = "有\(countNumber)条新微博"
+        self.refreshMsgLabel.isHidden = false
+        UIView.animate(withDuration: 0.5) {
+            self.refreshMsgLabel.frame.origin.y = self.navigationController?.navigationBar.frame.size.height ?? 0
+        } completion: { (_) in
+            UIView.animate(withDuration: 0.5, delay: 1.5, options: []) {
+                self.refreshMsgLabel.bottom(self.navigationController!.navigationBar.height())
+            } completion: { (_) in
+                self.refreshMsgLabel.layer.isHidden = true
+                self.refreshMsgLabel.isHidden = true
+            }
+
+        }
+
     }
    
 }
 // MARK: - 监听点击事件
 
 extension HomeTableCtr{
-    //弹出选择框ctr
-    @objc func titleViewClick() {
-        self.titleView.isSelected = !self.titleView.isSelected
-        let poVc = PopViewCtr.init()
-        //设置选择框的弹出代理为 PopPresentDelegate
-        poVc.transitioningDelegate = PopPresentDelegate
-        poVc.modalPresentationStyle = .custom
-        self.present(poVc, animated: true, completion: nil)
-    }
+    
     @objc func popClick(){
         XMLog("popClick")
     }
@@ -130,6 +145,7 @@ extension HomeTableCtr{
         if cell == nil {
             cell = HomeCell.init(style: .default, reuseIdentifier: "HomeCellId")
         }
+        cell!.index = indexPath
         cell!.HomeViewModel = self.HomePageModels[indexPath.row]
         cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
         return cell!
@@ -154,6 +170,8 @@ extension HomeTableCtr {
                 }
                 //缓存图片
                 self.cacheImages(viewModels: self.HomePageModels)
+                //加载提示
+                self.showNewMessageLb(countNumber: self.HomePageModels.count)
             }else{
                 XMLog(error)
             }
