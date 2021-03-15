@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="63y-xf-aUC">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="63y-xf-aUC" userLabel="背景图">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
                 </subviews>
@@ -28,6 +28,9 @@
                     <constraint firstItem="63y-xf-aUC" firstAttribute="leading" secondItem="it9-RA-gLC" secondAttribute="leading" id="dd5-CP-SW6"/>
                 </constraints>
             </collectionViewCellContentView>
+            <connections>
+                <outlet property="backImg" destination="63y-xf-aUC" id="8Xr-hO-5yS"/>
+            </connections>
             <point key="canvasLocation" x="-71.014492753623188" y="99.776785714285708"/>
         </collectionViewCell>
     </objects>

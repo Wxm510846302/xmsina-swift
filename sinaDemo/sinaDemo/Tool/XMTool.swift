@@ -75,7 +75,38 @@ extension String {
         return digest.reduce("") { $0 + String(format:"%02x", $1) }
     }
 }
-
+extension UIView {
+    func width() -> CGFloat {
+        return self.frame.size.width
+    }
+    func height() -> CGFloat {
+        return self.frame.size.height
+    }
+    func left() -> CGFloat {
+        return self.frame.origin.x
+    }
+    func right() -> CGFloat {
+        return self.frame.minX
+    }
+    func bottom() -> CGFloat {
+        return self.frame.minY
+    }
+    func width(_ width:CGFloat) {
+         self.frame.size.width = width
+    }
+    func height(_ height:CGFloat) {
+         self.frame.size.height = height
+    }
+    func left(_ left:CGFloat)  {
+         self.frame.origin.x = left
+    }
+    func right(_ right:CGFloat)  {
+        self.frame.origin.x = right - self.frame.size.width
+    }
+    func bottom(_ bottom:CGFloat)  {
+        self.frame.origin.y = bottom - self.frame.size.height
+    }
+}
 extension UIButton{
     static func creatBtn(imgName:String,bgImgName:String) -> UIButton{
         let button = UIButton()

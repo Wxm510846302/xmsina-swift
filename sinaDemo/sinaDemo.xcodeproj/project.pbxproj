@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,6 +36,7 @@
 		843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704E925EC88D70011C53D /* XMBaseTableCtr.swift */; };
 		843704F025EC8B7E0011C53D /* XMBaseVistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */; };
 		843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843704F225EC8B930011C53D /* XMBaseVistorView.xib */; };
+		84802CC925FE0DA6008B46C2 /* XMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84802CC825FE0DA6008B46C2 /* XMTextView.swift */; };
 		84D8367C25F354BD008F2F38 /* CreatDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8367B25F354BD008F2F38 /* CreatDateTool.swift */; };
 		84D8368025F47CE4008F2F38 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8367E25F47CE4008F2F38 /* HomeCell.swift */; };
 		84D8368125F47CE4008F2F38 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D8367F25F47CE4008F2F38 /* HomeCell.xib */; };
@@ -82,6 +83,7 @@
 		843704E925EC88D70011C53D /* XMBaseTableCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMBaseTableCtr.swift; sourceTree = "<group>"; };
 		843704EF25EC8B7E0011C53D /* XMBaseVistorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMBaseVistorView.swift; sourceTree = "<group>"; };
 		843704F225EC8B930011C53D /* XMBaseVistorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XMBaseVistorView.xib; sourceTree = "<group>"; };
+		84802CC825FE0DA6008B46C2 /* XMTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMTextView.swift; sourceTree = "<group>"; };
 		84D8367B25F354BD008F2F38 /* CreatDateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatDateTool.swift; sourceTree = "<group>"; };
 		84D8367E25F47CE4008F2F38 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		84D8367F25F47CE4008F2F38 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */,
+				84802CC825FE0DA6008B46C2 /* XMTextView.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				5B3C06A825F1D77300D426F9 /* WelcomeCtr.swift in Sources */,
 				84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */,
 				5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */,
+				84802CC925FE0DA6008B46C2 /* XMTextView.swift in Sources */,
 				84D8368025F47CE4008F2F38 /* HomeCell.swift in Sources */,
 				5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */,
 				84D8368D25F4E8E4008F2F38 /* HomeModelTool.swift in Sources */,
