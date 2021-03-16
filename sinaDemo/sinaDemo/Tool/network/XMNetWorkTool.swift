@@ -46,7 +46,7 @@ private func endpointMapping<Target: TargetType>(target: Target) -> Endpoint {
 enum MyService {
     case getAccessToken(client_id:String,client_secret:String,grant_type:String,redirect_uri:String,code:String)
     case getUserInfo(access_token:String,uid:String)
-    case getHomePageData(access_token:String)
+    case getHomePageData(access_token:String,since_id:Int,max_id:Int)
 }
 extension MyService:TargetType{
     var baseURL: URL {
@@ -104,8 +104,10 @@ extension MyService:TargetType{
             parmeters["access_token"] = access_token
             parmeters["uid"] = uid
             return .requestParameters(parameters: parmeters, encoding: URLEncoding.queryString)
-        case .getHomePageData(let access_token):
+        case .getHomePageData(let access_token,let since_id,let max_id):
             parmeters["access_token"] = access_token
+            parmeters["since_id"] = since_id
+            parmeters["max_id"] = max_id
             return .requestParameters(parameters: parmeters, encoding: URLEncoding.queryString)
         default:
             return .requestPlain
@@ -115,7 +117,7 @@ extension MyService:TargetType{
     //如果请求头不一致还需要单独设置请求头，🐶🐶🐶🐶
     var headers: [String : String]? {
         switch self {
-        case .getAccessToken(_, _, _, _, _),.getHomePageData(_):
+        case .getAccessToken(_, _, _, _, _),.getHomePageData(_,_,_):
             return ["Content-type": "application/json"]
         case .getUserInfo(_, _):
             return ["Content-type": "text/plain"]

@@ -3,6 +3,7 @@ PODS:
   - AutoInch (2.1.0)
   - HandyJSON (5.0.2)
   - Instructions (2.0.1)
+  - MJRefresh (3.5.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -12,13 +13,16 @@ PODS:
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - AutoInch
   - HandyJSON (~> 5.0.2)
   - Instructions (~> 2.0.1)
+  - MJRefresh
   - Moya/RxSwift (~> 14.0)
   - SDWebImage
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -26,19 +30,23 @@ SPEC REPOS:
     - AutoInch
     - HandyJSON
     - Instructions
+    - MJRefresh
     - Moya
     - RxSwift
     - SDWebImage
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AutoInch: f2468bf8e33f7642699296db30240d3b3631ba33
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Instructions: dd428e3776fcdcec18bf4242b9d3fb2d1cbd6cc9
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 02a9e2ad1664b1bb561e33f5188c31093044f779
+PODFILE CHECKSUM: 5079e0842a45eac94586a73cf0e8b0db16adf5b0
 
 COCOAPODS: 1.10.1

@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "455F6A01-3E3A-47B3-B7F1-BC7F71062552"
-            shouldBeEnabled = "Yes"
+            uuid = "11EAAC8E-17B4-49C5-8F62-E10A7833D116"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sinaDemo/Main/AutoLoginCtr/AutoLoginCtr.swift"
+            filePath = "sinaDemo/Home/HomeTableCtr.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "getUserMsg()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "getDataFromHomeUrl()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

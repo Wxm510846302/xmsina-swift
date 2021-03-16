@@ -6,8 +6,14 @@ target 'sinaDemo' do
     #    pod 'AFNetworking', '~> 4.0'
     #alibaba model->json 互转工具
     pod 'HandyJSON', '~> 5.0.2'
+    #json校验转换工具
+    pod 'SwiftyJSON', '~> 4.0'
+    #moya网络工具
     pod 'Moya/RxSwift', '~> 14.0'
+    #图片下载缓存工具
     pod 'SDWebImage'
+    #刷新控件
+    pod 'MJRefresh'
     #下面是新手引导
     pod 'Instructions', '~> 2.0.1'
 end

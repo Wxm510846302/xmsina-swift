@@ -9,6 +9,8 @@ import UIKit
 import AutoInch
 import HandyJSON
 import SDWebImage
+import MJRefresh
+import SwiftyJSON
 class HomeTableCtr: XMBaseTableCtr {
     
     var HomePageModels:Array<HomeModelTool> = []
@@ -41,15 +43,10 @@ class HomeTableCtr: XMBaseTableCtr {
             tableView?.register(UINib.init(nibName: "HomeCell", bundle: Bundle.main), forCellReuseIdentifier: "HomeCellId")
             self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.estimatedRowHeight = 200
-            self.getDataFromHomeUrl()
-        
+            // MARK: - 先加载缓存数据，再刷新
+            
+            self.setUpRefrsh()
         }
-       
-//        let param = ["name":"213"]
-//        XMNetWorkTool.shareNetworkTool.requestWithNetworkTool(methd: .POST, url: "https://httpbin.org/post", params: param, headers: nil) { (error, reponse) in
-//            print(reponse as Any)
-//        }
-        
         
 //        print(
 //            "this is " +
@@ -81,7 +78,7 @@ class HomeTableCtr: XMBaseTableCtr {
 
 extension HomeTableCtr {
     //设置导航条
-    func setUpNavgationItems()  {
+    private func setUpNavgationItems()  {
         //下面两个有点区别，第一个自定义的是button，可以设置高亮image
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: "navigationbar_friendsearch")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "navigationbar_friendsearch"), style: .done, target: self, action: #selector(self.friendClick))
@@ -92,9 +89,15 @@ extension HomeTableCtr {
         pop?.addTarget(self, action: #selector(self.popClick), for: .touchUpInside)
         redbag?.addTarget(self, action: #selector(self.redbagClick), for: .touchUpInside)
         friend?.addTarget(self, action: #selector(self.friendClick), for: .touchUpInside)
-       
-        //self.separatorInset = UIEdgeInsets.zero
-        //self.view.layoutMargins = UIEdgeInsets.zero
+    }
+    private func setUpRefrsh(){
+        let refreshHeader = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(self.hederRefresh))
+        self.tableView.mj_header = refreshHeader
+        self.tableView.mj_header!.beginRefreshing()
+        
+        let refreshFooter = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(self.hederRefresh))
+        refreshFooter.triggerAutomaticallyRefreshPercent = 0.1
+        self.tableView.mj_footer = refreshFooter
     }
     private func showNewMessageLb(countNumber:Int){
         self.refreshMsgLabel.text = "有\(countNumber)条新微博"
@@ -130,6 +133,9 @@ extension HomeTableCtr{
     @objc func zhuanfaClick(){
         XMLog("zhuanfaClick")
     }
+    @objc func hederRefresh(){
+        self.getDataFromHomeUrl()
+    }
 }
 // MARK: - 代理方法
 
@@ -145,9 +151,12 @@ extension HomeTableCtr{
         if cell == nil {
             cell = HomeCell.init(style: .default, reuseIdentifier: "HomeCellId")
         }
-        cell!.index = indexPath
-        cell!.HomeViewModel = self.HomePageModels[indexPath.row]
-        cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
+        if  self.HomePageModels.count > 0 {
+            cell!.index = indexPath
+            cell!.HomeViewModel = self.HomePageModels[indexPath.row]
+            cell!.zhuanfa.addTarget(self, action: #selector(self.zhuanfaClick), for: .touchUpInside)
+        }
+        
         return cell!
     }
 }
@@ -155,25 +164,49 @@ extension HomeTableCtr{
 // MARK: - 网络相关
 
 extension HomeTableCtr {
+    
     func getDataFromHomeUrl(){
-        let param = ["access_token":UserCountManager.userModel?.access_token]
-        XMNetWorkTool.shareNetworkTool.getHomePageData(params: param as [String : Any]) { (error, response) in
-            if error == nil{
-                XMLog(response!)
-                let resp = response as! [String:Any]
-                let tempArr = resp["statuses"] as! Array<Any>
+        var since_id = 0,max_id = 0
+        if self.tableView.mj_header?.isRefreshing == true{
+            //下拉刷新
+            since_id = self.HomePageModels.first?.homeModel?.mid ?? 0
+        }
+        else if self.tableView.mj_footer?.isRefreshing == true {
+            //上拉加载
+            max_id = self.HomePageModels.last?.homeModel?.mid ?? 0
+            max_id = (max_id == 0 ? 0:(max_id - 1))//防止重复最后一条数据
+        }
+       
+        xmProvider.request(.getHomePageData(access_token: UserCountManager.userModel!.access_token!,since_id: since_id,max_id: max_id)) { (result) in
+            switch result {
+            case let .success(moyaResponse):
+                let data = moyaResponse.data
+                guard let jsonDic = try? JSON(data: data) else {
+                    return
+                }
+                let tempArr = jsonDic["statuses"].arrayValue
+                var tempModels:Array<HomeModelTool> = []
                 for statuses in tempArr {
-                    let homemodel = HomeModel.deserialize(from: statuses as? [String:Any])
-
+                    // MARK: - 由于是model里嵌套model ---》user 所以要使用dictionaryObject方法而不能使用dictionaryValue(返回的是‘JSON’格式)
+                    let homemodel = HomeModel.deserialize(from: statuses.dictionaryObject)
                     let homeModelTool = HomeModelTool.init(homeModel: homemodel!)
-                    self.HomePageModels.append(homeModelTool)
+                    tempModels.append(homeModelTool)
+                }
+                if self.tableView.mj_header?.isRefreshing == true {
+                    self.HomePageModels = tempModels + self.HomePageModels
+                    self.tableView.mj_header?.endRefreshing()
+                    //加载提示
+                    self.showNewMessageLb(countNumber: tempModels.count)
+                }
+                else if self.tableView.mj_footer?.isRefreshing == true {
+                    self.HomePageModels = self.HomePageModels + tempModels
+                    self.tableView.mj_footer?.endRefreshing()
                 }
                 //缓存图片
                 self.cacheImages(viewModels: self.HomePageModels)
-                //加载提示
-                self.showNewMessageLb(countNumber: self.HomePageModels.count)
-            }else{
-                XMLog(error)
+               
+            case .failure(_): break
+                
             }
         }
     }

@@ -104,7 +104,7 @@ extension HomeCell{
         let layout = picCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         //没有配图
         if count == 0 {
-            layout.itemSize = CGSize.zero
+            layout.itemSize = CGSize(width: 0.1, height: 0.1)
             picBottom.constant = 0
             return CGSize.zero
         }

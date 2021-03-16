@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B3C067E25F078AB00D426F9 /* AutoLoginCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C067C25F078AA00D426F9 /* AutoLoginCtr.swift */; };
 		5B3C067F25F078AB00D426F9 /* AutoLoginCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C067D25F078AA00D426F9 /* AutoLoginCtr.xib */; };
-		5B3C068825F0865300D426F9 /* KeysTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C068725F0865300D426F9 /* KeysTool.swift */; };
 		5B3C069025F08AE100D426F9 /* XMNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C068F25F08AE100D426F9 /* XMNetWorkTool.swift */; };
 		5B3C06A325F0EE9600D426F9 /* UserCountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C06A225F0EE9600D426F9 /* UserCountManager.swift */; };
 		5B3C06A825F1D77300D426F9 /* WelcomeCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C06A625F1D77300D426F9 /* WelcomeCtr.swift */; };
@@ -54,7 +53,6 @@
 /* Begin PBXFileReference section */
 		5B3C067C25F078AA00D426F9 /* AutoLoginCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginCtr.swift; sourceTree = "<group>"; };
 		5B3C067D25F078AA00D426F9 /* AutoLoginCtr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoLoginCtr.xib; sourceTree = "<group>"; };
-		5B3C068725F0865300D426F9 /* KeysTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysTool.swift; sourceTree = "<group>"; };
 		5B3C068F25F08AE100D426F9 /* XMNetWorkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMNetWorkTool.swift; sourceTree = "<group>"; };
 		5B3C06A225F0EE9600D426F9 /* UserCountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCountManager.swift; sourceTree = "<group>"; };
 		5B3C06A625F1D77300D426F9 /* WelcomeCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCtr.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			children = (
 				5B3C067C25F078AA00D426F9 /* AutoLoginCtr.swift */,
 				5B3C067D25F078AA00D426F9 /* AutoLoginCtr.xib */,
-				5B3C068725F0865300D426F9 /* KeysTool.swift */,
 				5B3C06A225F0EE9600D426F9 /* UserCountManager.swift */,
 			);
 			path = AutoLoginCtr;
@@ -434,7 +431,6 @@
 				5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */,
 				843704A725EB55330011C53D /* DiscoverTableCtr.swift in Sources */,
 				843704B125EB62900011C53D /* MsgTableCtr.swift in Sources */,
-				5B3C068825F0865300D426F9 /* KeysTool.swift in Sources */,
 				5B3C067E25F078AB00D426F9 /* AutoLoginCtr.swift in Sources */,
 				8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */,
 				5B4DF18A25EE3038000FB250 /* PopViewCtr.swift in Sources */,
@@ -520,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -575,7 +571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

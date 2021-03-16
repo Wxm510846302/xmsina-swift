@@ -13,6 +13,8 @@ class HomeModel: HandyJSON{
     var user:UserCount?
     //字符串型的微博ID
     var idstr:String?
+    //微博MID
+    var mid:Int?
     //微博信息内容
     var text:String?
     //微博创建时间

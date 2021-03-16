@@ -15,7 +15,16 @@ protocol ValueDelegate {
     var floatValue:CGFloat { get }
     
 }
-
+extension String:ValueDelegate{
+    var floatValue: CGFloat {
+        return CGFloat((self as NSString).floatValue)
+    }
+    
+    var intValue:Int {
+        return Int((self as NSString).intValue)
+    }
+    
+}
 extension Double:ValueDelegate{
     var intValue: Int {
         get{

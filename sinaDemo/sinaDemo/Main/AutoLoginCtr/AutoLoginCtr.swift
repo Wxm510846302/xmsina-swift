@@ -58,7 +58,6 @@ extension AutoLoginCtr{
 extension AutoLoginCtr{
     func getAccessToken(code:String)  {
         self.getedToken = true
-//        let provider = MoyaProvider<MyService>()
         xmProvider.request(.getAccessToken(client_id: sinaAppKey, client_secret: sinaAppSecret, grant_type:"authorization_code", redirect_uri: sinaRedirectUrl, code: code)) { (result:Result<Response, MoyaError>) in
             if case .success(let response) = result {
                 // 解析数据
@@ -72,11 +71,9 @@ extension AutoLoginCtr{
         
     }
     func getUserMsg() {
-//        let provider = MoyaProvider<MyService>.init()
         let token:String = self.userModel!.access_token ?? ""
-//        let uid:Int = Int(self.userModel!.uid!) ?? 0
         xmProvider.request(.getUserInfo(access_token: token, uid: self.userModel!.uid!)) { (result:Result<Response, MoyaError>) in
-            print(result)
+//            print(result)
             if case .success(let response) = result{
                 if try! result.get().statusCode == 200 {
                     let jsonDic = try! response.mapJSON() as! [String:Any]

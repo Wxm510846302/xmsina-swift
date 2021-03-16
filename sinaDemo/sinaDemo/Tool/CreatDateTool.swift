@@ -25,21 +25,21 @@ class CreatDateTool: NSObject {
         guard let creatDate = famate.date(from: crateAtStr) else {
             return ""
         }
-        print(creatDate)
+//        print(creatDate)
         //获取时间差
         let comp = Int(Date().timeIntervalSince(creatDate))
-        print(comp)
+//        print(comp)
         if comp < 60 {
-            print("刚刚")
+//            print("刚刚")
             return "刚刚"
         }
         
         if comp < 60 * 60 {
-            print("\(comp / 60) 分钟前")
+//            print("\(comp / 60) 分钟前")
             return "\(comp / 60) 分钟前"
         }
         if comp < 60 * 60 * 24 {
-            print("\(comp / 60 / 60) 小时前")
+//            print("\(comp / 60 / 60) 小时前")
             return "\(comp / 60 / 60) 小时前"
         }
         
@@ -49,7 +49,7 @@ class CreatDateTool: NSObject {
         if calender.isDateInYesterday(creatDate) {
             famate.dateFormat = "昨天 HH:mm"
             let timeStr = famate.string(from: creatDate)
-            print(timeStr)
+//            print(timeStr)
             return timeStr
         }
         //一年以内
