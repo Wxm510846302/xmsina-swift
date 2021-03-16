@@ -15,7 +15,7 @@ let sinaAppSecret = "0038f4b02f0f326685bc64fe7f06320f"
 let sinaRedirectUrl = "http://www.mathjia.com"
 
 
-
+/// 可以对请求头进行一些全局骚操作
 let myEndpointClosure = { (target: MyService) -> Endpoint in
     
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
@@ -35,17 +35,15 @@ let myEndpointClosure = { (target: MyService) -> Endpoint in
     
 }
 
+/// 自定义的moya -》Provider
 let xmProvider = MoyaProvider<MyService>(endpointClosure: myEndpointClosure,plugins:[])
 
-private func endpointMapping<Target: TargetType>(target: Target) -> Endpoint {
-    print("请求连接：\(target.baseURL)\(target.path) \n方法：\(target.method)\n参数：\(String(describing: target.task)) ")
-    return MoyaProvider.defaultEndpointMapping(for: target)
-}
-
-
 enum MyService {
+    //获取token
     case getAccessToken(client_id:String,client_secret:String,grant_type:String,redirect_uri:String,code:String)
+    //获取个人信息
     case getUserInfo(access_token:String,uid:String)
+    //获取首页微博
     case getHomePageData(access_token:String,since_id:Int,max_id:Int)
 }
 extension MyService:TargetType{
@@ -56,7 +54,6 @@ extension MyService:TargetType{
         default:
             return URL.init(string: "https://api.weibo.com/2/")!
         }
-        
     }
     var validationType: ValidationType{
         return .none
@@ -114,7 +111,7 @@ extension MyService:TargetType{
         }
        
     }
-    //如果请求头不一致还需要单独设置请求头，🐶🐶🐶🐶
+    //如果请求头不一致还需要单独设置请求头，🐶🐶🐶🐶。
     var headers: [String : String]? {
         switch self {
         case .getAccessToken(_, _, _, _, _),.getHomePageData(_,_,_):
