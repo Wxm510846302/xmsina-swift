@@ -7,7 +7,7 @@
 
 import UIKit
 import WebKit
-
+import Moya
 class AutoLoginCtr: UIViewController {
     var userModel:UserCount?
     var getedToken:Bool = false
@@ -58,47 +58,42 @@ extension AutoLoginCtr{
 extension AutoLoginCtr{
     func getAccessToken(code:String)  {
         self.getedToken = true
-        let params = ["client_id":sinaAppKey,"client_secret":sinaAppSecret,"grant_type":"authorization_code","redirect_uri":sinaRedirectUrl,"code":code]
-        XMNetWorkTool.shareNetworkTool.getAccessToken(params: params) { (error, response) in
-            if error == nil{
-                print(response ?? "失败")
-                guard let dic = response as? [String:Any] else {
-                    return
-                }
-                self.userModel = UserCount.deserialize(from: dic)
+//        let provider = MoyaProvider<MyService>()
+        xmProvider.request(.getAccessToken(client_id: sinaAppKey, client_secret: sinaAppSecret, grant_type:"authorization_code", redirect_uri: sinaRedirectUrl, code: code)) { (result:Result<Response, MoyaError>) in
+            if case .success(let response) = result {
+                // 解析数据
+                let jsonDic = try! response.mapJSON() as! NSDictionary
+                self.userModel = UserCount.deserialize(from: jsonDic)
                 //用token请求个人信息
                 self.getUserMsg()
-            }else{
-                print(error!)
             }
+        
         }
         
     }
     func getUserMsg() {
-        let param = ["access_token":self.userModel!.access_token,"uid":self.userModel!.uid]
-        XMNetWorkTool.shareNetworkTool.getUserInfo(params: param as [String : Any]) { (error, response) in
-            if error == nil {
-                //正常
-                guard let dic = response as? [String:Any] else {
-                    return
-                }
-                
-                if let oldDic = self.userModel?.toJSON() {
-                    let newDic = dic.merging(oldDic) { (shopParamaKeyValue, oldDic) -> Any in
-                        return shopParamaKeyValue
+//        let provider = MoyaProvider<MyService>.init()
+        let token:String = self.userModel!.access_token ?? ""
+//        let uid:Int = Int(self.userModel!.uid!) ?? 0
+        xmProvider.request(.getUserInfo(access_token: token, uid: self.userModel!.uid!)) { (result:Result<Response, MoyaError>) in
+            print(result)
+            if case .success(let response) = result{
+                if try! result.get().statusCode == 200 {
+                    let jsonDic = try! response.mapJSON() as! [String:Any]
+                    if let oldDic = self.userModel?.toJSON() {
+                        let newDic = jsonDic.merging(oldDic) { (shopParamaKeyValue, oldDic) -> Any in
+                            return shopParamaKeyValue
+                        }
+                        self.userModel = UserCount.deserialize(from: newDic)
+                        UserCountManager.saveUserCount(user: self.userModel!)
+                        self.navigationController?.dismiss(animated: false, completion: {
+                            //切换跟控制器
+                            UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()
+                            
+                        })
                     }
-                    self.userModel = UserCount.deserialize(from: newDic)
-                    UserCountManager.saveUserCount(user: self.userModel!)
                 }
                 
-                self.navigationController?.dismiss(animated: false, completion: {
-                    //切换跟控制器
-                    UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()
-                    
-                })
-            }
-            else{
-                print(error!)
             }
         }
         

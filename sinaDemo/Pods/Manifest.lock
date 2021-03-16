@@ -1,44 +1,44 @@
 PODS:
-  - AFNetworking (4.0.1):
-    - AFNetworking/NSURLSession (= 4.0.1)
-    - AFNetworking/Reachability (= 4.0.1)
-    - AFNetworking/Security (= 4.0.1)
-    - AFNetworking/Serialization (= 4.0.1)
-    - AFNetworking/UIKit (= 4.0.1)
-  - AFNetworking/NSURLSession (4.0.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (4.0.1)
-  - AFNetworking/Security (4.0.1)
-  - AFNetworking/Serialization (4.0.1)
-  - AFNetworking/UIKit (4.0.1):
-    - AFNetworking/NSURLSession
+  - Alamofire (5.4.1)
   - AutoInch (2.1.0)
   - HandyJSON (5.0.2)
+  - Instructions (2.0.1)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - RxSwift (5.1.2)
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
 
 DEPENDENCIES:
-  - AFNetworking (~> 4.0)
   - AutoInch
   - HandyJSON (~> 5.0.2)
+  - Instructions (~> 2.0.1)
+  - Moya/RxSwift (~> 14.0)
   - SDWebImage
 
 SPEC REPOS:
   trunk:
-    - AFNetworking
+    - Alamofire
     - AutoInch
     - HandyJSON
+    - Instructions
+    - Moya
+    - RxSwift
     - SDWebImage
 
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AutoInch: f2468bf8e33f7642699296db30240d3b3631ba33
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Instructions: dd428e3776fcdcec18bf4242b9d3fb2d1cbd6cc9
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
 
-PODFILE CHECKSUM: 4231f42d7a28bf0263f505c8c2b4ded306df0913
+PODFILE CHECKSUM: 02a9e2ad1664b1bb561e33f5188c31093044f779
 
 COCOAPODS: 1.10.1

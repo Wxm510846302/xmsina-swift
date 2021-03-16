@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F75EDC02-A331-4D14-B193-5C1F16CD7E65"
+            uuid = "455F6A01-3E3A-47B3-B7F1-BC7F71062552"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sinaDemo/Tool/network/XMNetWorkTool.swift"
+            filePath = "sinaDemo/Main/AutoLoginCtr/AutoLoginCtr.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "requestWithNetworkTool(methd:url:params:headers:finishBlock:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "getUserMsg()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

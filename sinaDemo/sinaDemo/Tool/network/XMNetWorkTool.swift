@@ -6,109 +6,124 @@
 //
 
 import UIKit
-import AFNetworking
+import Moya
+//let sinaAppKey = "3493872115"
+//let sinaAppSecret = "275528b28296a1ce7e35c2e32822e703"
+//let sinaRedirectUrl = "http://www.mathjia.com"
+let sinaAppKey = "1577705334"
+let sinaAppSecret = "0038f4b02f0f326685bc64fe7f06320f"
+let sinaRedirectUrl = "http://www.mathjia.com"
 
-typealias callBack = (Error?,Any?)->Void
 
-enum NetworkMethdType {
-    case GET
-    case POST
-    case DOWNLOAD
-    case UPLOAD
-}
-class XMNetWorkTool: AFHTTPSessionManager {
- 
-    static let shareNetworkTool = XMNetWorkTool.init().then {
-        $0.responseSerializer.acceptableContentTypes =  Set(arrayLiteral: "application/json",
-                                                           "text/json",
-                                                           "text/javascript",
-                                                           "text/html",
-                                                           "text/plain",
-                                                           "application/x-www-form-urlencodem")
-    }
-}
-// MARK: - 封装基础请求方法
 
-extension XMNetWorkTool {
+let myEndpointClosure = { (target: MyService) -> Endpoint in
     
-   public func requestWithNetworkTool(methd:NetworkMethdType,url:String,params:[String:Any]?,headers:[String:String]?,finishBlock:@escaping (Error?,Any?)->Void) {
-    // FIXME: - 这里应该有个判断，token是否过期，如果在使用过程中过期了怎么办？应该重新获取一下token
-        let successFinish = { (task:URLSessionDataTask, response:Any?) in
-            finishBlock(nil,response)
-        }
-        let failureFinish = { (task:URLSessionDataTask?, error:Error) in
-            finishBlock(error,nil)
-        }
-        
-        switch methd {
-        
-        case .GET:
-            
-            get(url, parameters: params, headers: headers, progress: nil, success: successFinish, failure: failureFinish)
-            
-            break
-        case .POST:
-            
-            post(url, parameters: params, headers: headers, progress: nil, success: successFinish, failure: failureFinish)
-            
-            break
-        default: break
-            
-        }
-    }
-    
-    // FIXME: - 这里需要再进行封装
+    let url = target.baseURL.appendingPathComponent(target.path).absoluteString
+    let endpoint = Endpoint(
+        url: url,
+        sampleResponseClosure: { .networkResponse(200, target.sampleData) },
+        method: target.method,
+        task: target.task,
+        httpHeaderFields: target.headers
+    )
 
-    func requestWithNetworkTool(methd:NetworkMethdType,url:String,uploadData:Data?, progress:((Progress)->Void)?,finishBlock:@escaping (Error?,[String:AnyObject]?)->())  {
-        
-        let successFinish = { (response:URLResponse, any:Any?, error:Error?) in
-            
-        }
-  
-        switch methd {
-        
+    //在这里设置你的HTTP头部信息
+    return endpoint.adding(newHTTPHeaderFields: [
+        "Content-Type" : "application/x-www-form-urlencoded",
+        "ECP-COOKIE" : ""
+        ])
     
-        case .DOWNLOAD:
-            
-            guard let URLK = URL.init(string: url) else {
-                return
-            }
-            
-            let request = URLRequest(url: URLK)
-            downloadTask(with: request, progress: progress, destination: { (url:URL, response:URLResponse) -> URL in
-                return URL.init(string: "")!
-            }, completionHandler: successFinish).resume()
-
-            break
-            
-        case .UPLOAD:
-            guard let URLK = URL.init(string: url) else {
-                return
-            }
-            
-            let request = URLRequest(url: URLK)
-            uploadTask(with: request, from: uploadData, progress: progress, completionHandler: successFinish)
-            break
-            
-        default:break
-            
-        }
-    }
 }
 
-extension XMNetWorkTool{
-    // MARK: - 获取token
-    func getAccessToken(params:[String:Any]?,finish:@escaping callBack) {
-        self.requestWithNetworkTool(methd: .POST, url: access_tokenUrl, params: params, headers: nil, finishBlock: finish)
-    }
-    // MARK: - 获取用户信息
+let xmProvider = MoyaProvider<MyService>(endpointClosure: myEndpointClosure,plugins:[])
 
-    func getUserInfo(params:[String:Any]?,finish:@escaping callBack) {
-        self.requestWithNetworkTool(methd: .GET, url: usersShowUrl, params: params, headers: nil, finishBlock: finish)
-    }
-    // MARK: -获取首页数据
+private func endpointMapping<Target: TargetType>(target: Target) -> Endpoint {
+    print("请求连接：\(target.baseURL)\(target.path) \n方法：\(target.method)\n参数：\(String(describing: target.task)) ")
+    return MoyaProvider.defaultEndpointMapping(for: target)
+}
 
-    func getHomePageData(params:[String:Any]?,finish:@escaping callBack){
-        self.requestWithNetworkTool(methd: .GET, url: homeDataUrl, params: params, headers: nil, finishBlock: finish)
+
+enum MyService {
+    case getAccessToken(client_id:String,client_secret:String,grant_type:String,redirect_uri:String,code:String)
+    case getUserInfo(access_token:String,uid:String)
+    case getHomePageData(access_token:String)
+}
+extension MyService:TargetType{
+    var baseURL: URL {
+        switch self {
+        case .getAccessToken:
+            return URL.init(string: "https://api.weibo.com/oauth2/")!
+        default:
+            return URL.init(string: "https://api.weibo.com/2/")!
+        }
+        
     }
+    var validationType: ValidationType{
+        return .none
+    }
+    var path: String {
+        switch self {
+        case .getAccessToken:
+            return "access_token"
+        case .getUserInfo:
+            return "users/show.json"
+        case .getHomePageData:
+            return "statuses/home_timeline.json"
+        default:
+            return ""
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .getAccessToken:
+            return .post
+        default:
+            return .get
+        }
+    }
+    //这个就是做单元测试模拟的数据，
+    //只会在单元测试文件中有作用
+    var sampleData: Data {
+        return "{}".data(using: .utf8)!
+    }
+
+    // 请求任务事件（这里附带上参数）
+    var task: Task {
+        var parmeters: [String : Any] = [:]
+        switch self {
+        // MARK: - sina 这里是个坑，虽然写的是 post'提交 但是这里的post的写法应该是表单为空，url拼接上
+        case .getAccessToken( let client_id,let client_secret, let grant_type , let redirect_uri,let code):
+            parmeters["client_id"] = client_id
+            parmeters["client_secret"] = client_secret
+            parmeters["grant_type"] = grant_type
+            parmeters["code"] = code
+            parmeters["redirect_uri"] = redirect_uri
+            return .requestCompositeParameters(bodyParameters: ["":""], bodyEncoding: JSONEncoding.default, urlParameters: parmeters)
+        case .getUserInfo(let access_token,let uid):
+            parmeters["access_token"] = access_token
+            parmeters["uid"] = uid
+            return .requestParameters(parameters: parmeters, encoding: URLEncoding.queryString)
+        case .getHomePageData(let access_token):
+            parmeters["access_token"] = access_token
+            return .requestParameters(parameters: parmeters, encoding: URLEncoding.queryString)
+        default:
+            return .requestPlain
+        }
+       
+    }
+    //如果请求头不一致还需要单独设置请求头，🐶🐶🐶🐶
+    var headers: [String : String]? {
+        switch self {
+        case .getAccessToken(_, _, _, _, _),.getHomePageData(_):
+            return ["Content-type": "application/json"]
+        case .getUserInfo(_, _):
+            return ["Content-type": "text/plain"]
+        default:
+            return ["Content-type": "application/json,text/json,text/javascript,text/html,text/plain,application/x-www-form-urlencodem"]
+        }
+       
+    }
+    
+    
 }

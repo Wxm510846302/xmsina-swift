@@ -4,6 +4,7 @@ target 'sinaDemo' do
     pod 'AutoInch'
     #    pod 'YYModel'
     #    pod 'AFNetworking', '~> 4.0'
+    #alibaba model->json 互转工具
     pod 'HandyJSON', '~> 5.0.2'
     pod 'Moya/RxSwift', '~> 14.0'
     pod 'SDWebImage'
