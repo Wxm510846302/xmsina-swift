@@ -7,8 +7,8 @@
 
 import UIKit
 import SDWebImage
-let itemMargin = CGFloat(12).auto()
-let edgeMargin = CGFloat(10).auto()
+let itemMargin = CGFloat(10).auto()
+let edgeMargin = CGFloat(12).auto()
 
 class HomeCell: UITableViewCell {
     var index:IndexPath?
@@ -45,6 +45,22 @@ class HomeCell: UITableViewCell {
             self.source.text = viewModel.courceText ?? ""
             //设置文字
             self.myText.text = viewModel.homeModel?.text ?? ""
+            //设置底部工具栏的文字
+            if viewModel.homeModel!.reposts_count ?? 0 > 0 {
+                self.zhuanfa.setTitle("\(viewModel.homeModel!.reposts_count!)", for: .normal)
+            }else{
+                self.zhuanfa.setTitle("转发", for: .normal)
+            }
+            if viewModel.homeModel!.comments_count ?? 0 > 0 {
+                self.pinglun.setTitle("\(viewModel.homeModel!.comments_count!)", for: .normal)
+            }else{
+                self.pinglun.setTitle("评论", for: .normal)
+            }
+            if viewModel.homeModel!.attitudes_count ?? 0 > 0 {
+                self.dianzan.setTitle("\(viewModel.homeModel!.attitudes_count!)", for: .normal)
+            }else{
+                self.dianzan.setTitle("点赞", for: .normal)
+            }
             //设置昵称文字颜色
             
             if viewModel.homeModel?.retweeted_status != nil {
@@ -75,6 +91,7 @@ class HomeCell: UITableViewCell {
             picConstraintW.constant =  PicViewSize.width
             
             picCollectionView.reloadData()
+            
         }
     }
     
@@ -83,12 +100,11 @@ class HomeCell: UITableViewCell {
         
         self.iconImg.layer.masksToBounds = true
         self.iconImg.layer.cornerRadius = self.iconImg.frame.width/2
-        
-//        constraintW.constant = kScreenWidth - CGFloat( edgeMargin * 2)
+
         picCollectionView.register(UINib.init(nibName: "ItemCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCellId")
 //        picCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: "ItemCellId")
         picCollectionView.dataSource = self
-    
+        picCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -116,7 +132,6 @@ extension HomeCell{
             let size =  CGSize.init(width: (image!.size.width) * 2, height: (image!.size.height) * 2)
             //布局picview
             layout.itemSize = size
-            layout.minimumLineSpacing = itemMargin.floatValue
             return size
         }
         
@@ -124,6 +139,7 @@ extension HomeCell{
         let imageWH = (kScreenWidth - edgeMargin.floatValue * 2 -  itemMargin.floatValue * 2) / 3
         layout.itemSize = CGSize(width: imageWH, height: imageWH)
         layout.minimumLineSpacing = itemMargin.floatValue
+        layout.minimumInteritemSpacing = itemMargin.floatValue
         
         //4个配图
         if count == 4{
@@ -138,6 +154,8 @@ extension HomeCell{
         return CGSize(width: picViewW, height: picViewH)
     }
 }
+// MARK: - cell的图片collectionview的代理方法
+
 extension HomeCell:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.HomeViewModel?.picUrls.count ?? 0

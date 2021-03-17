@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="-349" y="-216"/>
         </scene>
-        <!--View Controller-->
+        <!--占位控制器-->
         <scene sceneID="jdy-VO-jbh">
             <objects>
-                <viewController id="Fhu-2w-dXl" sceneMemberID="viewController">
+                <viewController id="Fhu-2w-dXl" userLabel="占位控制器" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Re5-Nl-LZp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

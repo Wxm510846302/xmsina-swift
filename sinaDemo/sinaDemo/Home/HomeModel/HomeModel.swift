@@ -25,6 +25,13 @@ class HomeModel: HandyJSON{
     var retweeted_status:HomeModel?
     //图片
     var pic_urls:Array<[String:String]>?
+    //转发数
+    var reposts_count:Int?
+    //评论数
+    var comments_count:Int?
+    //表态数
+    var attitudes_count:Int?
+    
     required init() {
     }
 }

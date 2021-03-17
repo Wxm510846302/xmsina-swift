@@ -20,17 +20,24 @@ class XMBaseTableCtr: UITableViewController {
             self.tableView.separatorStyle = .none
         }
     }
-
-  
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
+    }
+    // 禁止自动旋转
+    override var shouldAutorotate: Bool{
+        return false
+    }
+    
+    override func loadView() {
+        isLogin ? super.loadView() : setupVisitorView()
+    }
 }
 // MARK: - 设置UI
 
 extension XMBaseTableCtr
 {
-    override func loadView() {
-        isLogin ? super.loadView() : setupVisitorView()
-    }
+    
     func setupVisitorView()  {
 //        LoginBtn.frame.size = CGSize.init(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
         self.view = visitorView
@@ -43,7 +50,7 @@ extension XMBaseTableCtr
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(self.loginClick))
     }
     @objc private func loginClick() {
-        print("loginClick")
+        
         let AutoCtr = AutoLoginCtr.init()
         let nav = UINavigationController.init(rootViewController: AutoCtr)
         present(nav, animated: true, completion: nil)

@@ -7,16 +7,29 @@
 
 import UIKit
 
-class XMTextView: UITextView {
-    var placeHoldText = ""
-    lazy  var placeHoldLb = UILabel.init()
-
-    init(placeHoldSting:String) {
-        super.init(frame: CGRect.zero, textContainer: nil)
-        placeHoldText = placeHoldSting
+class XMTextView: UITextView,UITextViewDelegate {
+    var placeHoldText = "分享点什么吧"
+    lazy  var placeHoldLb = UILabel.init().then {
+        $0.frame = CGRect.init(x: 10, y: 0, width: 150, height: 32)
+        self.addSubview($0)
     }
-  
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        placeHoldLb.text = placeHoldText
+        placeHoldLb.font = UIFont.systemFont(ofSize: 14)
+        placeHoldLb.textColor = .gray
+//        self.delegate = self
+        self.textContainerInset = UIEdgeInsets.init(top: 8, left: 4, bottom: 10, right: 8)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 0 {
+            placeHoldLb.text = ""
+        }else{
+            placeHoldLb.text = placeHoldText
+        }
     }
 }

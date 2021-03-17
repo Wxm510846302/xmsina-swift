@@ -33,7 +33,6 @@ class HomeTableCtr: XMBaseTableCtr {
         
         self.tabBarItem.badgeValue = "3"
        
-        
         if !self.isLogin {
             //如果没有登录，那么就创建访客视图
             self.visitorView.setupVistorUI(backImg: "tabbar_home", msg: "首页访客视图")
@@ -73,6 +72,12 @@ class HomeTableCtr: XMBaseTableCtr {
         
     }
 
+    func TabBarDidClick() {
+    
+        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        //刷新
+        tableView.mj_header?.beginRefreshing()
+    }
 }
 // MARK: - 设置UI
 
@@ -101,18 +106,22 @@ extension HomeTableCtr {
     }
     private func showNewMessageLb(countNumber:Int){
         self.refreshMsgLabel.text = "有\(countNumber)条新微博"
-        self.refreshMsgLabel.isHidden = false
-        UIView.animate(withDuration: 0.5) {
-            self.refreshMsgLabel.frame.origin.y = self.navigationController?.navigationBar.frame.size.height ?? 0
-        } completion: { (_) in
-            UIView.animate(withDuration: 0.5, delay: 1.5, options: []) {
-                self.refreshMsgLabel.bottom(self.navigationController!.navigationBar.height())
+        if self.refreshMsgLabel.isHidden == true {
+            //防止出现动画重叠问题
+            self.refreshMsgLabel.isHidden = false
+            UIView.animate(withDuration: 0.5) {
+                self.refreshMsgLabel.frame.origin.y = self.navigationController?.navigationBar.frame.size.height ?? 0
             } completion: { (_) in
-                self.refreshMsgLabel.layer.isHidden = true
-                self.refreshMsgLabel.isHidden = true
-            }
+                UIView.animate(withDuration: 0.5, delay: 1.5, options: []) {
+                    self.refreshMsgLabel.bottom(self.navigationController!.navigationBar.height())
+                } completion: { (_) in
+                    self.refreshMsgLabel.layer.isHidden = true
+                    self.refreshMsgLabel.isHidden = true
+                }
 
+            }
         }
+        
 
     }
    

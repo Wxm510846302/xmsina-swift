@@ -118,4 +118,10 @@ class UserCountManager: NSObject {
         let user = XMFileManager.init().getArchiver(fileName: "userCount")
         return user as? UserCount
     }
+    //删除用户信息
+    static func deleteUserCount(){
+        XMFileManager.init().deleteArchiver(fileName: "userCount")
+        UserCountManager.isLogin = false
+        UserCountManager.userModel = nil
+    }
 }

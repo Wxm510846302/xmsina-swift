@@ -8,9 +8,11 @@
 import UIKit
 
 class XMTabBarCtr: UITabBarController {
-
+    
+    
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         XMLog("didSelect")
+        //首页点击刷新
     }
     override func tabBar(_ tabBar: UITabBar, willBeginCustomizing items: [UITabBarItem]) {
         XMLog("willBeginCustomizing")
@@ -85,14 +87,5 @@ class XMTabBarCtr: UITabBarController {
         self.addChild(navCtr)
     }
    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

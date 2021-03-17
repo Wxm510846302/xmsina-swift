@@ -31,11 +31,11 @@ extension AutoLoginCtr{
 
 extension AutoLoginCtr{
     @objc private func closeClick() {
-        print("closeClick")
+      
         navigationController?.dismiss(animated: true, completion: nil)
     }
     @objc private func loginCountClick(){
-        print("loginCountClick")
+    
         let jscode = "document.getElementById（'userId'）.value = '18231178020'; document.getElementById（'passwd'）.value = 'wxm510846302'"
         webView.evaluateJavaScript(jscode, completionHandler: nil)
     }
