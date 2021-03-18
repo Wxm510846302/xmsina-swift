@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-let itemMargin = CGFloat(10).auto()
+let itemMargin = CGFloat(8).auto()
 let edgeMargin = CGFloat(12).auto()
 
 class HomeCell: UITableViewCell {

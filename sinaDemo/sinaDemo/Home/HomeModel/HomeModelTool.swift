@@ -8,8 +8,12 @@
  * 对HomeModel的封装📦
  */
 import UIKit
-
-class HomeModelTool: NSObject {
+import HandyJSON
+class HomeModelTool: NSObject,HandyJSON {
+    required override init() {
+        
+    }
+    
     var homeModel:HomeModel?
     var courceText:String?
     var creatAtText:String?

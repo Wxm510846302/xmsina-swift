@@ -39,16 +39,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "11EAAC8E-17B4-49C5-8F62-E10A7833D116"
-            shouldBeEnabled = "No"
+            uuid = "7766E4DE-72B7-44D4-B3F8-B81E601D18ED"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "sinaDemo/Home/HomeTableCtr.swift"
+            filePath = "sinaDemo/HomeDataCoreData/HomeCore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "getDataFromHomeUrl()"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "modifyData(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E75DD5C-A352-47B9-BFEA-B7FB9EC4622D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sinaDemo/HomeDataCoreData/HomeCore.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "modifyData(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

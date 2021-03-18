@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B06B6112602F05100A0F486 /* HomeCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B06B60F2602F05100A0F486 /* HomeCoreData.xcdatamodeld */; };
+		5B06B6152602F15800A0F486 /* HomeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06B6142602F15800A0F486 /* HomeCore.swift */; };
 		5B0F1BEC2601999A006E65C7 /* ComposeCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F1BEA2601999A006E65C7 /* ComposeCtr.swift */; };
 		5B0F1BED2601999A006E65C7 /* ComposeCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F1BEB2601999A006E65C7 /* ComposeCtr.xib */; };
-		5B0F1C3326021112006E65C7 /* Home.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F1C3126021112006E65C7 /* Home.xcdatamodeld */; };
-		5B0F1C362602119E006E65C7 /* HomeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F1C352602119E006E65C7 /* HomeCore.swift */; };
 		5B3C067E25F078AB00D426F9 /* AutoLoginCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C067C25F078AA00D426F9 /* AutoLoginCtr.swift */; };
 		5B3C067F25F078AB00D426F9 /* AutoLoginCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C067D25F078AA00D426F9 /* AutoLoginCtr.xib */; };
 		5B3C069025F08AE100D426F9 /* XMNetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C068F25F08AE100D426F9 /* XMNetWorkTool.swift */; };
@@ -55,10 +55,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B06B6102602F05100A0F486 /* HomeCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeCoreData.xcdatamodel; sourceTree = "<group>"; };
+		5B06B6142602F15800A0F486 /* HomeCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCore.swift; sourceTree = "<group>"; };
 		5B0F1BEA2601999A006E65C7 /* ComposeCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeCtr.swift; sourceTree = "<group>"; };
 		5B0F1BEB2601999A006E65C7 /* ComposeCtr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComposeCtr.xib; sourceTree = "<group>"; };
-		5B0F1C3226021112006E65C7 /* Home.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Home.xcdatamodel; sourceTree = "<group>"; };
-		5B0F1C352602119E006E65C7 /* HomeCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCore.swift; sourceTree = "<group>"; };
 		5B3C067C25F078AA00D426F9 /* AutoLoginCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginCtr.swift; sourceTree = "<group>"; };
 		5B3C067D25F078AA00D426F9 /* AutoLoginCtr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoLoginCtr.xib; sourceTree = "<group>"; };
 		5B3C068F25F08AE100D426F9 /* XMNetWorkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMNetWorkTool.swift; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 		5B0F1BFB2602018C006E65C7 /* HomeDataCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5B0F1C3126021112006E65C7 /* Home.xcdatamodeld */,
-				5B0F1C352602119E006E65C7 /* HomeCore.swift */,
+				5B06B60F2602F05100A0F486 /* HomeCoreData.xcdatamodeld */,
+				5B06B6142602F15800A0F486 /* HomeCore.swift */,
 			);
 			path = HomeDataCoreData;
 			sourceTree = "<group>";
@@ -458,10 +458,10 @@
 				84D8368025F47CE4008F2F38 /* HomeCell.swift in Sources */,
 				5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */,
 				84D8368D25F4E8E4008F2F38 /* HomeModelTool.swift in Sources */,
+				5B06B6112602F05100A0F486 /* HomeCoreData.xcdatamodeld in Sources */,
 				5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */,
 				843704A725EB55330011C53D /* DiscoverTableCtr.swift in Sources */,
 				843704B125EB62900011C53D /* MsgTableCtr.swift in Sources */,
-				5B0F1C3326021112006E65C7 /* Home.xcdatamodeld in Sources */,
 				5B3C067E25F078AB00D426F9 /* AutoLoginCtr.swift in Sources */,
 				8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */,
 				5B4DF18A25EE3038000FB250 /* PopViewCtr.swift in Sources */,
@@ -470,7 +470,7 @@
 				5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */,
 				5B3C069025F08AE100D426F9 /* XMNetWorkTool.swift in Sources */,
 				84D8368525F48667008F2F38 /* HomeModel.swift in Sources */,
-				5B0F1C362602119E006E65C7 /* HomeCore.swift in Sources */,
+				5B06B6152602F15800A0F486 /* HomeCore.swift in Sources */,
 				5B3C06A325F0EE9600D426F9 /* UserCountManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,13 +677,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5B0F1C3126021112006E65C7 /* Home.xcdatamodeld */ = {
+		5B06B60F2602F05100A0F486 /* HomeCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5B0F1C3226021112006E65C7 /* Home.xcdatamodel */,
+				5B06B6102602F05100A0F486 /* HomeCoreData.xcdatamodel */,
 			);
-			currentVersion = 5B0F1C3226021112006E65C7 /* Home.xcdatamodel */;
-			path = Home.xcdatamodeld;
+			currentVersion = 5B06B6102602F05100A0F486 /* HomeCoreData.xcdatamodel */;
+			path = HomeCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -13,7 +13,7 @@ import MJRefresh
 import SwiftyJSON
 class HomeTableCtr: XMBaseTableCtr {
     
-    var HomePageModels:Array<HomeModelTool> = []
+    var HomePageModels:[HomeModelTool] = [HomeModelTool]()
     lazy var refreshMsgLabel:UILabel = UILabel.init().then {
         $0.frame = CGRect.init(x: 0, y: navigationController!.navigationBar.height() - 30, width: kScreenWidth, height: 30)
         $0.backgroundColor = .systemOrange
@@ -69,7 +69,11 @@ class HomeTableCtr: XMBaseTableCtr {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    override func loadView() {
+        super.loadView()
+        //首先先加载本地数据
+        HomePageModels = HomeCore.init().queryData()
     }
 
     func TabBarDidClick() {
@@ -196,7 +200,7 @@ extension HomeTableCtr {
                 let tempArr = jsonDic["statuses"].arrayValue
                 var tempModels:Array<HomeModelTool> = []
                 for statuses in tempArr {
-                    // MARK: - 由于是model里嵌套model ---》user 所以要使用dictionaryObject方法而不能使用dictionaryValue(返回的是‘JSON’格式)
+                    // MARK76  : - 由于是model里嵌套model ---》user 所以要使用dictionaryObject方法而不能使用dictionaryValue(返回的是‘JSON’格式)
                     let homemodel = HomeModel.deserialize(from: statuses.dictionaryObject)
                     let homeModelTool = HomeModelTool.init(homeModel: homemodel!)
                     tempModels.append(homeModelTool)
@@ -213,7 +217,9 @@ extension HomeTableCtr {
                 }
                 //缓存图片
                 self.cacheImages(viewModels: self.HomePageModels)
-               
+               //保存到coredata
+                HomeCore.init().modifyData(self.HomePageModels)
+                
             case .failure(_): break
                 
             }
