@@ -18,13 +18,13 @@ let isPhoneX = Bool(kScreenWidth >= 375.0 && kScreenHeight >= 812.0 && isPhone)
 //导航条的高度
 let kNavigationHeight = CGFloat(isPhoneX ? 88 : 64)
 //状态栏高度
-let kStatusBarHeight = CGFloat(isPhoneX ? 44 : 20)
+let kStatusBarHeight = CGFloat(isPhoneX ? kTopSafeHeight : 20)
 //tabbar高度
-let kTabBarHeight = CGFloat(isPhoneX ? (49 + 34) : 49)
+let kTabBarHeight = CGFloat(isPhoneX ? (49 + kBottomSafeHeight) : 49)
 //顶部安全区域远离高度
-let kTopSafeHeight = CGFloat(isPhoneX ? 44 : 0)
+let kTopSafeHeight = CGFloat(isPhoneX ? UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 44 : 0)
 //底部安全区域远离高度
-let kBottomSafeHeight = CGFloat(isPhoneX ? 34 : 0)
+let kBottomSafeHeight = CGFloat(isPhoneX ? UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 34 : 0)
 
 //func rawWidthValue(value:CGFloat) -> CGFloat {
 //    

@@ -129,10 +129,12 @@ extension HomeCell{
         if count == 1 {
             let str = self.HomeViewModel!.picUrls.last!
             let image = SDImageCache.shared.imageFromDiskCache(forKey: str)
-            let size =  CGSize.init(width: (image!.size.width) * 2, height: (image!.size.height) * 2)
-            //布局picview
-            layout.itemSize = size
-            return size
+            if image != nil {
+                let size =  CGSize.init(width: (image!.size.width) * 2, height: (image!.size.height) * 2)
+                //布局picview
+                layout.itemSize = size
+                return size
+            }
         }
         
         //布局picview
@@ -176,7 +178,7 @@ class ItemCell: UICollectionViewCell {
     @IBOutlet weak var backImg: UIImageView!
 
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
     }
     

@@ -13,7 +13,9 @@
             <connections>
                 <outlet property="myTextView" destination="eKl-dJ-usF" id="IX8-Va-gXC"/>
                 <outlet property="myToolBar" destination="2gz-rT-hxl" id="E3j-j6-IaS"/>
-                <outlet property="toolBottom" destination="BJW-ZS-ZA2" id="XZb-FD-Gqh"/>
+                <outlet property="picPickerH" destination="3lw-cA-cuY" id="GFd-QM-ntm"/>
+                <outlet property="picPickerView" destination="wkZ-VO-pMb" id="Lq6-Oi-YQT"/>
+                <outlet property="toolBottom" destination="abF-Lb-bdo" id="gbM-to-7xm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,19 +34,35 @@
                         <outlet property="delegate" destination="-1" id="ti3-lg-sRK"/>
                     </connections>
                 </textView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wkZ-VO-pMb" customClass="ComposePicCollotionView" customModule="sinaDemo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="896" width="414" height="0.0"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="3lw-cA-cuY"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Vn-N6-zEp">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gz-rT-hxl">
-                    <rect key="frame" x="0.0" y="852" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="X1e-LX-721"/>
                     </constraints>
                     <items>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Xhq-7K-aOy"/>
-                        <barButtonItem style="plain" id="kqm-z9-Wfv">
+                        <barButtonItem style="plain" id="kqm-z9-Wfv" userLabel="选择图片">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UJj-zL-B2A">
                                 <rect key="frame" x="6.5" y="10" width="78" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="compose_toolbar_picture"/>
                                 <state key="highlighted" image="compose_toolbar_picture_highlighted"/>
+                                <connections>
+                                    <action selector="choosePicClick" destination="-1" eventType="touchUpInside" id="RSt-x8-X8d"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="N4s-8d-jmn"/>
@@ -91,9 +109,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eKl-dJ-usF" secondAttribute="trailing" id="1je-vb-tKM"/>
-                <constraint firstAttribute="bottom" secondItem="2gz-rT-hxl" secondAttribute="bottom" id="BJW-ZS-ZA2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wkZ-VO-pMb" secondAttribute="trailing" id="MSZ-C4-ojE"/>
                 <constraint firstItem="eKl-dJ-usF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ROP-G1-BZx"/>
                 <constraint firstItem="2gz-rT-hxl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Sx7-o1-jmk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2gz-rT-hxl" secondAttribute="bottom" id="abF-Lb-bdo"/>
+                <constraint firstItem="wkZ-VO-pMb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bkv-bB-pv3"/>
+                <constraint firstAttribute="bottom" secondItem="wkZ-VO-pMb" secondAttribute="bottom" id="bvS-q7-19r"/>
                 <constraint firstItem="eKl-dJ-usF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cip-qb-xLn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eKl-dJ-usF" secondAttribute="bottom" id="hEH-ZL-iIh"/>
                 <constraint firstItem="2gz-rT-hxl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sZO-F9-4Sl"/>
@@ -117,6 +138,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

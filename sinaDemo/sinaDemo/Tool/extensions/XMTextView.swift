@@ -9,6 +9,16 @@ import UIKit
 
 class XMTextView: UITextView,UITextViewDelegate {
     var placeHoldText = "分享点什么吧"
+    override var text: String! {
+        didSet {
+            if self.placeHoldLb.text?.count ?? 0 > 0 {
+                placeHoldLb.text = ""
+            }else{
+                placeHoldLb.text = placeHoldText
+            }
+            
+        }
+    }
     lazy  var placeHoldLb = UILabel.init().then {
         $0.frame = CGRect.init(x: 10, y: 0, width: 150, height: 32)
         self.addSubview($0)

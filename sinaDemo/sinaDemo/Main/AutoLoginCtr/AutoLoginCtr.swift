@@ -11,13 +11,18 @@ import Moya
 class AutoLoginCtr: UIViewController {
     var userModel:UserCount?
     var getedToken:Bool = false
+    lazy var dispatchGroup = DispatchGroup.init()
     @IBOutlet weak var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavUI()
         requestUrl()
     }
+    deinit {
+        print("AutoLoginCtr deinit")
+    }
 }
+
 // MARK: - 设置ui界面
 
 extension AutoLoginCtr{
@@ -56,21 +61,54 @@ extension AutoLoginCtr{
 // MARK: - 其他网络请求
 
 extension AutoLoginCtr{
-    func getAccessToken(code:String)  {
+    
+    // MARK: - 利用GCD来配合网络请求
+    private func useGCDtoGetTokenAndUserInfo(userCode:String){
+        //创建自定义异步队列，不用全局队列，防止对全局队列有什么不好的影响
+        let queue = DispatchQueue.init(label: "loginQueue",attributes: .concurrent)
+        self.dispatchGroup.enter()//必须在这里加入group，不能再queue.async里，否则notify操作先执行
+        self.dispatchGroup.enter()
+        queue.async {
+            //在异步队列里执行异步线程。防止由于getAccessToken接口有问题，从而阻塞主线程
+//在getAccessToken 里用信号量控制一下，先让getAccessToken执行完毕后再进行getUserMsg
+            self.getAccessToken(code: userCode)
+            self.getUserMsg()
+        }
+        
+        self.dispatchGroup.notify(queue: queue) {
+            print("notify-已经获得结果-必须在主线程操作UI")
+            DispatchQueue.main.async {
+                self.navigationController?.dismiss(animated: false, completion: {
+                    //切换跟控制器
+                    UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()
+
+                })
+            }
+        }
+        print("此时处于主线程-不会阻塞-执行了获取token操作-结果待定")
+    }
+    
+    private func getAccessToken(code:String)  {
         self.getedToken = true
+        //当前队列是是loginQueue，DispatchSemaphore信号量来保证先执行获取token的方法 sema.wait()阻塞当前线程
+        print("此时处于loginQueue队列的线程 getAccessToken")
+        let sema = DispatchSemaphore(value: 0)
         xmProvider.request(.getAccessToken(client_id: sinaAppKey, client_secret: sinaAppSecret, grant_type:"authorization_code", redirect_uri: sinaRedirectUrl, code: code)) { (result:Result<Response, MoyaError>) in
             if case .success(let response) = result {
                 // 解析数据
                 let jsonDic = try! response.mapJSON() as! NSDictionary
                 self.userModel = UserCount.deserialize(from: jsonDic)
-                //用token请求个人信息
-                self.getUserMsg()
+                sema.signal()
+                self.dispatchGroup.leave()
+                print("getAccessTokened")
             }
         
         }
+        sema.wait()
         
     }
-    func getUserMsg() {
+    private func getUserMsg() {
+        print("getUserMsg")
         let token:String = self.userModel!.access_token ?? ""
         xmProvider.request(.getUserInfo(access_token: token, uid: self.userModel!.uid!)) { (result:Result<Response, MoyaError>) in
 //            print(result)
@@ -81,13 +119,11 @@ extension AutoLoginCtr{
                         let newDic = jsonDic.merging(oldDic) { (shopParamaKeyValue, oldDic) -> Any in
                             return shopParamaKeyValue
                         }
+                        print("getUserMsged")
                         self.userModel = UserCount.deserialize(from: newDic)
                         UserCountManager.saveUserCount(user: self.userModel!)
-                        self.navigationController?.dismiss(animated: false, completion: {
-                            //切换跟控制器
-                            UIApplication.shared.keyWindow?.rootViewController = WelcomeCtr.init()
-                            
-                        })
+                        self.dispatchGroup.leave()
+                        
                     }
                 }
                 
@@ -127,7 +163,8 @@ extension AutoLoginCtr:WKNavigationDelegate{
         
         if urlstring.components(separatedBy: "code=").count == 2  &&  urlstring.components(separatedBy: sinaRedirectUrl).count == 2{
             if !self.getedToken {
-                getAccessToken(code: urlstring.components(separatedBy: "code=").last!)
+                //请求token和个人信息
+                self.getAccessToken(code: urlstring.components(separatedBy: "code=").last!)
             }
             
             decisionHandler(WKNavigationActionPolicy.cancel)

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="picPickerCell" id="ydx-SN-DMU" customClass="picPickerCell" customModule="sinaDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uON-mZ-2Vt">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_picadd_cellbg" translatesAutoresizingMaskIntoConstraints="NO" id="bAD-Q1-4NF">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9k-f3-BBp">
+                        <rect key="frame" x="30" y="0.0" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="K8e-sR-T80"/>
+                            <constraint firstAttribute="width" constant="20" id="ZJg-ax-5ix"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="compose_close"/>
+                        <connections>
+                            <action selector="closeClick" destination="ydx-SN-DMU" eventType="touchUpInside" id="lDH-Jh-3Nh"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="bAD-Q1-4NF" secondAttribute="bottom" id="ChR-FD-Y5Z"/>
+                    <constraint firstAttribute="trailing" secondItem="bAD-Q1-4NF" secondAttribute="trailing" id="Drj-9e-ONw"/>
+                    <constraint firstItem="bAD-Q1-4NF" firstAttribute="leading" secondItem="uON-mZ-2Vt" secondAttribute="leading" id="HIf-g0-378"/>
+                    <constraint firstAttribute="trailing" secondItem="Y9k-f3-BBp" secondAttribute="trailing" id="J4N-Eh-lKw"/>
+                    <constraint firstItem="bAD-Q1-4NF" firstAttribute="top" secondItem="uON-mZ-2Vt" secondAttribute="top" id="aDy-uP-tOO"/>
+                    <constraint firstItem="Y9k-f3-BBp" firstAttribute="top" secondItem="uON-mZ-2Vt" secondAttribute="top" id="oFw-9h-pai"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="backImg" destination="bAD-Q1-4NF" id="r4t-99-8Hy"/>
+                <outlet property="closeBtn" destination="Y9k-f3-BBp" id="id6-lS-QFX"/>
+            </connections>
+            <point key="canvasLocation" x="-265.21739130434787" y="40.848214285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="compose_close" width="10" height="10"/>
+        <image name="compose_picadd_cellbg" width="100" height="100"/>
+    </resources>
+</document>

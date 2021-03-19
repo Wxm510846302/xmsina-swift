@@ -24,6 +24,10 @@
 		5B4DF18B25EE3038000FB250 /* PopViewCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B4DF18925EE3038000FB250 /* PopViewCtr.xib */; };
 		5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF18D25EE32B5000FB250 /* PopTransitioning.swift */; };
 		5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */; };
+		5B6F1A45260337E600F7FE5D /* ZLPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6F1A422603371100F7FE5D /* ZLPhotoBrowser.framework */; };
+		5B6F1A46260337E600F7FE5D /* ZLPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6F1A422603371100F7FE5D /* ZLPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B6F1A4E2603512900F7FE5D /* ComposePicCollotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1A4D2603512900F7FE5D /* ComposePicCollotionView.swift */; };
+		5B6F1A50260354A700F7FE5D /* picPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1A4F260354A700F7FE5D /* picPickerCell.xib */; };
 		8437049725EB4AC10011C53D /* XMTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049525EB4AC10011C53D /* XMTool.swift */; };
 		8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049925EB50EF0011C53D /* XMTabBarCtr.swift */; };
 		843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704A225EB551A0011C53D /* HomeTableCtr.swift */; };
@@ -54,6 +58,20 @@
 		BEFCAE8142BC86147285C2C9 /* Pods_sinaDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB6218A5BF452E1E1893881 /* Pods_sinaDemo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B6F1A47260337E600F7FE5D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B6F1A46260337E600F7FE5D /* ZLPhotoBrowser.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5B06B6102602F05100A0F486 /* HomeCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeCoreData.xcdatamodel; sourceTree = "<group>"; };
 		5B06B6142602F15800A0F486 /* HomeCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCore.swift; sourceTree = "<group>"; };
@@ -72,6 +90,9 @@
 		5B4DF18925EE3038000FB250 /* PopViewCtr.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopViewCtr.xib; sourceTree = "<group>"; };
 		5B4DF18D25EE32B5000FB250 /* PopTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTransitioning.swift; sourceTree = "<group>"; };
 		5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPresentationCtr.swift; sourceTree = "<group>"; };
+		5B6F1A422603371100F7FE5D /* ZLPhotoBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZLPhotoBrowser.framework; sourceTree = "<group>"; };
+		5B6F1A4D2603512900F7FE5D /* ComposePicCollotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposePicCollotionView.swift; sourceTree = "<group>"; };
+		5B6F1A4F260354A700F7FE5D /* picPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = picPickerCell.xib; sourceTree = "<group>"; };
 		665DA7FCB7F89212155B757F /* Pods-sinaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7AFEAD67537B57CB3EDDFF00 /* Pods-sinaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8437049525EB4AC10011C53D /* XMTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTool.swift; sourceTree = "<group>"; };
@@ -111,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6F1A45260337E600F7FE5D /* ZLPhotoBrowser.framework in Frameworks */,
 				BEFCAE8142BC86147285C2C9 /* Pods_sinaDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +162,8 @@
 			children = (
 				5B0F1BEA2601999A006E65C7 /* ComposeCtr.swift */,
 				5B0F1BEB2601999A006E65C7 /* ComposeCtr.xib */,
+				5B6F1A4D2603512900F7FE5D /* ComposePicCollotionView.swift */,
+				5B6F1A4F260354A700F7FE5D /* picPickerCell.xib */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -249,6 +273,7 @@
 		8437049425EB4AC10011C53D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				5B6F1A422603371100F7FE5D /* ZLPhotoBrowser.framework */,
 				5B3C068E25F08AB900D426F9 /* network */,
 				5B4DF17F25EE261F000FB250 /* extensions */,
 				8437049525EB4AC10011C53D /* XMTool.swift */,
@@ -329,6 +354,7 @@
 				84F5001025E901D50096DA8B /* Frameworks */,
 				84F5001125E901D50096DA8B /* Resources */,
 				17473AE7A2DB4E5C46AD3FAD /* [CP] Embed Pods Frameworks */,
+				5B6F1A47260337E600F7FE5D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -376,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6F1A50260354A700F7FE5D /* picPickerCell.xib in Resources */,
 				5B0F1BED2601999A006E65C7 /* ComposeCtr.xib in Resources */,
 				84F5002325E901D50096DA8B /* LaunchScreen.storyboard in Resources */,
 				843704E725EBA8EC0011C53D /* DISCOVER.storyboard in Resources */,
@@ -465,6 +492,7 @@
 				5B3C067E25F078AB00D426F9 /* AutoLoginCtr.swift in Sources */,
 				8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */,
 				5B4DF18A25EE3038000FB250 /* PopViewCtr.swift in Sources */,
+				5B6F1A4E2603512900F7FE5D /* ComposePicCollotionView.swift in Sources */,
 				843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */,
 				843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */,
 				5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */,
@@ -621,6 +649,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 885Y7599LZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sinaDemo/Tool",
+				);
 				INFOPLIST_FILE = sinaDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -641,6 +673,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 885Y7599LZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sinaDemo/Tool",
+				);
 				INFOPLIST_FILE = sinaDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
