@@ -16,6 +16,8 @@ target 'sinaDemo' do
     pod 'MJRefresh'
     #下面是新手引导
     pod 'Instructions', '~> 2.0.1'
+    #选择照片
+    pod 'ZLPhotoBrowser'
 end
 
 

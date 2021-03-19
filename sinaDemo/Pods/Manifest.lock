@@ -14,6 +14,9 @@ PODS:
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
   - SwiftyJSON (4.3.0)
+  - ZLPhotoBrowser (4.1.4):
+    - ZLPhotoBrowser/Core (= 4.1.4)
+  - ZLPhotoBrowser/Core (4.1.4)
 
 DEPENDENCIES:
   - AutoInch
@@ -23,6 +26,7 @@ DEPENDENCIES:
   - Moya/RxSwift (~> 14.0)
   - SDWebImage
   - SwiftyJSON (~> 4.0)
+  - ZLPhotoBrowser
 
 SPEC REPOS:
   trunk:
@@ -35,6 +39,7 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SwiftyJSON
+    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
@@ -46,7 +51,8 @@ SPEC CHECKSUMS:
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  ZLPhotoBrowser: 7595658e8e5266efb8aed85c134d0a08fb6fed8f
 
-PODFILE CHECKSUM: 5079e0842a45eac94586a73cf0e8b0db16adf5b0
+PODFILE CHECKSUM: d4d191a5200f751e66ffe9619402577b06b28c46
 
 COCOAPODS: 1.10.1
