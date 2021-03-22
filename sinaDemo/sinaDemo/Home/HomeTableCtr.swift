@@ -172,6 +172,12 @@ extension HomeTableCtr{
         
         return cell!
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ctr = UIViewController.init()
+        ctr.title = "详情"
+        ctr.view.backgroundColor = .white
+        navigationController?.pushViewController(ctr, animated: true)
+    }
 }
 
 // MARK: - 网络相关
@@ -212,6 +218,10 @@ extension HomeTableCtr {
                     self.showNewMessageLb(countNumber: tempModels.count)
                 }
                 else if self.tableView.mj_footer?.isRefreshing == true {
+                    if tempArr.count == 0 {
+                        self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+                        return
+                    }
                     self.HomePageModels = self.HomePageModels + tempModels
                     self.tableView.mj_footer?.endRefreshing()
                 }

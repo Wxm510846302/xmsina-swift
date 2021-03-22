@@ -27,6 +27,15 @@ class ComposeCtr: UIViewController{
     @IBOutlet weak var toolBottom: NSLayoutConstraint!
     @IBOutlet weak var myToolBar: UIToolbar!
     @IBOutlet weak var myTextView: XMTextView!
+    @IBAction func textClick() {
+        
+        UIView.animate(withDuration: 0.3) {
+            self.myTextView.resignFirstResponder()
+            self.myTextView.inputView = nil
+            self.myTextView.becomeFirstResponder()
+            self.view.layoutIfNeeded()
+        }
+    }
     @IBAction func choosePicClick() {
         self.myTextView.resignFirstResponder()
         //弹出照片展示页面
@@ -35,7 +44,16 @@ class ComposeCtr: UIViewController{
             self.view.layoutIfNeeded()
         }
     }
-   
+    @IBAction func showEmotionClick(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.3) {
+            self.myTextView.resignFirstResponder()
+            self.myTextView.inputView = EmotionIconCtr.init().view
+            self.myTextView.becomeFirstResponder()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()

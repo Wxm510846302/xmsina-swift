@@ -26,6 +26,9 @@
 		5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */; };
 		5B6F1A4E2603512900F7FE5D /* ComposePicCollotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1A4D2603512900F7FE5D /* ComposePicCollotionView.swift */; };
 		5B6F1A50260354A700F7FE5D /* picPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1A4F260354A700F7FE5D /* picPickerCell.xib */; };
+		5B6F1A9D2608368B00F7FE5D /* EmotionPakageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1A9C2608368B00F7FE5D /* EmotionPakageManager.swift */; };
+		5B6F1A9F260836CE00F7FE5D /* EmotionIconResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */; };
+		5B6F1AA12608477400F7FE5D /* EmotionIconCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */; };
 		8437049725EB4AC10011C53D /* XMTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049525EB4AC10011C53D /* XMTool.swift */; };
 		8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049925EB50EF0011C53D /* XMTabBarCtr.swift */; };
 		843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704A225EB551A0011C53D /* HomeTableCtr.swift */; };
@@ -89,6 +92,9 @@
 		5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPresentationCtr.swift; sourceTree = "<group>"; };
 		5B6F1A4D2603512900F7FE5D /* ComposePicCollotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposePicCollotionView.swift; sourceTree = "<group>"; };
 		5B6F1A4F260354A700F7FE5D /* picPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = picPickerCell.xib; sourceTree = "<group>"; };
+		5B6F1A9C2608368B00F7FE5D /* EmotionPakageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPakageManager.swift; sourceTree = "<group>"; };
+		5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmotionIconResource.bundle; sourceTree = "<group>"; };
+		5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionIconCtr.swift; sourceTree = "<group>"; };
 		665DA7FCB7F89212155B757F /* Pods-sinaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7AFEAD67537B57CB3EDDFF00 /* Pods-sinaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8437049525EB4AC10011C53D /* XMTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTool.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		5B0F1BE926019977006E65C7 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
+				5B6F1A992608361A00F7FE5D /* EmotionIcon */,
 				5B0F1BEA2601999A006E65C7 /* ComposeCtr.swift */,
 				5B0F1BEB2601999A006E65C7 /* ComposeCtr.xib */,
 				5B6F1A4D2603512900F7FE5D /* ComposePicCollotionView.swift */,
@@ -217,6 +224,32 @@
 				5B4DF19025EE33E7000FB250 /* PopPresentationCtr.swift */,
 			);
 			path = UIpopVc;
+			sourceTree = "<group>";
+		};
+		5B6F1A992608361A00F7FE5D /* EmotionIcon */ = {
+			isa = PBXGroup;
+			children = (
+				5B6F1A9B2608366B00F7FE5D /* EmotionIconCtr */,
+				5B6F1A9A2608365E00F7FE5D /* EmotionIconModel */,
+			);
+			path = EmotionIcon;
+			sourceTree = "<group>";
+		};
+		5B6F1A9A2608365E00F7FE5D /* EmotionIconModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B6F1A9C2608368B00F7FE5D /* EmotionPakageManager.swift */,
+				5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */,
+			);
+			path = EmotionIconModel;
+			sourceTree = "<group>";
+		};
+		5B6F1A9B2608366B00F7FE5D /* EmotionIconCtr */ = {
+			isa = PBXGroup;
+			children = (
+				5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */,
+			);
+			path = EmotionIconCtr;
 			sourceTree = "<group>";
 		};
 		8437048F25EB4AC10011C53D /* Discover */ = {
@@ -410,6 +443,7 @@
 				5B4DF18B25EE3038000FB250 /* PopViewCtr.xib in Resources */,
 				5B3C06A925F1D77300D426F9 /* WelcomeCtr.xib in Resources */,
 				843704E425EBA8E30011C53D /* Profile.storyboard in Resources */,
+				5B6F1A9F260836CE00F7FE5D /* EmotionIconResource.bundle in Resources */,
 				843704E125EBA8AF0011C53D /* Home.storyboard in Resources */,
 				843704F325EC8B930011C53D /* XMBaseVistorView.xib in Resources */,
 			);
@@ -490,7 +524,9 @@
 				843704EB25EC88D70011C53D /* XMBaseTableCtr.swift in Sources */,
 				843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */,
 				5B4DF18425EE290B000FB250 /* XMRightImgBtn.swift in Sources */,
+				5B6F1A9D2608368B00F7FE5D /* EmotionPakageManager.swift in Sources */,
 				5B3C069025F08AE100D426F9 /* XMNetWorkTool.swift in Sources */,
+				5B6F1AA12608477400F7FE5D /* EmotionIconCtr.swift in Sources */,
 				84D8368525F48667008F2F38 /* HomeModel.swift in Sources */,
 				5B06B6152602F15800A0F486 /* HomeCore.swift in Sources */,
 				5B3C06A325F0EE9600D426F9 /* UserCountManager.swift in Sources */,

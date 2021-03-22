@@ -41,7 +41,7 @@ extension AutoLoginCtr{
     }
     @objc private func loginCountClick(){
     
-        let jscode = "document.getElementById（'userId'）.value = '18231178020'; document.getElementById（'passwd'）.value = 'wxm510846302'"
+        let jscode = "document.getElementById（'userId'）.value = '17801311135'; document.getElementById（'passwd'）.value = 'wxm18231178020'"
         webView.evaluateJavaScript(jscode, completionHandler: nil)
     }
     
@@ -164,7 +164,7 @@ extension AutoLoginCtr:WKNavigationDelegate{
         if urlstring.components(separatedBy: "code=").count == 2  &&  urlstring.components(separatedBy: sinaRedirectUrl).count == 2{
             if !self.getedToken {
                 //请求token和个人信息
-                self.getAccessToken(code: urlstring.components(separatedBy: "code=").last!)
+                self.useGCDtoGetTokenAndUserInfo(userCode: urlstring.components(separatedBy: "code=").last!)
             }
             
             decisionHandler(WKNavigationActionPolicy.cancel)
