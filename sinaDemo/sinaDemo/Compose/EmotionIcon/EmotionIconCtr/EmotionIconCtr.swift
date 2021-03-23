@@ -8,6 +8,9 @@
 import UIKit
 let EmotionCell = "EmotionCellID"
 class EmotionIconCtr: UIViewController {
+    
+    var callBack:((_ emoticon:Emoticon) -> Void)? = nil
+    var textView:XMTextView?
     lazy var Packages:[EmotionPackage] = EmotionPakageManager.init().packages
     lazy var currentPackage = self.Packages.first!
     lazy var deleteBtn = UIButton.init().then {
@@ -24,6 +27,14 @@ class EmotionIconCtr: UIViewController {
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
         $0.bounces = false
+    }
+    init(textView:XMTextView) {
+        super.init(nibName:nil,bundle: nil)
+        self.textView = textView
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +64,7 @@ class EmotionIconCtr: UIViewController {
     private func prepareForCollectionView(){
         collectionView.register(EmotionItemCell.self, forCellWithReuseIdentifier: EmotionCell)
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     private func prepareForToolBar(){
         let titles = ["最近","默认","emoji","浪花"]
@@ -74,10 +86,11 @@ class EmotionIconCtr: UIViewController {
         self.collectionView.reloadData()
     }
     @objc private func deleteClick(){
-        
+        self.textView?.deleteBackward()
     }
+    
 }
-extension EmotionIconCtr : UICollectionViewDataSource{
+extension EmotionIconCtr : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.currentPackage.emoticons.count + 9
     }
@@ -101,12 +114,20 @@ extension EmotionIconCtr : UICollectionViewDataSource{
         }
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item >= self.currentPackage.emoticons.count {
+            return
+        }
+        self.textView?.insertEmotionText(emoticon: self.currentPackage.emoticons[indexPath.item])
+        callBack?(self.currentPackage.emoticons[indexPath.item])
+    }
     
 }
 class EmotionItemCell: UICollectionViewCell {
     lazy var backImg:UIButton = UIButton.init().then {
         $0.frame = self.contentView.bounds
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        $0.isUserInteractionEnabled = false
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

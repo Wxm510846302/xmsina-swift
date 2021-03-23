@@ -48,7 +48,7 @@ class ComposeCtr: UIViewController{
         
         UIView.animate(withDuration: 0.3) {
             self.myTextView.resignFirstResponder()
-            self.myTextView.inputView = EmotionIconCtr.init().view
+            self.myTextView.inputView = EmotionIconCtr.init(textView: self.myTextView).view
             self.myTextView.becomeFirstResponder()
             self.view.layoutIfNeeded()
         }
@@ -139,6 +139,10 @@ extension ComposeCtr {
 // MARK: - 返回和键盘监听回调
 
 extension ComposeCtr{
+    @objc private func composeClick(){
+        self.myTextView.getAttributeString()
+//        dismiss(animated: true, completion: nil)
+    }
     @objc private func backClick(){
         dismiss(animated: true, completion: nil)
     }
@@ -159,7 +163,7 @@ extension ComposeCtr{
     }
     private func setUpNavBar(){
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "返回", style: .plain, target: self, action: #selector(self.backClick))
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "发送", style: .plain, target: self, action: #selector(self.backClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "发送", style: .plain, target: self, action: #selector(self.composeClick))
         navigationItem.rightBarButtonItem?.isEnabled = false
         self.title = "发布"
         //       navigationItem.prompt = "说点什么"

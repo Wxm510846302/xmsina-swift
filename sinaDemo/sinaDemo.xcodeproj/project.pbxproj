@@ -29,6 +29,7 @@
 		5B6F1A9D2608368B00F7FE5D /* EmotionPakageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1A9C2608368B00F7FE5D /* EmotionPakageManager.swift */; };
 		5B6F1A9F260836CE00F7FE5D /* EmotionIconResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */; };
 		5B6F1AA12608477400F7FE5D /* EmotionIconCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */; };
+		5B6F1ABC2609818900F7FE5D /* XMTextView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1ABB2609818900F7FE5D /* XMTextView+extension.swift */; };
 		8437049725EB4AC10011C53D /* XMTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049525EB4AC10011C53D /* XMTool.swift */; };
 		8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049925EB50EF0011C53D /* XMTabBarCtr.swift */; };
 		843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704A225EB551A0011C53D /* HomeTableCtr.swift */; };
@@ -95,6 +96,7 @@
 		5B6F1A9C2608368B00F7FE5D /* EmotionPakageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPakageManager.swift; sourceTree = "<group>"; };
 		5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmotionIconResource.bundle; sourceTree = "<group>"; };
 		5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionIconCtr.swift; sourceTree = "<group>"; };
+		5B6F1ABB2609818900F7FE5D /* XMTextView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMTextView+extension.swift"; sourceTree = "<group>"; };
 		665DA7FCB7F89212155B757F /* Pods-sinaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7AFEAD67537B57CB3EDDFF00 /* Pods-sinaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8437049525EB4AC10011C53D /* XMTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTool.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */,
+				5B6F1ABB2609818900F7FE5D /* XMTextView+extension.swift */,
 			);
 			path = EmotionIconCtr;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				843704AA25EB554E0011C53D /* ProfileTableCtr.swift in Sources */,
 				843704CA25EB94090011C53D /* XMStroyBordTbBar.swift in Sources */,
 				5B3C06A825F1D77300D426F9 /* WelcomeCtr.swift in Sources */,
+				5B6F1ABC2609818900F7FE5D /* XMTextView+extension.swift in Sources */,
 				84F5001925E901D50096DA8B /* SceneDelegate.swift in Sources */,
 				5B4DF18125EE2693000FB250 /* UIBarItemExtension.swift in Sources */,
 				84802CC925FE0DA6008B46C2 /* XMTextView.swift in Sources */,
