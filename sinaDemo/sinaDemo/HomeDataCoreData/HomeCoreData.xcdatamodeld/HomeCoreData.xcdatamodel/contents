@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19F96" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EmotionRecently" representedClassName="EmotionRecently" syncable="YES" codeGenerationType="class">
+        <attribute name="recently" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Home" representedClassName="Home" syncable="YES" codeGenerationType="class">
         <attribute name="homeTools" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
     </entity>
     <elements>
         <element name="Home" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="EmotionRecently" positionX="-63" positionY="-9" width="128" height="58"/>
     </elements>
 </model>

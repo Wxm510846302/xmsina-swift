@@ -33,7 +33,6 @@ class XMTextView: UITextView,UITextViewDelegate {
         placeHoldLb.text = placeHoldText
         placeHoldLb.font = UIFont.systemFont(ofSize: 14)
         placeHoldLb.textColor = .gray
-//        self.delegate = self
         self.textContainerInset = UIEdgeInsets.init(top: 8, left: 4, bottom: 10, right: 8)
     }
     
@@ -50,7 +49,7 @@ class XMTextView: UITextView,UITextViewDelegate {
         //获取光标位置
         let uirange = self.selectedTextRange!
         let nsrange = self.selectedRange
-        if emoticon.code.count > 0 {
+        if emoticon.code.count > 0 && emoticon.code != "\0" {
             //emoji
             self.replace(uirange, withText: emoticon.code)
         }

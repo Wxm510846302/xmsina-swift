@@ -343,6 +343,7 @@ class XMFileManager: NSObject {
         let filePath = (file as NSString).appendingPathComponent( fileName + ".archiver")
         do {
             try FileManager.default.removeItem(at: URL(fileURLWithPath: filePath))
+            print("删除\(fileName)成功")
         } catch  {
             
         }

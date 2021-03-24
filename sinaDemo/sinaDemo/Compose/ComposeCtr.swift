@@ -9,6 +9,7 @@ import UIKit
 import ZLPhotoBrowser
 import RxSwift
 class ComposeCtr: UIViewController{
+    var emotionView:EmotionIconCtr? = nil
     var choosedImages:[UIImage] = [UIImage]() {
         didSet{
             self.picPickerView.picImages = choosedImages
@@ -48,7 +49,7 @@ class ComposeCtr: UIViewController{
         
         UIView.animate(withDuration: 0.3) {
             self.myTextView.resignFirstResponder()
-            self.myTextView.inputView = EmotionIconCtr.init(textView: self.myTextView).view
+            self.myTextView.inputView = self.emotionView?.view
             self.myTextView.becomeFirstResponder()
             self.view.layoutIfNeeded()
         }
@@ -140,7 +141,7 @@ extension ComposeCtr {
 
 extension ComposeCtr{
     @objc private func composeClick(){
-        self.myTextView.getAttributeString()
+        print(self.myTextView.getAttributeString())
 //        dismiss(animated: true, completion: nil)
     }
     @objc private func backClick(){
@@ -168,6 +169,7 @@ extension ComposeCtr{
         self.title = "发布"
         //       navigationItem.prompt = "说点什么"
         self.picPickerView.picImages = self.choosedImages
+        self.emotionView = EmotionIconCtr.init(textView: self.myTextView)
     }
     private func addObeservers(){
         self.picPickerView.delegate = self
