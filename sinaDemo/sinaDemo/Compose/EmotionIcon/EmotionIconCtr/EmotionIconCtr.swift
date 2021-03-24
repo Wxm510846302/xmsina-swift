@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import HandyJSON
+let RecentlyEmotionString = "RecentlyEmotionString"
 let EmotionCell = "EmotionCellID"
 class EmotionIconCtr: UIViewController {
-    
+    var chooseEmotionIdex = 0
     var callBack:((_ emoticon:Emoticon) -> Void)? = nil
     var textView:XMTextView?
     lazy var Packages:[EmotionPackage] = EmotionPakageManager.init().packages
@@ -38,7 +40,11 @@ class EmotionIconCtr: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+//        XMFileManager.init().deleteArchiver(fileName: RecentlyEmotionString)
         SetUpSubViews()
+    }
+    deinit {
+        print("EmotionIconCtr 销毁了")
     }
     func SetUpSubViews()  {
 //        print(self.view.bounds.height)
@@ -57,8 +63,8 @@ class EmotionIconCtr: UIViewController {
         cons += NSLayoutConstraint.constraints(withVisualFormat: "H:|-left-[btn]-20-|", options: [], metrics: ["left": (kScreenWidth / 9 * 8 - 20)], views: views)
         view.addConstraints(cons)
         
-        prepareForCollectionView()
         prepareForToolBar()
+        prepareForCollectionView()
     }
    
     private func prepareForCollectionView(){
@@ -80,19 +86,48 @@ class EmotionIconCtr: UIViewController {
         }
         tempArr.removeLast()
         barTool.items = tempArr
+        //如果最近没有，就显示默认
+        if self.currentPackage.emoticons.count == 0 {
+            self.toolBarClick(item: tempArr[2])
+            chooseEmotionIdex = 1
+        }
     }
     @objc private func toolBarClick(item:UIBarButtonItem) {
         self.currentPackage = self.Packages[item.tag]
+        chooseEmotionIdex = item.tag
         self.collectionView.reloadData()
     }
     @objc private func deleteClick(){
         self.textView?.deleteBackward()
     }
+    //插入最近
+    private func insertRacentlyList(emoticon:Emoticon){
+        let recentlyPackage = Packages.first! as EmotionPackage
+        if ((recentlyPackage.emoticons.contains(emoticon)) == true) && recentlyPackage.emoticons.count > 0 {
+            guard let index = recentlyPackage.emoticons.firstIndex(of: emoticon) else { return  }
+            recentlyPackage.emoticons.remove(at: index)
+        }
+        recentlyPackage.emoticons.insert(emoticon, at: 0)
+        
+        var recentlyPackagesaveEmoticons:[Emoticon] = [Emoticon]()
+        //保存到本地
+        for item in recentlyPackage.emoticons {
+            let emotion:Emoticon = item.mutableCopy() as! Emoticon
+            if emotion.path.count > 0 {
+                let bundlepath = emotion.path.components(separatedBy: "EmotionIconResource.bundle").last
+                emotion.path = bundlepath ?? ""
+            }
+            recentlyPackagesaveEmoticons.append(emotion)
+        }
+        _ = XMFileManager.init().saveToArchiver(obj: recentlyPackagesaveEmoticons, fileName: RecentlyEmotionString)
+    
+    }
     
 }
 extension EmotionIconCtr : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.currentPackage.emoticons.count + 9
+
+        return self.currentPackage.emoticons.count + 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,8 +153,12 @@ extension EmotionIconCtr : UICollectionViewDataSource,UICollectionViewDelegate{
         if indexPath.item >= self.currentPackage.emoticons.count {
             return
         }
-        self.textView?.insertEmotionText(emoticon: self.currentPackage.emoticons[indexPath.item])
-        callBack?(self.currentPackage.emoticons[indexPath.item])
+        let emotion = self.currentPackage.emoticons[indexPath.item]
+        self.textView?.insertEmotionText(emoticon: emotion)
+        callBack?(emotion)
+        if self.chooseEmotionIdex != 0  {
+            self.insertRacentlyList(emoticon: emotion)
+        }
     }
     
 }

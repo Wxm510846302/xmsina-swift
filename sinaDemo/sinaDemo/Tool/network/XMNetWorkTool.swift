@@ -51,6 +51,7 @@ let myEndpointClosure = { (target: MyService) -> Endpoint in
 /// 自定义的moya -》Provider
 let xmProvider = MoyaProvider<MyService>(endpointClosure: myEndpointClosure,plugins:[RequestLoadingPlugin()])
 
+/// 接口枚举
 enum MyService {
     //获取token
     case getAccessToken(client_id:String,client_secret:String,grant_type:String,redirect_uri:String,code:String)
@@ -58,7 +59,8 @@ enum MyService {
     case getUserInfo(access_token:String,uid:String)
     //获取首页微博
     case getHomePageData(access_token:String,since_id:Int,max_id:Int)
-    
+    //发送微博
+    case composeMessage(msg:String,image:UIImage)
     case other
 }
 extension MyService:TargetType{
@@ -82,6 +84,8 @@ extension MyService:TargetType{
             return "users/show.json"
         case .getHomePageData:
             return "statuses/home_timeline.json"
+        case .composeMessage:
+            return "statuses/upload.json"
         default:
             return ""
         }
