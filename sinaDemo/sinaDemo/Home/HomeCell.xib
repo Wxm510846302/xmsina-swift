@@ -64,6 +64,9 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-j9-Bhl" userLabel="发布内容" customClass="XMLabel" customModule="sinaDemo" customModuleProvider="target">
                         <rect key="frame" x="10" y="60" width="355" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14.5" id="iJm-lw-xT9"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -73,6 +76,9 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-he-is2" userLabel="转发内容" customClass="XMLabel" customModule="sinaDemo" customModuleProvider="target">
                         <rect key="frame" x="10" y="84.5" width="355" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14.5" id="QH6-sg-kOB"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -209,12 +215,14 @@
                 <outlet property="dianzan" destination="bre-pD-ebt" id="CTV-r7-Ces"/>
                 <outlet property="iconImg" destination="ByL-OU-Pda" id="Mc6-Uz-VEW"/>
                 <outlet property="myText" destination="mbX-j9-Bhl" id="Z8u-Bd-T6W"/>
+                <outlet property="mytextH" destination="iJm-lw-xT9" id="9zd-zV-BLe"/>
                 <outlet property="picBottom" destination="WCu-6x-Ex4" id="6Y0-4M-DmE"/>
                 <outlet property="picCollectionView" destination="Cxr-IP-X6w" id="kqX-xM-aUZ"/>
                 <outlet property="picConstraintH" destination="UmU-CE-25n" id="iYB-kb-PIb"/>
                 <outlet property="picConstraintW" destination="dUe-WX-lzH" id="Ax5-20-Rxk"/>
                 <outlet property="pinglun" destination="YBl-EH-JQe" id="ZLf-58-3oh"/>
                 <outlet property="reteewText" destination="xML-he-is2" id="ofu-q1-Rfx"/>
+                <outlet property="retextH" destination="QH6-sg-kOB" id="mqc-mJ-OQn"/>
                 <outlet property="screenName" destination="NyF-nT-V5t" id="art-yp-zCf"/>
                 <outlet property="source" destination="GSK-1x-V2f" id="Cc8-iW-Oyg"/>
                 <outlet property="zhuanfa" destination="cQz-Ui-A3Y" id="KMo-Tk-oQb"/>

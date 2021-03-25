@@ -168,7 +168,7 @@ extension XMLabel{
         //通过富文本来设置行间距
         let paraph = NSMutableParagraphStyle()
         //将行间距设置
-        paraph.lineSpacing = 0
+        paraph.lineSpacing = 5
         
         attrStringM.addAttribute(NSAttributedString.Key.font, value: font ?? 0, range: NSRange(location: 0, length: attrStringM.length))
         

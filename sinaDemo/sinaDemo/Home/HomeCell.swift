@@ -13,6 +13,8 @@ let edgeMargin = CGFloat(12).auto()
 class HomeCell: UITableViewCell {
     var index:IndexPath?
     
+    @IBOutlet weak var retextH: NSLayoutConstraint!
+    @IBOutlet weak var mytextH: NSLayoutConstraint!
     @IBOutlet weak var zhuanfaBackImg: UIImageView!
     @IBOutlet weak var dianzan: UIButton!
     @IBOutlet weak var pinglun: UIButton!
@@ -114,6 +116,8 @@ class HomeCell: UITableViewCell {
 //                self.reteewText.sizeToFit()
                 print( self.myText.frame.size.height)
                 print(self.myText.attributeHeight)
+                mytextH.constant = self.myText.attributeHeight
+                retextH.constant = self.reteewText.attributeHeight
                 layoutIfNeeded()
                 viewModel.cellHeight = bottomToolView.frame.maxY
             }
