@@ -59,8 +59,10 @@ enum MyService {
     case getUserInfo(access_token:String,uid:String)
     //获取首页微博
     case getHomePageData(access_token:String,since_id:Int,max_id:Int)
+    
+    // MARK: - 这里上传不上去，因为需要在新浪后台配置安全域名
     //发送微博
-    case composeMessage(msg:String,image:UIImage)
+    case composeMessage(msg:String,image:UIImage?)
     case other
 }
 extension MyService:TargetType{
@@ -85,7 +87,7 @@ extension MyService:TargetType{
         case .getHomePageData:
             return "statuses/home_timeline.json"
         case .composeMessage:
-            return "statuses/upload.json"
+            return "statuses/share.json"
         default:
             return ""
         }
@@ -94,6 +96,8 @@ extension MyService:TargetType{
     var method: Moya.Method {
         switch self {
         case .getAccessToken:
+            return .post
+        case .composeMessage:
             return .post
         default:
             return .get
@@ -126,6 +130,19 @@ extension MyService:TargetType{
             parmeters["since_id"] = since_id
             parmeters["max_id"] = max_id
             return .requestParameters(parameters: parmeters, encoding: URLEncoding.queryString)
+        case .composeMessage(let msg, let image):
+            let status = msg + sinaRedirectUrl
+            if image != nil {
+                let imageData = image?.pngData() ?? Data()
+                let userIdData = status.data(using: String.Encoding.utf8) ?? Data()
+                let tokenData = UserCountManager.userModel!.access_token!.data(using: String.Encoding.utf8) ?? Data()
+                let imageMultipartFormData = MultipartFormData(provider: .data(imageData), name: "pic", fileName: "userpic", mimeType: "image/jpeg")
+                let statusMultipartFormData = MultipartFormData(provider: .data(userIdData), name: "status")
+                let tokenMultipartFormData = MultipartFormData(provider: .data(tokenData), name: "access_token")
+                return .uploadMultipart([imageMultipartFormData,statusMultipartFormData,tokenMultipartFormData])
+            }
+            return .requestParameters(parameters: ["access_token": UserCountManager.userModel!.access_token!,"status":status], encoding: URLEncoding.default)
+            
         default:
             return .requestPlain
         }
@@ -138,6 +155,11 @@ extension MyService:TargetType{
             return ["Content-type": "application/json"]
         case .getUserInfo(_, _):
             return ["Content-type": "text/plain"]
+        case .composeMessage(_,let image):
+            if image != nil {
+                return ["Content-type" : "multipart/form-data"]
+            }
+            return ["Content-type": "application/json"]
         default:
             return ["Content-type": "application/json,text/json,text/javascript,text/html,text/plain,application/x-www-form-urlencodem"]
         }

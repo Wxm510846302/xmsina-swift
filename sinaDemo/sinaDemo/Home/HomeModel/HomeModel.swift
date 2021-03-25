@@ -25,6 +25,8 @@ class HomeModel: HandyJSON{
     var retweeted_status:HomeModel?
     //图片
     var pic_urls:Array<[String:String]>?
+    //大图片
+    var bmiddle_pic:Any?
     //转发数
     var reposts_count:Int?
     //评论数

@@ -40,7 +40,7 @@ class HomeTableCtr: XMBaseTableCtr {
             setUpNavgationItems()
             //注册cell
             tableView?.register(UINib.init(nibName: "HomeCell", bundle: Bundle.main), forCellReuseIdentifier: "HomeCellId")
-            self.tableView.rowHeight = UITableView.automaticDimension
+//            self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.estimatedRowHeight = 200
             // MARK: - 先加载缓存数据，再刷新
             
@@ -122,7 +122,6 @@ extension HomeTableCtr {
                     self.refreshMsgLabel.layer.isHidden = true
                     self.refreshMsgLabel.isHidden = true
                 }
-
             }
         }
         
@@ -178,6 +177,9 @@ extension HomeTableCtr{
         ctr.view.backgroundColor = .white
         navigationController?.pushViewController(ctr, animated: true)
     }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.HomePageModels[indexPath.row].cellHeight
+    }
 }
 
 // MARK: - 网络相关
@@ -203,6 +205,7 @@ extension HomeTableCtr {
                 guard let jsonDic = try? JSON(data: data) else {
                     return
                 }
+//                print(jsonDic.string)
                 let tempArr = jsonDic["statuses"].arrayValue
                 var tempModels:Array<HomeModelTool> = []
                 for statuses in tempArr {

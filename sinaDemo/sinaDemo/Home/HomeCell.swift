@@ -26,8 +26,9 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var screenName: UILabel!
     @IBOutlet weak var crateAt: UILabel!
     @IBOutlet weak var source: UILabel!
-    @IBOutlet weak var myText: UILabel!
-    @IBOutlet weak var reteewText: UILabel!
+    @IBOutlet weak var myText: XMLabel!
+    @IBOutlet weak var reteewText: XMLabel!
+    @IBOutlet weak var bottomToolView: UIView!
     var HomeViewModel:HomeModelTool?{
         didSet {
             guard let viewModel = HomeViewModel else {
@@ -44,7 +45,19 @@ class HomeCell: UITableViewCell {
             //设置来源
             self.source.text = viewModel.courceText ?? ""
             //设置文字
-            self.myText.text = viewModel.homeModel?.text ?? ""
+            let textstr  = viewModel.homeModel?.text ?? ""
+            let allTextStringRang = textstr.range(of: "...全文")
+            if allTextStringRang != nil && textstr.count > 140 {
+                let final  = textstr[textstr.startIndex ..< allTextStringRang!.upperBound]
+                self.myText.text = String(final)
+            }
+            else{
+                self.myText.text = textstr
+            }
+           
+            
+//            self.myText.frame.size.height = self.myText.attributeHeight
+//            self.reteewText.frame.size.height = self.reteewText.attributeHeight
             //设置底部工具栏的文字
             if viewModel.homeModel!.reposts_count ?? 0 > 0 {
                 self.zhuanfa.setTitle("\(viewModel.homeModel!.reposts_count!)", for: .normal)
@@ -74,9 +87,14 @@ class HomeCell: UITableViewCell {
             }
             //设置转发内容
             if let retext = viewModel.homeModel?.retweeted_status?.text {
+                var textstr  = retext
+                let allTextStringRang = textstr.range(of: "...全文")
+                if allTextStringRang != nil && textstr.count > 140 {
+                    textstr  = String(textstr[textstr.startIndex ..< allTextStringRang!.upperBound])
+                }
                 let retweeName = viewModel.homeModel?.retweeted_status?.user?.screen_name ?? ""
                 if retweeName.count > 0 {
-                    self.reteewText.text = "@\(retweeName): " +  retext
+                    self.reteewText.text = "@\(retweeName): " +  textstr
                 }
                 zhuanfaTop.constant = 10
                 
@@ -91,7 +109,14 @@ class HomeCell: UITableViewCell {
             picConstraintW.constant =  PicViewSize.width
             
             picCollectionView.reloadData()
-            
+            if viewModel.cellHeight == 0 {
+//                self.myText.sizeToFit()
+//                self.reteewText.sizeToFit()
+                print( self.myText.frame.size.height)
+                print(self.myText.attributeHeight)
+                layoutIfNeeded()
+                viewModel.cellHeight = bottomToolView.frame.maxY
+            }
         }
     }
     
@@ -165,10 +190,15 @@ extension HomeCell:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:ItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCellId", for: indexPath) as! ItemCell
-        guard let ImageUrl = self.HomeViewModel?.picUrls[indexPath.row] else {
-            return cell
-        }
-        cell.backImg.sd_setImage(with: URL.init(string: ImageUrl), completed: nil)
+//        if self.HomeViewModel?.picUrls.count == 1 {
+//            cell.backImg.sd_setImage(with: URL.init(string: self.HomeViewModel?.homeModel?.bmiddle_pic as? String ?? ""), completed: nil)
+//        }else {
+            guard let ImageUrl = self.HomeViewModel?.picUrls[indexPath.row] else {
+                return cell
+            }
+            cell.backImg.sd_setImage(with: URL.init(string: ImageUrl), completed: nil)
+//        }
+        
         return cell
     }
     

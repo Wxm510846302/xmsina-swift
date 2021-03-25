@@ -86,9 +86,12 @@ extension UIView {
         return self.frame.origin.x
     }
     func right() -> CGFloat {
-        return self.frame.minX
+        return self.frame.maxX
     }
     func bottom() -> CGFloat {
+        return self.frame.maxY
+    }
+    func top() -> CGFloat {
         return self.frame.minY
     }
     func width(_ width:CGFloat) {

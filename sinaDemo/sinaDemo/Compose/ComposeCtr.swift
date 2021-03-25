@@ -8,6 +8,9 @@
 import UIKit
 import ZLPhotoBrowser
 import RxSwift
+import Moya
+import HandyJSON
+import SwiftyJSON
 class ComposeCtr: UIViewController{
     var emotionView:EmotionIconCtr? = nil
     var choosedImages:[UIImage] = [UIImage]() {
@@ -142,7 +145,27 @@ extension ComposeCtr {
 extension ComposeCtr{
     @objc private func composeClick(){
         print(self.myTextView.getAttributeString())
-//        dismiss(animated: true, completion: nil)
+        if self.choosedImages.first != nil {
+            xmProvider.request(.composeMessage(msg: self.myTextView.getAttributeString(), image: self.choosedImages.first)) { (result:Result<Response, MoyaError>) in
+                print(result)
+                switch result {
+                case let .success(moyaResponse):
+                    let data = moyaResponse.data
+                    guard let jsonDic = try? JSON(data: data) else {
+                        return
+                    }
+                    print(jsonDic)
+                    if moyaResponse.statusCode == 200 {
+                        
+                    }
+                case .failure(_):
+                    print("failure")
+                    break
+                }
+            }
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     @objc private func backClick(){
         dismiss(animated: true, completion: nil)
@@ -176,6 +199,15 @@ extension ComposeCtr{
         //键盘通知
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyBordNotification(noti:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.deletePic(noti:)), name:  Notification.Name.init(rawValue: "deletePic"), object: nil)
+ 
+        self.myTextView.placeHoldLb.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    override  func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            if change?[NSKeyValueChangeKey.newKey] as! String == "" {
+                navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        }
     }
     @objc private func deletePic(noti:Notification){
         if self.choosedImages.contains(noti.object as! UIImage) {
