@@ -18,7 +18,6 @@ class ComposeCtr: UIViewController{
             self.picPickerView.picImages = choosedImages
             if choosedImages.count > 0 && self.myTextView.text.count == 0 {
                 self.myTextView.text = "分享图片"
-                navigationItem.rightBarButtonItem?.isEnabled = true
             }else {
                 
             }
@@ -206,6 +205,8 @@ extension ComposeCtr{
         if keyPath == "text" {
             if change?[NSKeyValueChangeKey.newKey] as! String == "" {
                 navigationItem.rightBarButtonItem?.isEnabled = true
+            }else{
+                navigationItem.rightBarButtonItem?.isEnabled = false
             }
         }
     }
@@ -222,10 +223,10 @@ extension ComposeCtr:UITextViewDelegate,UIScrollViewDelegate,UICollectionViewDel
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.count > 0 {
             (textView as! XMTextView).placeHoldLb.text = ""
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            
         }else {
             (textView as! XMTextView).placeHoldLb.text = (textView as! XMTextView).placeHoldText
-            navigationItem.rightBarButtonItem?.isEnabled = false
+
         }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
