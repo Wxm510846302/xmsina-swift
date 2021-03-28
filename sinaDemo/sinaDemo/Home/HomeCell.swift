@@ -57,7 +57,6 @@ class HomeCell: UITableViewCell {
                 self.myText.text = textstr
             }
            
-            
 //            self.myText.frame.size.height = self.myText.attributeHeight
 //            self.reteewText.frame.size.height = self.reteewText.attributeHeight
             //设置底部工具栏的文字
@@ -77,7 +76,6 @@ class HomeCell: UITableViewCell {
                 self.dianzan.setTitle("点赞", for: .normal)
             }
             //设置昵称文字颜色
-            
             if viewModel.homeModel?.retweeted_status != nil {
                 //有转发
                 self.zhuanfaBackImg.isHidden = false
@@ -87,6 +85,8 @@ class HomeCell: UITableViewCell {
                 self.zhuanfaBackImg.isHidden = true
 
             }
+           //设置正文高度
+            mytextH.constant = self.myText.attributeHeight
             //设置转发内容
             if let retext = viewModel.homeModel?.retweeted_status?.text {
                 var textstr  = retext
@@ -99,25 +99,26 @@ class HomeCell: UITableViewCell {
                     self.reteewText.text = "@\(retweeName): " +  textstr
                 }
                 zhuanfaTop.constant = 10
-                
+                //设置转发文字高度
+                retextH.constant = self.reteewText.attributeHeight
             }else{
                 zhuanfaTop.constant = 0
                 self.reteewText.text = ""
+                retextH.constant = 0
             }
+
             let picCount =  viewModel.picUrls.count
             //计算pic的宽度和高度约束
             let PicViewSize = calculatePicViewSize(count:picCount)
             picConstraintH.constant =  PicViewSize.height
             picConstraintW.constant =  PicViewSize.width
-            
             picCollectionView.reloadData()
+            
             if viewModel.cellHeight == 0 {
-//                self.myText.sizeToFit()
-//                self.reteewText.sizeToFit()
-                print( self.myText.frame.size.height)
-                print(self.myText.attributeHeight)
-                mytextH.constant = self.myText.attributeHeight
-                retextH.constant = self.reteewText.attributeHeight
+                
+//                print( self.myText.frame.size.height)
+//                print(self.myText.attributeHeight)
+    
                 layoutIfNeeded()
                 viewModel.cellHeight = bottomToolView.frame.maxY
             }

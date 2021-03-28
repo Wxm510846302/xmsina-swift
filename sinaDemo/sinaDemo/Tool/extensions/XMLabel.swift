@@ -13,6 +13,8 @@ enum TapHandleType {
     case linkHandle
     case allTextHandle
 }
+#warning("当设置行间距时，不能确定高度")
+private let linespace: CGFloat = 0
 
 class XMLabel: UILabel {
     
@@ -162,17 +164,18 @@ extension XMLabel{
         }
         
         selectedRange = nil
-        
+   
         // 2.设置换行模型
         let attrStringM = addLineBreak(attrString: attrString!)
         //通过富文本来设置行间距
-        let paraph = NSMutableParagraphStyle()
-        //将行间距设置
-        paraph.lineSpacing = 5
+//        let paraph = NSMutableParagraphStyle()
+//        //将行间距设置
+//        paraph.lineSpacing = linespace
+//        paraph.paragraphSpacing = linespace
         
         attrStringM.addAttribute(NSAttributedString.Key.font, value: font ?? 0, range: NSRange(location: 0, length: attrStringM.length))
         
-        attrStringM.addAttribute(NSAttributedString.Key.paragraphStyle, value: paraph, range: NSRange(location: 0, length: attrStringM.length))
+//        attrStringM.addAttribute(NSAttributedString.Key.paragraphStyle, value: paraph, range: NSRange(location: 0, length: attrStringM.length))
         
         // 3.设置textStorage的内容
         textStorage.setAttributedString(attrStringM)
@@ -209,9 +212,13 @@ extension XMLabel{
                 textStorage.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range:range)
             }
         }
-     
+        if attrString!.length > 0 {
+            self.attributeHeight = self.autoLabelHeight(with: attrString!, labelWidth: self.bounds.width)
+        }else {
+            self.attributeHeight = 0
+        }
 //        self.attributeHeight = self.autoLabelHeight(with: self.attributedText!, labelWidth: self.bounds.size.width, attributes: [NSAttributedString.Key.paragraphStyle:paraph,NSAttributedString.Key.foregroundColor:matchTopicTextColor,NSAttributedString.Key.font:self.font!])
-        self.attributeHeight = self.calcTextSize(fitsSize: CGSize(width: self.bounds.width, height: CGFloat(MAXFLOAT)), text: self.attributedText!, numberOfLines: 0, font: self.font!, textAlignment: .left, lineBreakMode: .byTruncatingTail, minimumScaleFactor: 0, shadowOffset: CGSize.zero).height
+//        self.attributeHeight = self.calcTextSize(fitsSize: CGSize(width: self.bounds.width, height: CGFloat(MAXFLOAT)), text: self.attributedText!, numberOfLines: 0, font: self.font!, textAlignment: .left, lineBreakMode: .byTruncatingTail, minimumScaleFactor: 0, shadowOffset: CGSize.zero).height
         setNeedsDisplay()
     }
     
@@ -236,7 +243,7 @@ extension XMLabel{
             
             attrStringM.setAttributes(attributes, range: range)
         }
-        
+        paragraphStyle?.lineSpacing = linespace
         return attrStringM
     }
 }
@@ -377,11 +384,15 @@ extension XMLabel {
     ///   - labelWidth: 最大宽度
     ///   - attributes: 字体，行距等
     /// - Returns: 高度
-    func autoLabelHeight(with text:NSAttributedString , labelWidth: CGFloat ,attributes : [NSAttributedString.Key : Any]) -> CGFloat{
-        var size = CGRect()
-        let size2 = CGSize(width: labelWidth, height: CGFloat(MAXFLOAT))//设置label的最大宽度
-        size = text.boundingRect(with: size2, options: .usesLineFragmentOrigin, context: nil)
-        return size.size.height
+    func autoLabelHeight(with text:NSAttributedString , labelWidth: CGFloat) -> CGFloat{
+       
+        let size2 = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)//设置label的最大宽度
+//        let point  = NSRangePointer(bitPattern: 0)
+//        let attributes = text.attributes(at: 0, effectiveRange: point)
+//        let height = (text.string as NSString).boundingRect(with: size2, options: [.usesLineFragmentOrigin], attributes: attributes, context: nil).size.height
+//        let height = text.boundingRect(with: size2, options: .usesLineFragmentOrigin, context: nil).size.height
+        let height = self.sizeThatFits(size2).height
+        return height
     }
     /// 使用此方法时请标明源作者：欧阳大哥2013。本方法符合MIT协议规范。
     /// github地址：https://github.com/youngsoft
@@ -412,6 +423,7 @@ extension XMLabel {
         var paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment;
         paragraphStyle.lineBreakMode = lineBreakMode;
+        paragraphStyle.lineSpacing = linespace
         //系统大于等于11才设置行断字策略。
         if (systemVersion >= 11.0) {
             paragraphStyle.setValue(1, forKey: "lineBreakStrategy")
@@ -427,8 +439,6 @@ extension XMLabel {
             //这里再次取段落信息，因为有可能属性字符串中就已经包含了段落信息。
             if (systemVersion >= 11.0) {
               
-                
-                
                 if let alternativeParagraphStyle:NSMutableParagraphStyle = mutableCalcAttributedString.attribute(NSAttributedString.Key.paragraphStyle, at: 0, effectiveRange: nil) as? NSMutableParagraphStyle {
                     
                     paragraphStyle = alternativeParagraphStyle
