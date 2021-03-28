@@ -56,9 +56,7 @@ class HomeCell: UITableViewCell {
             else{
                 self.myText.text = textstr
             }
-           
-//            self.myText.frame.size.height = self.myText.attributeHeight
-//            self.reteewText.frame.size.height = self.reteewText.attributeHeight
+
             //设置底部工具栏的文字
             if viewModel.homeModel!.reposts_count ?? 0 > 0 {
                 self.zhuanfa.setTitle("\(viewModel.homeModel!.reposts_count!)", for: .normal)
@@ -85,8 +83,6 @@ class HomeCell: UITableViewCell {
                 self.zhuanfaBackImg.isHidden = true
 
             }
-           //设置正文高度
-            mytextH.constant = self.myText.attributeHeight
             //设置转发内容
             if let retext = viewModel.homeModel?.retweeted_status?.text {
                 var textstr  = retext
@@ -99,14 +95,18 @@ class HomeCell: UITableViewCell {
                     self.reteewText.text = "@\(retweeName): " +  textstr
                 }
                 zhuanfaTop.constant = 10
-                //设置转发文字高度
-                retextH.constant = self.reteewText.attributeHeight
+               
             }else{
                 zhuanfaTop.constant = 0
                 self.reteewText.text = ""
-                retextH.constant = 0
+//                retextH.constant = 0
             }
-
+            //必须每次都要重新设置一下
+            //设置正文高度
+            mytextH.constant = self.myText.attributeHeight
+            //设置转发文字高度
+            retextH.constant = self.reteewText.attributeHeight
+            
             let picCount =  viewModel.picUrls.count
             //计算pic的宽度和高度约束
             let PicViewSize = calculatePicViewSize(count:picCount)
@@ -115,10 +115,6 @@ class HomeCell: UITableViewCell {
             picCollectionView.reloadData()
             
             if viewModel.cellHeight == 0 {
-                
-//                print( self.myText.frame.size.height)
-//                print(self.myText.attributeHeight)
-    
                 layoutIfNeeded()
                 viewModel.cellHeight = bottomToolView.frame.maxY
             }

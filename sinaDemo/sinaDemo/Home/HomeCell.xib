@@ -70,6 +70,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="timeline_retweet_background" translatesAutoresizingMaskIntoConstraints="NO" id="Grg-qh-5L0" userLabel="转发背景">
                         <rect key="frame" x="0.0" y="79.5" width="375" height="192.5"/>
@@ -82,6 +83,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cxr-IP-X6w">
                         <rect key="frame" x="10" y="109" width="187" height="116"/>
