@@ -9,11 +9,12 @@ import UIKit
 import HandyJSON
 let RecentlyEmotionString = "RecentlyEmotionString"
 let EmotionCell = "EmotionCellID"
+
 class EmotionIconCtr: UIViewController {
     var chooseEmotionIdex = 0
     var callBack:((_ emoticon:Emoticon) -> Void)? = nil
     var textView:XMTextView?
-    lazy var Packages:[EmotionPackage] = EmotionPakageManager.init().packages
+    lazy var Packages:[EmotionPackage] = EmotionPakageManager.shareManager.packages
     lazy var currentPackage = self.Packages.first!
     lazy var deleteBtn = UIButton.init().then {
         $0.addTarget(self, action: #selector(self.deleteClick), for: .touchUpInside)

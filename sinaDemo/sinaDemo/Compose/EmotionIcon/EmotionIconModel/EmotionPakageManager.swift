@@ -8,12 +8,19 @@
 import UIKit
 import HandyJSON
 class EmotionPakageManager: NSObject,HandyJSON {
+    static let shareManager:EmotionPakageManager = EmotionPakageManager.init()
     var packages:[EmotionPackage] = [EmotionPackage]()
-    required override init() {
+    var PackageMap:[String:String] = [String:String]()
+    internal required override init() {
         packages.append(EmotionPackage.init(""))
         packages.append(EmotionPackage.init("default"))
         packages.append(EmotionPackage.init("emoji"))
         packages.append(EmotionPackage.init("lxh"))
+        for package in packages[1...3] {
+            for emotion in package.emoticons {
+                PackageMap.updateValue(emotion.path , forKey: emotion.chs)
+            }
+        }
     }
 }
 class EmotionPackage :HandyJSON,NSSecureCoding {

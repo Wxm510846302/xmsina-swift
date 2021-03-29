@@ -92,6 +92,7 @@ class XMLabel: UILabel {
     public var topicTapHandler : XMTapHandler?
     public var userTapHandler : XMTapHandler?
     public var allTextTapHandler : XMTapHandler?
+
     // MARK:- 构造函数
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -154,24 +155,24 @@ extension XMLabel{
     /// 准备文本
     private func prepareText() {
         // 1.准备字符串
-        var attrString : NSAttributedString?
+        var attrString : NSMutableAttributedString = NSMutableAttributedString.init(string: "")
         if attributedText != nil {
-            attrString = attributedText
+            attrString = NSMutableAttributedString.init(attributedString: attributedText!)
         } else if text != nil {
-            attrString = NSAttributedString(string: text!)
+            attrString = NSMutableAttributedString.init(string: text!)
         } else {
-            attrString = NSAttributedString(string: "")
+            attrString = NSMutableAttributedString.init(string: "")
         }
         
         selectedRange = nil
-   
+       
         // 2.设置换行模型
-        let attrStringM = addLineBreak(attrString: attrString!)
-
-        attrStringM.addAttribute(NSAttributedString.Key.font, value: font ?? 12, range: NSRange(location: 0, length: attrStringM.length))
+        attrString = addLineBreak(attrString: attrString)
+        
+        attrString.addAttribute(NSAttributedString.Key.font, value: font ?? 12, range: NSRange(location: 0, length: attrString.length))
 
         // 3.设置textStorage的内容
-        textStorage.setAttributedString(attrStringM)
+        textStorage.setAttributedString(attrString)
         
         // 4.匹配URL
         if let linkRanges = getLinkRanges() {
@@ -205,8 +206,34 @@ extension XMLabel{
                 textStorage.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range:range)
             }
         }
-        if attrString!.length > 0 {
-            self.attributeHeight = self.autoLabelHeight(with: attrStringM, labelWidth: self.bounds.width)
+       
+        //8.匹配emoji表情
+        if let allEmojiRanges = getRanges(pattern: "\\[.*?\\]") {
+            if allEmojiRanges.count > 0 {
+                for index in (0...allEmojiRanges.count-1).reversed() {
+                    let emojiRang:NSRange = allEmojiRanges[index]
+                    let chs = attrString.attributedSubstring(from: emojiRang).string
+                    let path = self.findPngPath(chs: chs)
+                    if path != nil {
+//                        print(path!)
+//                        print(emojiRang)
+//                        print(allEmojiRanges.count-1)
+                        //插入普通表情
+                        let attachMent = XMAttachment()
+                        attachMent.chs = chs
+                        attachMent.image = UIImage(contentsOfFile: path!)
+                        let font = self.font!
+                        attachMent.bounds = CGRect(x: 0, y: -4, width: font.lineHeight, height: font.lineHeight)
+                        let attrImageStr = NSAttributedString(attachment: attachMent)
+                        textStorage.replaceCharacters(in: emojiRang, with: attrImageStr)
+                    }
+                }
+            }
+            
+        }
+        //9.设置高度
+        if attrString.length > 0 {
+            self.attributeHeight = self.autoLabelHeight(with: attrString, labelWidth: self.bounds.width)
         }else {
             self.attributeHeight = 0
         }
@@ -214,8 +241,8 @@ extension XMLabel{
     }
     
     /// 如果用户没有设置lineBreak,则所有内容会绘制到同一行中,因此需要主动设置
-    private func addLineBreak(attrString: NSAttributedString) -> NSMutableAttributedString {
-        let attrStringM = NSMutableAttributedString(attributedString: attrString)
+    private func addLineBreak(attrString: NSMutableAttributedString) -> NSMutableAttributedString {
+        let attrStringM = attrString
         
         if attrStringM.length == 0 {
             return attrStringM
@@ -269,6 +296,10 @@ extension XMLabel {
         }
         
         return ranges
+    }
+    private func findPngPath(chs:String)->String?{
+        let path = EmotionPakageManager.shareManager.PackageMap[chs]
+        return path
     }
 }
 
