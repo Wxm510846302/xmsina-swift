@@ -13,7 +13,7 @@ class HomeModelTool: NSObject,HandyJSON {
     required override init() {
         
     }
-    
+    var cellHeight:CGFloat = 0.0
     var homeModel:HomeModel?
     var courceText:String?
     var creatAtText:String?
@@ -36,7 +36,6 @@ class HomeModelTool: NSObject,HandyJSON {
         }
         
         if let picurls = homeModel.pic_urls,picurls.count > 0 {
-            
             for picurlDic in picurls {
                 picUrls.append(picurlDic["thumbnail_pic"] ?? "")
             }

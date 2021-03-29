@@ -30,6 +30,7 @@
 		5B6F1A9F260836CE00F7FE5D /* EmotionIconResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */; };
 		5B6F1AA12608477400F7FE5D /* EmotionIconCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */; };
 		5B6F1ABC2609818900F7FE5D /* XMTextView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1ABB2609818900F7FE5D /* XMTextView+extension.swift */; };
+		5BC23FA1260C240400AF9A11 /* XMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC23FA0260C240400AF9A11 /* XMLabel.swift */; };
 		8437049725EB4AC10011C53D /* XMTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049525EB4AC10011C53D /* XMTool.swift */; };
 		8437049A25EB50EF0011C53D /* XMTabBarCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437049925EB50EF0011C53D /* XMTabBarCtr.swift */; };
 		843704A325EB551A0011C53D /* HomeTableCtr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843704A225EB551A0011C53D /* HomeTableCtr.swift */; };
@@ -97,6 +98,7 @@
 		5B6F1A9E260836CE00F7FE5D /* EmotionIconResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmotionIconResource.bundle; sourceTree = "<group>"; };
 		5B6F1AA02608477400F7FE5D /* EmotionIconCtr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionIconCtr.swift; sourceTree = "<group>"; };
 		5B6F1ABB2609818900F7FE5D /* XMTextView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMTextView+extension.swift"; sourceTree = "<group>"; };
+		5BC23FA0260C240400AF9A11 /* XMLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLabel.swift; sourceTree = "<group>"; };
 		665DA7FCB7F89212155B757F /* Pods-sinaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7AFEAD67537B57CB3EDDFF00 /* Pods-sinaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sinaDemo/Pods-sinaDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8437049525EB4AC10011C53D /* XMTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTool.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				5B4DF18025EE2693000FB250 /* UIBarItemExtension.swift */,
 				84802CC825FE0DA6008B46C2 /* XMTextView.swift */,
+				5BC23FA0260C240400AF9A11 /* XMLabel.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				TargetAttributes = {
 					84F5001225E901D50096DA8B = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -518,6 +522,7 @@
 				5B4DF19125EE33E7000FB250 /* PopPresentationCtr.swift in Sources */,
 				84D8368D25F4E8E4008F2F38 /* HomeModelTool.swift in Sources */,
 				5B06B6112602F05100A0F486 /* HomeCoreData.xcdatamodeld in Sources */,
+				5BC23FA1260C240400AF9A11 /* XMLabel.swift in Sources */,
 				5B4DF18E25EE32B5000FB250 /* PopTransitioning.swift in Sources */,
 				843704A725EB55330011C53D /* DiscoverTableCtr.swift in Sources */,
 				843704B125EB62900011C53D /* MsgTableCtr.swift in Sources */,
@@ -681,6 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 885Y7599LZ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -694,6 +700,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sinaDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -705,6 +713,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 885Y7599LZ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -718,6 +727,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sinaDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
